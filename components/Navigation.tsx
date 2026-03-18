@@ -145,20 +145,6 @@ export default function Navigation() {
                             {link.label}
                         </a>
                     ))}
-                    <a
-                        href="#contact"
-                        className="btn"
-                        style={{
-                            marginTop: '2rem',
-                            width: '100%',
-                            maxWidth: '300px',
-                            backgroundColor: 'var(--color-accent)',
-                            color: 'var(--color-primary)'
-                        }}
-                        onClick={() => setMobileMenuOpen(false)}
-                    >
-                        Book Consultation
-                    </a>
                 </nav>
             </div>
 
