@@ -1,0 +1,4 @@
+components/SectionExpertise.tsx(103,10): error TS17008: JSX element 'section' has no corresponding closing tag.
+components/SectionExpertise.tsx(231,14): error TS17008: JSX element 'style' has no corresponding closing tag.
+components/SectionExpertise.tsx(485,1): error TS1005: '</' expected.
+components/SectionExpertise.tsx(485,1): error TS1160: Unterminated template literal.
