@@ -17,7 +17,7 @@ export default function SectionPhilosophy() {
                         gap: '1.5rem'
                     }}>
                         <SectionReveal>
-                            <p className="text-accent" style={{ color: 'var(--color-accent)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>Our Consulting Philosophy</p>
+                            <p className="text-accent" style={{ color: 'var(--color-accent)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>My Consulting Philosophy</p>
                         </SectionReveal>
 
                         <SectionReveal delay={200}>

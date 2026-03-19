@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SectionReveal from "./SectionReveal";
 
 export default function SectionCaseStudies() {
@@ -7,61 +8,113 @@ export default function SectionCaseStudies() {
                 <SectionReveal>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '3rem', marginBottom: '4rem' }}>
                         <p className="text-accent" style={{ color: 'var(--color-accent)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>Featured Case Study</p>
-                        <div className="grid md:grid-cols-2 gap-8 items-end">
-                            <h2 className="text-display-lg" style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.1, color: 'white' }}>
-                                Carmen's<br />Garden Cafe
-                            </h2>
-                            <p className="text-body-lg" style={{ color: 'rgba(255,255,255,0.85)', paddingBottom: '0.5rem' }}>
-                                A transformative engagement involving full business operations management, rebranding, digital presence scale-up, POS implementation, and strategic growth planning.
-                            </p>
+
+                        <div className="grid md:grid-cols-2 gap-8" style={{ alignItems: 'flex-start' }}>
+                            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                                <div style={{
+                                    position: 'relative',
+                                    width: '100px',
+                                    height: '100px',
+                                    flexShrink: 0,
+                                    margin: '2rem 4rem 2rem 2rem', /* Generous margins to safely hold the 2.0 scaled image without overlapping */
+                                    zIndex: 10
+                                }}>
+                                    <Image
+                                        src="/images/portfolio/blob%20(7).png"
+                                        alt="Logo"
+                                        fill
+                                        style={{ objectFit: 'contain', transform: 'scale(2.0)' }}
+                                    />
+                                </div>
+                                <h2 className="text-display-md" style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.1, color: 'white', margin: 0, position: 'relative', zIndex: 20 }}>
+                                    Garden Oases Resort /<br />The Ritz Hotel
+                                </h2>
+                            </div>
+
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                                <p className="text-body-lg" style={{ color: 'rgba(255,255,255,0.85)', margin: 0 }}>
+                                    A major hospitality partner focusing on high-end dining and resort services. We work directly with their purchasing and dining supervisors to ensure premium standards.
+                                </p>
+                                <div style={{ marginTop: '0.5rem' }}>
+                                    <p style={{ color: 'var(--color-accent)', fontWeight: 600, marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.875rem' }}>Operational Focus:</p>
+                                    <ul style={{ color: 'rgba(255,255,255,0.85)', display: 'flex', flexDirection: 'column', gap: '0.5rem', listStyle: 'none', padding: 0, margin: 0 }}>
+                                        <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}><span style={{ color: 'var(--color-accent)' }}>✓</span> Coffee Business Development</li>
+                                        <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}><span style={{ color: 'var(--color-accent)' }}>✓</span> Barista Training &amp; Standardization</li>
+                                        <li style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}><span style={{ color: 'var(--color-accent)' }}>✓</span> Menu Engineering</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </SectionReveal>
 
-                <div className="grid md:grid-cols-3 gap-12 md:gap-8">
-                    <SectionReveal delay={200}>
-                        <div style={{ borderLeft: '2px solid rgba(198, 224, 61, 0.5)', paddingLeft: '1.5rem' }}>
-                            <h3 className="text-h3" style={{ fontFamily: 'var(--font-playfair)', color: 'white', marginBottom: '1rem' }}>
-                                <span style={{ color: 'var(--color-accent)', marginRight: '0.5rem' }}>01.</span> Challenge
-                            </h3>
-                            <p className="text-body-md" style={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.8 }}>
-                                Inconsistent guest experiences, fragmented digital presence, and lack of standardized POS and operational systems hindered scalability and visibility.
-                            </p>
-                        </div>
-                    </SectionReveal>
+                <div className="grid md:grid-cols-2 gap-12" style={{ alignItems: 'flex-start' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
+                        <SectionReveal delay={200}>
+                            <div style={{ borderLeft: '2px solid rgba(198, 224, 61, 0.5)', paddingLeft: '1.5rem' }}>
+                                <h3 className="text-h3" style={{ fontFamily: 'var(--font-playfair)', color: 'white', marginBottom: '1rem' }}>
+                                    <span style={{ color: 'var(--color-accent)', marginRight: '0.5rem' }}>01.</span> Challenge
+                                </h3>
+                                <p className="text-body-md" style={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.8 }}>
+                                    Inconsistent beverage quality, unstandardized barista workflows, and a menu structure that did not reflect the premium positioning of the resort, leading to missed revenue opportunities.
+                                </p>
+                            </div>
+                        </SectionReveal>
 
-                    <SectionReveal delay={400}>
-                        <div style={{ borderLeft: '2px solid rgba(198, 224, 61, 0.5)', paddingLeft: '1.5rem' }}>
-                            <h3 className="text-h3" style={{ fontFamily: 'var(--font-playfair)', color: 'white', marginBottom: '1rem' }}>
-                                <span style={{ color: 'var(--color-accent)', marginRight: '0.5rem' }}>02.</span> Intervention
-                            </h3>
-                            <p className="text-body-md" style={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.8 }}>
-                                Full operational takeover. Developed new strict adherence SOPs, integrated modern POS and inventory systems, executed a complete brand refresh, and established a digital content engine.
-                            </p>
-                        </div>
-                    </SectionReveal>
+                        <SectionReveal delay={400}>
+                            <div style={{ borderLeft: '2px solid rgba(198, 224, 61, 0.5)', paddingLeft: '1.5rem' }}>
+                                <h3 className="text-h3" style={{ fontFamily: 'var(--font-playfair)', color: 'white', marginBottom: '1rem' }}>
+                                    <span style={{ color: 'var(--color-accent)', marginRight: '0.5rem' }}>02.</span> Intervention
+                                </h3>
+                                <p className="text-body-md" style={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.8 }}>
+                                    Comprehensive coffee business development. We executed rigorous barista masterclasses, established strict beverage SOPs, and completely re-engineered the menu to align with high-end standards.
+                                </p>
+                            </div>
+                        </SectionReveal>
 
-                    <SectionReveal delay={600}>
-                        <div style={{ borderLeft: '2px solid rgba(198, 224, 61, 1)', paddingLeft: '1.5rem', backgroundColor: 'rgba(255,255,255,0.03)', padding: '1.5rem', borderRadius: '4px' }}>
-                            <h3 className="text-h3" style={{ fontFamily: 'var(--font-playfair)', color: 'white', marginBottom: '1.5rem' }}>
-                                <span style={{ color: 'var(--color-accent)', marginRight: '0.5rem' }}>03.</span> Impact
-                            </h3>
-                            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem', color: 'white' }}>
-                                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                                    <span style={{ color: 'var(--color-accent)', fontWeight: 'bold' }}>→</span>
-                                    <span style={{ lineHeight: 1.5 }}>Stabilized, highly predictable revenue operations</span>
-                                </li>
-                                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                                    <span style={{ color: 'var(--color-accent)', fontWeight: 'bold' }}>→</span>
-                                    <span style={{ lineHeight: 1.5 }}>Data-driven menu profitability insights via POS</span>
-                                </li>
-                                <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                                    <span style={{ color: 'var(--color-accent)', fontWeight: 'bold' }}>→</span>
-                                    <span style={{ lineHeight: 1.5 }}>Dominant local digital footprint and engagement</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </SectionReveal>
+                        <SectionReveal delay={600}>
+                            <div style={{ borderLeft: '2px solid rgba(198, 224, 61, 1)', paddingLeft: '1.5rem', backgroundColor: 'rgba(255,255,255,0.03)', padding: '1.5rem', borderRadius: '4px' }}>
+                                <h3 className="text-h3" style={{ fontFamily: 'var(--font-playfair)', color: 'white', marginBottom: '1.5rem' }}>
+                                    <span style={{ color: 'var(--color-accent)', marginRight: '0.5rem' }}>03.</span> Impact
+                                </h3>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem', color: 'white' }}>
+                                    <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                                        <span style={{ color: 'var(--color-accent)', fontWeight: 'bold' }}>→</span>
+                                        <span style={{ lineHeight: 1.5 }}>Elevated guest dining experiences with premium coffee offerings</span>
+                                    </li>
+                                    <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                                        <span style={{ color: 'var(--color-accent)', fontWeight: 'bold' }}>→</span>
+                                        <span style={{ lineHeight: 1.5 }}>Highly standardized and efficient barista operations</span>
+                                    </li>
+                                    <li style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                                        <span style={{ color: 'var(--color-accent)', fontWeight: 'bold' }}>→</span>
+                                        <span style={{ lineHeight: 1.5 }}>Increased menu profitability through strategic engineering</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </SectionReveal>
+                    </div>
+
+                    <div style={{ width: '100%' }}>
+                        <SectionReveal delay={800}>
+                            <div style={{
+                                position: 'relative',
+                                width: '100%',
+                                paddingBottom: '133%', /* 3/4 aspect ratio */
+                                borderRadius: '1rem',
+                                overflow: 'hidden',
+                                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+                            }}>
+                                <Image
+                                    src="/images/portfolio/blob.png"
+                                    alt="Garden Oases Resort Portrait"
+                                    fill
+                                    style={{ objectFit: 'cover' }}
+                                />
+                                <div style={{ position: 'absolute', inset: 0, border: '1px solid rgba(255,255,255,0.1)', borderRadius: '1rem', pointerEvents: 'none' }}></div>
+                            </div>
+                        </SectionReveal>
+                    </div>
                 </div>
             </div>
         </section>
