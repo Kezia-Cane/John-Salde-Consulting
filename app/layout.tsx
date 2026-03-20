@@ -21,9 +21,8 @@ export const metadata: Metadata = {
   title: "John Salde Consulting | Coffee & Food Business Growth",
   description: "Bridging the gap between passion and profitability for coffee and food businesses in Mindanao.",
   icons: {
-    icon: "/images/logo/favicon_io (6)/favicon.ico",
-    shortcut: "/images/logo/favicon_io (6)/favicon.ico",
-    apple: "/images/logo/favicon_io (6)/apple-touch-icon.png",
+    icon: "/images/logo/newfavicon.ico",
+    shortcut: "/images/logo/newfavicon.ico",
   },
 };
 
