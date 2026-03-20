@@ -265,7 +265,7 @@ export default function ConsultationPage() {
                                 &ldquo;Profitability is not a happy accident; it is a calculated architectural outcome of disciplined operations and visionary mentorship.&rdquo;
                             </p>
                             <span style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-text-muted)" }}>
-                                — John Salde
+                                - John Salde
                             </span>
                         </div>
 

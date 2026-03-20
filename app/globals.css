@@ -38,7 +38,7 @@
   --space-24: 6rem;
   --space-32: 8rem;
 
-  /* Fonts — Montserrat (body), Poppins (display/headers), Lora (quotes/accents) */
+  /* Fonts - Montserrat (body), Poppins (display/headers), Lora (quotes/accents) */
   --font-display: var(--font-poppins), 'Poppins', sans-serif;
   --font-body: var(--font-montserrat), 'Montserrat', sans-serif;
   --font-accent: var(--font-lora), 'Lora', Georgia, serif;
@@ -314,7 +314,7 @@ select {
   }
 }
 
-/* Page section label — small Poppins uppercase above headings */
+/* Page section label - small Poppins uppercase above headings */
 .page-label {
   font-family: var(--font-display);
   font-size: 0.7rem;
@@ -511,5 +511,17 @@ select {
 @media (max-width: 767px) {
   .page-hero {
     padding-top: 6rem;
+  }
+
+  /* On mobile, ensure hero image sections have a comfortable height */
+  section.page-hero[style] {
+    min-height: 420px !important;
+  }
+}
+
+/* Mobile: expertise floating card shouldn't clip below viewport */
+@media (max-width: 767px) {
+  .expertise-image-panel {
+    margin-bottom: 3rem;
   }
 }

@@ -16,8 +16,12 @@ export default function ExpertisePage() {
 
             {/* ── Hero ── */}
             <section className="container page-hero" style={{ paddingBottom: "3rem" }}>
-                <div className="grid gap-12" style={{ gridTemplateColumns: "1fr" }}>
-                    <div style={{ maxWidth: "720px" }}>
+                <div
+                    className="grid gap-12 md:grid-cols-2"
+                    style={{ alignItems: "center" }}
+                >
+                    {/* Left: text */}
+                    <div>
                         <span className="page-label">Core Competencies</span>
                         <h1
                             className="text-display-md"
@@ -25,17 +29,60 @@ export default function ExpertisePage() {
                         >
                             Precision Engineering for the Specialty Coffee Sector.
                         </h1>
-                        <p className="text-body-lg" style={{ maxWidth: "560px" }}>
+                        <p className="text-body-lg" style={{ maxWidth: "480px", marginBottom: "2rem" }}>
                             A systematic approach to café architecture, operational excellence, and sensory development. We bridge the gap between artisanal passion and rigorous commercial profitability.
                         </p>
+                        {/* Stat badge */}
+                        <div
+                            className="bento-card"
+                            style={{ background: "#c6d2ff", padding: "1.5rem 2rem", display: "inline-flex", flexDirection: "column", alignSelf: "flex-start" }}
+                        >
+                            <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "2rem", color: "#1D3B91" }}>6+</span>
+                            <span className="page-label" style={{ margin: 0, color: "#1D3B91", opacity: 0.75 }}>Years of Market Expertise</span>
+                        </div>
                     </div>
-                    {/* Stat badge */}
-                    <div
-                        className="bento-card"
-                        style={{ background: "#c6d2ff", padding: "1.5rem 2rem", display: "inline-flex", flexDirection: "column", alignSelf: "flex-start" }}
-                    >
-                        <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "2rem", color: "#1D3B91" }}>6+</span>
-                        <span className="page-label" style={{ margin: 0, color: "#1D3B91", opacity: 0.75 }}>Years of Market Expertise</span>
+
+                    {/* Right: image with floating card */}
+                    <div className="expertise-image-panel" style={{ position: "relative", paddingBottom: "2rem" }}>
+                        <div
+                            style={{
+                                aspectRatio: "4/3",
+                                borderRadius: "var(--radius-lg)",
+                                overflow: "hidden",
+                            }}
+                        >
+                            <img
+                                src="/images/heroes pages/expertise.png"
+                                alt="Expertise"
+                                style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    objectFit: "cover",
+                                    objectPosition: "center",
+                                    display: "block",
+                                }}
+                            />
+                        </div>
+                        {/* Floating quote card - copied from process page style */}
+                        <div
+                            style={{
+                                position: "absolute",
+                                bottom: 0,
+                                left: 0,
+                                background: "var(--color-primary)",
+                                borderRadius: "var(--radius)",
+                                padding: "1.75rem",
+                                maxWidth: "280px",
+                                boxShadow: "0 20px 48px rgba(29,59,145,0.3)",
+                            }}
+                        >
+                            <p className="lora-quote" style={{ fontSize: "1rem", color: "rgba(255,255,255,0.9)", marginBottom: "0.75rem" }}>
+                                &ldquo;Expertise is built through precise repetition and relentless refinement.&rdquo;
+                            </p>
+                            <cite style={{ fontStyle: "normal", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-accent)" }}>
+                                - John Salde
+                            </cite>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -44,7 +91,7 @@ export default function ExpertisePage() {
             <section className="container" style={{ paddingBottom: "5rem" }}>
                 <div className="grid gap-6" style={{ gridTemplateColumns: "1fr" }}>
 
-                    {/* Card 1 — Featured: Coffee Business Development */}
+                    {/* Card 1 - Featured: Coffee Business Development */}
                     <div
                         className="bento-card"
                         style={{
@@ -275,7 +322,7 @@ export default function ExpertisePage() {
                                     &ldquo;John transformed our workflow from chaotic to rhythmic. Our throughput increased by 22% without sacrificing quality.&rdquo;
                                 </p>
                                 <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-accent)" }}>
-                                    Mindanao Client
+                                    - Mindanao Client
                                 </span>
                             </div>
                         </div>

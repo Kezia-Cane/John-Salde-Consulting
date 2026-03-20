@@ -32,10 +32,10 @@ export default function Navigation() {
                         // Always default at the top
                         setScrollState("default");
                     } else if (currentScrollY > prev + 3) {
-                        // Scrolling DOWN anywhere → show compact
+                        // Scrolling DOWN anywhere - show compact
                         setScrollState("scrolled");
                     } else if (currentScrollY < prev - 3) {
-                        // Scrolling UP anywhere → restore full pill
+                        // Scrolling UP anywhere - restore full pill
                         setScrollState("default");
                     }
 
@@ -54,7 +54,7 @@ export default function Navigation() {
 
     return (
         <>
-            {/* ── Floating pill wrapper — always visible, never hides ── */}
+            {/* - Floating pill wrapper - always visible, never hides - */}
             <div
                 className={`nav-pill-wrapper${isScrolled ? " is-scrolled" : ""}`}
                 style={{
@@ -81,7 +81,7 @@ export default function Navigation() {
                             ? "0 10px 40px rgba(0,0,0,0.35)"
                             : "0 8px 32px rgba(0,0,0,0.28)",
                         transition: "box-shadow 0.2s ease, padding 0.22s ease, height 0.2s ease",
-                        // No padding when scrolled — image fills pill edge-to-edge
+                        // No padding when scrolled - image fills pill edge-to-edge
                         padding: isScrolled ? "0" : "0.45rem 0.45rem",
                         // Fixed height when scrolled keeps the pill compact
                         height: isScrolled ? "56px" : "auto",
@@ -89,7 +89,7 @@ export default function Navigation() {
                         justifyContent: "space-between",
                     }}
                 >
-                    {/* ── Circle Logo — visible only in default state ── */}
+                    {/* - Circle Logo - visible only in default state - */}
                     <a
                         href="/"
                         aria-label="Home"
@@ -133,7 +133,7 @@ export default function Navigation() {
                             display: isScrolled ? "flex" : "none",
                             alignItems: "stretch",
                             justifyContent: "center",
-                            // Fill the entire pill — no clipping, no gaps
+                            // Fill the entire pill - no clipping, no gaps
                             flex: isScrolled ? "1" : "0",
                             alignSelf: "stretch",
                             overflow: "hidden",
@@ -157,7 +157,7 @@ export default function Navigation() {
                         />
                     </a>
 
-                    {/* ── Desktop Nav Links — collapse when scrolled ── */}
+                    {/* ── Desktop Nav Links - collapse when scrolled ── */}
                     <nav
                         className="pill-nav"
                         style={{
@@ -196,7 +196,7 @@ export default function Navigation() {
                         ))}
                     </nav>
 
-                    {/* ── CTA Button — collapse when scrolled ── */}
+                    {/* ── CTA Button - collapse when scrolled ── */}
                     <a
                         href="/consultation"
                         className="pill-cta"
@@ -354,11 +354,11 @@ export default function Navigation() {
                     background: #f2f2f2 !important;
                     transform: translateY(-1px);
                 }
-                /* Mobile layout — pill stretches edge-to-edge with margin */
+                /* Mobile layout - pill stretches edge-to-edge with margin */
                 @media (max-width: 767px) {
                     .pill-nav { display: none !important; }
                     .pill-cta { display: none !important; }
-                    /* Hide hamburger when scrolled — logo fills pill alone */
+                    /* Hide hamburger when scrolled - logo fills pill alone */
                     .pill-hamburger { display: flex !important; }
                     .nav-pill-wrapper.is-scrolled .pill-hamburger { display: none !important; }
                     /* Make the fixed wrapper span the mobile viewport */

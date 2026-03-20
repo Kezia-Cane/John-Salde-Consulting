@@ -80,20 +80,26 @@ export default function ProcessPage() {
                         </p>
                     </div>
 
-                    {/* Quote overlay panel */}
+                    {/* Image panel with floating quote card */}
                     <div style={{ position: "relative" }}>
                         <div
                             style={{
                                 aspectRatio: "1",
-                                background: "#dfe9fa",
                                 borderRadius: "var(--radius-lg)",
                                 overflow: "hidden",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
                             }}
                         >
-                            <span className="material-symbols-outlined" style={{ fontSize: "8rem", color: "rgba(29,59,145,0.1)" }}>architecture</span>
+                            <img
+                                src="/images/heroes pages/process.jpeg"
+                                alt="Our Process"
+                                style={{
+                                    width: "100%",
+                                    height: "100%",
+                                    objectFit: "cover",
+                                    objectPosition: "center",
+                                    display: "block",
+                                }}
+                            />
                         </div>
                         <div
                             style={{
@@ -111,7 +117,7 @@ export default function ProcessPage() {
                                 &ldquo;Profitability is the byproduct of structural integrity. We build the skeleton; you brew the soul.&rdquo;
                             </p>
                             <cite style={{ fontStyle: "normal", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-accent)" }}>
-                                — John Salde
+                                - John Salde
                             </cite>
                         </div>
                     </div>
@@ -145,7 +151,7 @@ export default function ProcessPage() {
 
                     {/* Timeline */}
                     <div style={{ position: "relative", display: "flex", flexDirection: "column", gap: "5rem" }}>
-                        {/* Center connector line — desktop only */}
+                        {/* Center connector line - desktop only */}
                         <div className="timeline-connector" />
 
                         {PHASES.map((phase) => (

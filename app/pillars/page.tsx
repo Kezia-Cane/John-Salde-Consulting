@@ -42,7 +42,7 @@ const PILLARS = [
         title: "Strategic Mentorship",
         description:
             "We bridge the gap between being a coffee enthusiast and a market leader. Our mentorship focuses on leadership development, brand storytelling, and high-end hospitality standards.",
-        quote: `"The most successful cafés aren't just selling coffee — they're selling an architectural experience of time."`,
+        quote: `"The most successful cafés aren't just selling coffee - they're selling an architectural experience of time."`,
         gridItems: [
             { icon: "groups", label: "Culture Design" },
             { icon: "auto_awesome", label: "Experience Quality" },
@@ -63,19 +63,57 @@ export default function PillarsPage() {
             <Navigation />
 
             {/* ── Hero ── */}
-            <section className="container page-hero" style={{ paddingBottom: "2rem" }}>
+            <section
+                className="page-hero"
+                style={{
+                    position: "relative",
+                    minHeight: "clamp(440px, 65vh, 680px)",
+                    display: "flex",
+                    alignItems: "flex-end",
+                    overflow: "hidden",
+                }}
+            >
+                {/* Background image */}
+                <img
+                    src="/images/heroes pages/pillars.jpeg"
+                    alt="Pillars background"
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        objectPosition: "center",
+                        zIndex: 0,
+                    }}
+                />
+                {/* Gradient overlay */}
                 <div
-                    className="grid gap-12"
-                    style={{ gridTemplateColumns: "1fr", paddingBottom: "3rem" }}
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        background: "linear-gradient(to bottom, rgba(29,59,145,0.3) 0%, rgba(29,59,145,0.65) 50%, rgba(29,59,145,0.92) 100%)",
+                        zIndex: 1,
+                    }}
+                />
+                {/* Content */}
+                <div
+                    className="container"
+                    style={{
+                        position: "relative",
+                        zIndex: 2,
+                        paddingBottom: "4rem",
+                        paddingTop: "2rem",
+                    }}
                 >
                     <div style={{ maxWidth: "640px" }}>
-                        <span className="page-label">Our Methodology</span>
+                        <span className="page-label" style={{ color: "var(--color-accent)" }}>Our Methodology</span>
                         <h1
                             className="text-display-md"
-                            style={{ color: "var(--color-primary)", lineHeight: 1.1 }}
+                            style={{ color: "white", lineHeight: 1.1, textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}
                         >
                             The Three Pillars of{" "}
-                            <span className="lora-quote" style={{ color: "var(--color-secondary)", fontWeight: 400, fontSize: "inherit" }}>
+                            <span className="lora-quote" style={{ color: "var(--color-accent)", fontWeight: 400, fontSize: "inherit" }}>
                                 Sustainable Growth
                             </span>
                         </h1>
@@ -87,7 +125,7 @@ export default function PillarsPage() {
                             maxWidth: "520px",
                         }}
                     >
-                        <p className="text-body-lg">
+                        <p className="text-body-lg" style={{ color: "rgba(255,255,255,0.85)" }}>
                             A structured approach to coffee business excellence, blending architectural precision with deep industry mentorship.
                         </p>
                     </div>
@@ -212,7 +250,7 @@ export default function PillarsPage() {
                                     >
                                         {pillar.quote}
                                         <cite style={{ display: "block", marginTop: "0.5rem", fontStyle: "normal", fontFamily: "var(--font-display)", fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", opacity: 0.6, color: "white" }}>
-                                            — John Salde
+                                            - John Salde
                                         </cite>
                                     </blockquote>
                                 )}

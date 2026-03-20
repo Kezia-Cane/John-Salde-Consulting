@@ -22,7 +22,7 @@ export default function Hero() {
 
       </div>
 
-      {/* Main Content — 3-column grid, ALL vertically centered */}
+      {/* Main Content - 3-column grid, ALL vertically centered */}
       <div className="hero-grid">
 
         {/* LEFT: "John Salde" */}

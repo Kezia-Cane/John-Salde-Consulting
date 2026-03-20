@@ -39,7 +39,7 @@ export default function SectionWhyChoose() {
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                                 <h3 className="text-h3" style={{ color: 'var(--color-primary)', fontFamily: 'var(--font-display)' }}>End-to-End Partnership</h3>
                                 <p className="text-body-md" style={{ lineHeight: 1.7 }}>
-                                    From standardizing your espresso extraction to optimizing your POS hierarchy and launching a hyper-local customer acquisition campaign—we are your dedicated growth partners.
+                                    From standardizing your espresso extraction to optimizing your POS hierarchy and launching a hyper-local customer acquisition campaign-we are your dedicated growth partners.
                                 </p>
                             </div>
                         </SectionReveal>

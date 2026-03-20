@@ -6,7 +6,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
     title: "Portfolio | John Salde Consulting",
     description:
-        "Proven trajectories — explore John Salde's portfolio of strategic interventions for coffee and hospitality businesses.",
+        "Proven trajectories - explore John Salde's portfolio of strategic interventions for coffee and hospitality businesses.",
 };
 
 export default function PortfolioPage() {
@@ -15,17 +15,61 @@ export default function PortfolioPage() {
             <Navigation />
 
             {/* ── Hero ── */}
-            <section className="container page-hero" style={{ paddingBottom: "3rem" }}>
-                <div className="grid gap-12 items-end" style={{ gridTemplateColumns: "1fr" }}>
+            <section
+                className="page-hero"
+                style={{
+                    position: "relative",
+                    minHeight: "clamp(440px, 65vh, 680px)",
+                    display: "flex",
+                    alignItems: "flex-end",
+                    overflow: "hidden",
+                }}
+            >
+                {/* Background image */}
+                <img
+                    src="/images/heroes pages/portfolio2.jpeg"
+                    alt="Portfolio background"
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        objectPosition: "center top",
+                        zIndex: 0,
+                    }}
+                />
+                {/* Gradient overlay - heavier on bottom to protect text */}
+                <div
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        background: "linear-gradient(to bottom, rgba(29,59,145,0.2) 0%, rgba(29,59,145,0.6) 45%, rgba(29,59,145,0.95) 100%)",
+                        zIndex: 1,
+                    }}
+                />
+                {/* Content */}
+                <div
+                    className="container"
+                    style={{
+                        position: "relative",
+                        zIndex: 2,
+                        paddingBottom: "4rem",
+                        paddingTop: "2rem",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "2rem",
+                    }}
+                >
                     <div style={{ maxWidth: "700px" }}>
                         <span className="page-label" style={{ color: "var(--color-accent)" }}>Proven Trajectories</span>
                         <h1
                             className="text-display-md"
-                            style={{ color: "var(--color-primary)", lineHeight: 1.1, marginBottom: "1.5rem" }}
+                            style={{ color: "white", lineHeight: 1.1, marginBottom: "1.5rem", textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}
                         >
                             Architecting Growth through Analytical Rigor.
                         </h1>
-                        <p className="text-body-lg" style={{ maxWidth: "580px" }}>
+                        <p className="text-body-lg" style={{ maxWidth: "580px", color: "rgba(255,255,255,0.85)" }}>
                             Explore our portfolio of strategic interventions. From boutique roasteries to regional hospitality brands in Mindanao, we apply a consistent methodology focused on operational excellence and sustainable profitability.
                         </p>
                     </div>
@@ -33,14 +77,16 @@ export default function PortfolioPage() {
                     {/* Lora quote card */}
                     <div
                         style={{
-                            background: "#dfe9fa",
+                            background: "rgba(255,255,255,0.1)",
+                            backdropFilter: "blur(12px)",
+                            WebkitBackdropFilter: "blur(12px)",
                             borderRadius: "var(--radius)",
-                            padding: "1.75rem 2rem",
+                            padding: "1.5rem 2rem",
                             borderLeft: "4px solid var(--color-accent)",
                             maxWidth: "400px",
                         }}
                     >
-                        <p className="lora-quote" style={{ fontSize: "1.05rem", color: "var(--color-primary)" }}>
+                        <p className="lora-quote" style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.9)" }}>
                             &ldquo;Strategy is not a document; it is the discipline of continuous improvement.&rdquo;
                         </p>
                     </div>
