@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Manrope:wght@400;600;800&amp;family=Montserrat:wght@400;500;600&amp;family=Inter:wght@400;500;600&amp;family=Lora:ital,wght@1,400;1,500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "#f8f9ff",
+                        "surface-container-low": "#eef4ff",
+                        "on-primary-fixed": "#191e00",
+                        "inverse-surface": "#27313e",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#003ea8",
+                        "on-surface": "#121c28",
+                        "surface-dim": "#d1dbec",
+                        "on-tertiary-fixed": "#00174b",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#767963",
+                        "primary": "#566500",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-high": "#dfe9fa",
+                        "tertiary": "#0053db",
+                        "on-surface-variant": "#464835",
+                        "tertiary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-container": "#0050d3",
+                        "secondary-container": "#88a1fd",
+                        "on-secondary-container": "#13348a",
+                        "on-primary-fixed-variant": "#414c00",
+                        "on-primary-container": "#546100",
+                        "secondary-fixed-dim": "#b6c4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#c6e03d",
+                        "surface-variant": "#d9e3f4",
+                        "surface-tint": "#566500",
+                        "on-secondary-fixed-variant": "#234096",
+                        "inverse-primary": "#b9d22f",
+                        "on-background": "#121c28",
+                        "secondary": "#1d3b91",
+                        "surface-container": "#e5eeff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9ff",
+                        "outline-variant": "#c6c8af",
+                        "tertiary-container": "#c6d2ff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#dbe1ff",
+                        "surface-container-highest": "#d9e3f4",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#d4ef4b",
+                        "secondary-fixed": "#dce1ff",
+                        "primary-fixed-dim": "#b9d22f",
+                        "on-secondary-fixed": "#00164f"
+                    },
+                    fontFamily: {
+                        "headline": ["Poppins", "sans-serif"],
+                        "body": ["Montserrat", "sans-serif"],
+                        "label": ["Inter", "sans-serif"],
+                        "serif": ["Lora", "serif"],
+                        "manrope": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .tonal-nesting {
+            background: linear-gradient(180deg, #f8f9ff 0%, #eef4ff 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4 w-full">
+<div class="text-xl font-bold tracking-tighter text-secondary">
+                John Salde Consulting
+            </div>
+<div class="hidden md:flex items-center space-x-8 font-headline font-semibold tracking-tight text-sm uppercase">
+<a class="text-secondary border-b-2 border-primary-container pb-1" href="#">Philosophy</a>
+<a class="text-slate-600 hover:text-secondary transition-colors" href="#">Pillars</a>
+<a class="text-slate-600 hover:text-secondary transition-colors" href="#">Expertise</a>
+<a class="text-slate-600 hover:text-secondary transition-colors" href="#">Portfolio</a>
+<a class="text-slate-600 hover:text-secondary transition-colors" href="#">Process</a>
+<a class="text-slate-600 hover:text-secondary transition-colors" href="#">Contact</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-md font-semibold text-sm hover:bg-primary-fixed-dim transition-all duration-300 active:scale-95">
+                Book a Consultation
+            </button>
+</div>
+<div class="bg-slate-100/50 h-[1px] w-full absolute bottom-0"></div>
+</nav>
+<main class="pt-32">
+<!-- Hero Section: Philosophy Introduction -->
+<section class="max-w-7xl mx-auto px-8 mb-28">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-end">
+<div class="md:col-span-8">
+<span class="font-label font-semibold text-secondary uppercase tracking-[0.2em] text-xs mb-6 block">Our Foundation</span>
+<h1 class="font-manrope font-extrabold text-5xl md:text-7xl text-secondary leading-[1.1] tracking-tighter mb-8">
+                        The Architect of <br/><span class="text-primary italic">Sustainable Growth.</span>
+</h1>
+<p class="font-serif italic text-2xl text-slate-600 leading-relaxed max-w-2xl">
+                        "In the world of high-end hospitality, profitability isn't just a metric—it's a symphony of operational precision and artisanal soul."
+                    </p>
+</div>
+<div class="md:col-span-4 flex flex-col items-start md:items-end">
+<div class="bg-tertiary-container p-8 rounded-xl w-full max-w-xs">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-4" data-icon="architecture">architecture</span>
+<h3 class="font-headline text-on-tertiary-container text-xl mb-2">Rigorous Logic</h3>
+<p class="text-on-tertiary-container/80 text-sm leading-relaxed">Structural integrity applied to business modeling and performance scaling.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Mission & Vision: Tonal Nesting -->
+<section class="bg-surface-container-low py-32">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+<div class="space-y-8">
+<h2 class="font-manrope font-extrabold text-4xl text-secondary tracking-tight">The Mission</h2>
+<div class="h-1 w-20 bg-primary-container"></div>
+<p class="text-lg leading-relaxed text-slate-700 font-medium">
+                            To empower coffee boutique owners and hospitality leaders with the analytical framework and strategic mentorship required to transform creative passion into an enduring, profitable legacy.
+                        </p>
+<p class="text-slate-600 leading-relaxed">
+                            We don't just solve problems; we engineer systems. Our approach treats every business variable as a structural component, ensuring that growth is not just rapid, but resilient against market volatility.
+                        </p>
+</div>
+<div class="bg-surface-container-lowest p-12 rounded-xl shadow-[0_20px_40px_rgba(29,59,145,0.06)] relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5">
+<span class="material-symbols-outlined text-9xl" data-icon="visibility">visibility</span>
+</div>
+<h2 class="font-manrope font-extrabold text-4xl text-secondary tracking-tight mb-8">The Vision</h2>
+<p class="text-lg leading-relaxed text-slate-700 font-medium mb-6">
+                            Redefining the standard of consulting by bridging the gap between rigorous fiscal discipline and the intangible beauty of the boutique experience.
+                        </p>
+<div class="flex items-center gap-4 pt-4">
+<div class="flex -space-x-2">
+<div class="w-10 h-10 rounded-full bg-primary-container border-2 border-surface-container-lowest"></div>
+<div class="w-10 h-10 rounded-full bg-secondary border-2 border-surface-container-lowest"></div>
+<div class="w-10 h-10 rounded-full bg-tertiary-container border-2 border-surface-container-lowest"></div>
+</div>
+<span class="text-sm font-label text-slate-500 font-semibold uppercase tracking-wider">150+ Enterprises Mentored</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Core Values: Bento Grid -->
+<section class="py-32 bg-surface">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-20">
+<h2 class="font-manrope font-extrabold text-4xl text-secondary tracking-tight mb-4">Core Philosophy Pillars</h2>
+<p class="text-slate-600 max-w-xl mx-auto">Our values are the architectural blueprints from which all our consulting engagements are built.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Value 1 -->
+<div class="md:col-span-2 group">
+<div class="bg-surface-container border border-outline-variant/15 p-12 rounded-xl h-full flex flex-col justify-between transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+<div>
+<span class="material-symbols-outlined text-secondary text-5xl mb-8" data-icon="query_stats">query_stats</span>
+<h3 class="font-headline text-3xl text-secondary mb-4">Unwavering Analytical Integrity</h3>
+<p class="text-slate-600 text-lg leading-relaxed max-w-lg">
+                                    We believe that clarity begins with data. By deconstructing complex operational challenges into quantifiable metrics, we remove the guesswork from growth.
+                                </p>
+</div>
+<div class="mt-8 font-serif italic text-xl text-primary">
+                                "Numbers tell the story that emotions often hide."
+                            </div>
+</div>
+</div>
+<!-- Value 2 -->
+<div class="group">
+<div class="bg-primary-container p-12 rounded-xl h-full transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+<span class="material-symbols-outlined text-on-primary-container text-5xl mb-8" data-icon="handshake">handshake</span>
+<h3 class="font-headline text-2xl text-on-primary-container mb-4">Mentorship Over Management</h3>
+<p class="text-on-primary-container/80 leading-relaxed">
+                                We don't just provide answers; we transfer knowledge. Our goal is to equip leaders with the internal capabilities to sustain success long after our engagement ends.
+                            </p>
+</div>
+</div>
+<!-- Value 3 -->
+<div class="group">
+<div class="bg-secondary p-12 rounded-xl h-full transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+<span class="material-symbols-outlined text-primary-container text-5xl mb-8" data-icon="precision_manufacturing">precision_manufacturing</span>
+<h3 class="font-headline text-2xl text-white mb-4">Operational Precision</h3>
+<p class="text-white/70 leading-relaxed">
+                                Small details dictate major outcomes. We obsess over the micro-interactions and backend efficiencies that define a premium brand's reputation.
+                            </p>
+</div>
+</div>
+<!-- Value 4 -->
+<div class="md:col-span-2 group">
+<div class="relative overflow-hidden bg-surface-container-high p-12 rounded-xl h-full transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+<div class="relative z-10 flex flex-col md:flex-row gap-12 items-center">
+<div class="w-full md:w-1/2">
+<span class="material-symbols-outlined text-secondary text-5xl mb-8" data-icon="balance">balance</span>
+<h3 class="font-headline text-3xl text-secondary mb-4">Ethical Profitability</h3>
+<p class="text-slate-600 leading-relaxed">
+                                        Profit is the engine, but values are the compass. We prioritize long-term brand health and stakeholder equity over short-term financial gains.
+                                    </p>
+</div>
+<div class="w-full md:w-1/2">
+<img alt="Consulting discussion" class="rounded-lg shadow-lg aspect-video object-cover" data-alt="Close up of professionals discussing business strategy documents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB80BzvNj-HTT98AJrQIbhDCdh567Pi9_z-EDXGXqiM8LnSZ1ST0TB0acmSIyNrFI93ul69kN1XPd5ON_VEs75KNkv7YHn_8w99dx1t82aLA8d6reRSWv46jDJl3P16K8HVPkiHXzFaT7cklHpmwg56WdQeIp_VJ29Otp_26a-8vQcmjohnWaFgi46fGo1l_0f1wNfuu_mGOy4cGFVtUm5xxLNPKOva52bYqLnGFt5rLrn02tnhCdgNacAVklbBL6bRMiX2ZtSO9zY"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final Philosophy Quote Section -->
+<section class="py-32 bg-surface-container-lowest">
+<div class="max-w-3xl mx-auto px-8 text-center">
+<span class="material-symbols-outlined text-secondary text-6xl mb-12" data-icon="format_quote">format_quote</span>
+<p class="font-serif italic text-4xl text-secondary leading-snug mb-12">
+                    "True consulting is the art of revealing the structure that already exists within a vision, then strengthening it to withstand the weight of success."
+                </p>
+<div class="flex flex-col items-center">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-4 border-2 border-primary-container p-1">
+<img alt="John Salde" class="w-full h-full object-cover rounded-full" data-alt="Professional portrait of John Salde looking confident" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB80BzvNj-HTT98AJrQIbhDCdh567Pi9_z-EDXGXqiM8LnSZ1ST0TB0acmSIyNrFI93ul69kN1XPd5ON_VEs75KNkv7YHn_8w99dx1t82aLA8d6reRSWv46jDJl3P16K8HVPkiHXzFaT7cklHpmwg56WdQeIp_VJ29Otp_26a-8vQcmjohnWaFgi46fGo1l_0f1wNfuu_mGOy4cGFVtUm5xxLNPKOva52bYqLnGFt5rLrn02tnhCdgNacAVklbBL6bRMiX2ZtSO9zY"/>
+</div>
+<h4 class="font-manrope font-bold text-xl text-secondary">John Salde</h4>
+<p class="text-sm font-label text-slate-500 uppercase tracking-widest">Principal Consultant</p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="mb-32 px-8">
+<div class="max-w-7xl mx-auto bg-secondary rounded-2xl p-16 relative overflow-hidden flex flex-col items-center text-center">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg height="100%" preserveaspectratio="none" viewbox="0 0 100 100" width="100%">
+<path d="M0 0 L100 0 L100 100 Z" fill="white"></path>
+</svg>
+</div>
+<h2 class="font-manrope font-extrabold text-4xl text-white mb-6 relative z-10">Ready to build your architectural legacy?</h2>
+<p class="text-white/70 max-w-xl mb-10 relative z-10 text-lg">Let's apply structural rigor to your business model and unlock your next phase of growth.</p>
+<button class="bg-primary-container text-on-primary-container px-10 py-4 rounded-md font-bold text-lg hover:bg-primary-fixed-dim transition-all shadow-lg hover:shadow-primary-container/20 relative z-10">
+                    Book Your Discovery Audit
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 border-t border-slate-200 w-full py-12">
+<div class="flex flex-col md:flex-row justify-between items-start max-w-7xl mx-auto px-8 gap-8">
+<div class="space-y-4">
+<div class="text-lg font-bold text-secondary">John Salde Consulting</div>
+<p class="text-slate-500 text-sm max-w-xs font-label leading-relaxed">
+                    Engineering sustainable growth for premium hospitality and coffee boutique brands worldwide.
+                </p>
+</div>
+<div class="flex flex-wrap gap-x-12 gap-y-6">
+<div class="flex flex-col gap-3">
+<span class="text-xs font-bold text-secondary uppercase tracking-widest">Navigation</span>
+<a class="text-slate-500 text-sm hover:text-secondary transition-colors font-body" href="#">Philosophy</a>
+<a class="text-slate-500 text-sm hover:text-secondary transition-colors font-body" href="#">Expertise</a>
+<a class="text-slate-500 text-sm hover:text-secondary transition-colors font-body" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-xs font-bold text-secondary uppercase tracking-widest">Legal</span>
+<a class="text-slate-500 text-sm hover:text-secondary transition-colors font-body" href="#">Privacy Policy</a>
+<a class="text-slate-500 text-sm hover:text-secondary transition-colors font-body" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-xs font-bold text-secondary uppercase tracking-widest">Social</span>
+<a class="text-slate-500 text-sm hover:text-secondary transition-colors font-body" href="#">LinkedIn</a>
+<a class="text-slate-500 text-sm hover:text-secondary transition-colors font-body" href="#">Instagram</a>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-12 pt-8 border-t border-slate-200">
+<p class="text-slate-400 text-xs font-body">© 2024 John Salde Consulting. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

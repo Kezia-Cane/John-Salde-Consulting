@@ -4,11 +4,11 @@ import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
-    { label: "Philosophy", href: "#philosophy" },
-    { label: "Pillars", href: "#services" },
-    { label: "Expertise", href: "#expertise" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Process", href: "#process" },
+    { label: "Philosophy", href: "/philosophy" },
+    { label: "Pillars", href: "/pillars" },
+    { label: "Expertise", href: "/expertise" },
+    { label: "Portfolio", href: "/portfolio" },
+    { label: "Process", href: "/process" },
 ];
 
 // scrolled = compact white-glass logo-only pill
@@ -91,7 +91,7 @@ export default function Navigation() {
                 >
                     {/* ── Circle Logo — visible only in default state ── */}
                     <a
-                        href="#"
+                        href="/"
                         aria-label="Home"
                         style={{
                             display: "flex",
@@ -127,7 +127,7 @@ export default function Navigation() {
                     </a>
 
                     <a
-                        href="#"
+                        href="/"
                         aria-label="Home"
                         style={{
                             display: isScrolled ? "flex" : "none",
@@ -198,7 +198,7 @@ export default function Navigation() {
 
                     {/* ── CTA Button — collapse when scrolled ── */}
                     <a
-                        href="#contact"
+                        href="/consultation"
                         className="pill-cta"
                         style={{
                             background: "white",
@@ -322,7 +322,7 @@ export default function Navigation() {
                         </a>
                     ))}
                     <a
-                        href="#contact"
+                        href="/consultation"
                         onClick={() => setMobileMenuOpen(false)}
                         style={{
                             marginTop: "1rem",

@@ -300,3 +300,216 @@ select {
     padding: var(--space-16) 0;
   }
 }
+
+/* ── Internal Pages ── */
+
+/* Page hero: clears fixed pill navbar */
+.page-hero {
+  padding-top: 7rem;
+}
+
+@media (min-width: 768px) {
+  .page-hero {
+    padding-top: 8rem;
+  }
+}
+
+/* Page section label — small Poppins uppercase above headings */
+.page-label {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+/* Lora italic quote */
+.lora-quote {
+  font-family: var(--font-accent);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+/* Bento card base */
+.bento-card {
+  border-radius: var(--radius);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(29, 59, 145, 0.1);
+}
+
+/* Surface backgrounds for bento */
+.bg-surface-low {
+  background-color: #eef4ff;
+}
+
+.bg-surface-high {
+  background-color: #dfe9fa;
+}
+
+.bg-surface-lowest {
+  background-color: #ffffff;
+}
+
+.bg-surface-med {
+  background-color: #e5eeff;
+}
+
+.bg-accent-soft {
+  background-color: var(--color-accent);
+}
+
+.bg-cobalt {
+  background-color: var(--color-secondary);
+  color: white;
+}
+
+/* Lime accent container */
+.bg-lime {
+  background-color: var(--color-accent);
+}
+
+/* Form field */
+.form-field {
+  width: 100%;
+  background-color: #eef4ff;
+  border: none;
+  outline: none;
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.1rem;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-main);
+  transition: box-shadow 0.2s ease;
+}
+
+.form-field:focus {
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.35);
+}
+
+.form-field::placeholder {
+  color: #94a3b8;
+}
+
+.form-label {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(29, 59, 145, 0.6);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+/* Process timeline connector */
+.timeline-connector {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(29, 59, 145, 0.15);
+  transform: translateX(-50%);
+}
+
+@media (max-width: 767px) {
+  .timeline-connector {
+    display: none;
+  }
+}
+
+/* Timeline step circle */
+.timeline-circle {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Ghost outline number */
+.ghost-number {
+  -webkit-text-stroke: 1px rgba(29, 59, 145, 0.2);
+  color: transparent;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 3.5rem;
+  user-select: none;
+  line-height: 1;
+}
+
+/* Portfolio stat */
+.portfolio-stat-value {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+/* Tag pill */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Section divider accent bar */
+.accent-bar {
+  height: 3px;
+  width: 3.5rem;
+  background-color: var(--color-accent);
+  border-radius: 999px;
+  margin-bottom: var(--space-8);
+}
+
+/* Responsive page grid helpers */
+@media (min-width: 768px) {
+  .md\:grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .md\:col-span-4 {
+    grid-column: span 4 / span 4;
+  }
+
+  .md\:col-span-8 {
+    grid-column: span 8 / span 8;
+  }
+
+  .md\:col-span-5 {
+    grid-column: span 5 / span 5;
+  }
+
+  .md\:col-span-7 {
+    grid-column: span 7 / span 7;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-hero {
+    padding-top: 6rem;
+  }
+}

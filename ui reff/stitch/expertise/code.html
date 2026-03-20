@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Manrope:wght@400;600;800&amp;family=Montserrat:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@400;600&amp;family=Lora:ital@1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#f8f9ff",
+              "surface-container-low": "#eef4ff",
+              "on-primary-fixed": "#191e00",
+              "inverse-surface": "#27313e",
+              "on-secondary": "#ffffff",
+              "surface": "#f8f9ff",
+              "on-primary": "#ffffff",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed-variant": "#003ea8",
+              "on-surface": "#121c28",
+              "surface-dim": "#d1dbec",
+              "on-tertiary-fixed": "#00174b",
+              "on-tertiary": "#ffffff",
+              "outline": "#767963",
+              "primary": "#566500",
+              "inverse-on-surface": "#eaf1ff",
+              "surface-container-high": "#dfe9fa",
+              "tertiary": "#0053db",
+              "on-surface-variant": "#464835",
+              "tertiary-fixed-dim": "#b4c5ff",
+              "on-tertiary-container": "#0050d3",
+              "secondary-container": "#88a1fd",
+              "on-secondary-container": "#13348a",
+              "on-primary-fixed-variant": "#414c00",
+              "on-primary-container": "#546100",
+              "secondary-fixed-dim": "#b6c4ff",
+              "surface-container-lowest": "#ffffff",
+              "primary-container": "#c6e03d",
+              "surface-variant": "#d9e3f4",
+              "surface-tint": "#566500",
+              "on-secondary-fixed-variant": "#234096",
+              "inverse-primary": "#b9d22f",
+              "on-background": "#121c28",
+              "secondary": "#1D3B91",
+              "surface-container": "#e5eeff",
+              "error-container": "#ffdad6",
+              "surface-bright": "#f8f9ff",
+              "outline-variant": "#c6c8af",
+              "tertiary-container": "#c6d2ff",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#dbe1ff",
+              "surface-container-highest": "#d9e3f4",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#d4ef4b",
+              "secondary-fixed": "#dce1ff",
+              "primary-fixed-dim": "#b9d22f",
+              "on-secondary-fixed": "#00164f"
+            },
+            fontFamily: {
+              "headline": ["Poppins", "Manrope", "sans-serif"],
+              "body": ["Montserrat", "Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"],
+              "mentoring": ["Lora", "serif"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 glass-nav shadow-sm">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4 w-full">
+<div class="text-xl font-bold tracking-tighter text-secondary">
+                John Salde Consulting
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-['Poppins'] font-semibold tracking-tight text-sm uppercase text-slate-600 hover:text-secondary transition-colors" href="#">Philosophy</a>
+<a class="font-['Poppins'] font-semibold tracking-tight text-sm uppercase text-slate-600 hover:text-secondary transition-colors" href="#">Pillars</a>
+<a class="font-['Poppins'] font-semibold tracking-tight text-sm uppercase text-secondary border-b-2 border-primary-container pb-1" href="#">Expertise</a>
+<a class="font-['Poppins'] font-semibold tracking-tight text-sm uppercase text-slate-600 hover:text-secondary transition-colors" href="#">Portfolio</a>
+<a class="font-['Poppins'] font-semibold tracking-tight text-sm uppercase text-slate-600 hover:text-secondary transition-colors" href="#">Process</a>
+<a class="font-['Poppins'] font-semibold tracking-tight text-sm uppercase text-slate-600 hover:text-secondary transition-colors" href="#">Contact</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-md font-['Poppins'] font-semibold text-sm uppercase tracking-wide hover:bg-primary-fixed-dim transition-all active:scale-95">
+                Book a Consultation
+            </button>
+</div>
+<div class="bg-slate-100/50 h-[1px] w-full absolute bottom-0"></div>
+</nav>
+<main class="pt-32">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-8 mb-24">
+<div class="flex flex-col md:flex-row gap-16 items-end">
+<div class="md:w-2/3">
+<span class="inline-block text-secondary font-semibold tracking-[0.2em] uppercase text-xs mb-4">Core Competencies</span>
+<h1 class="text-secondary font-headline font-extrabold text-5xl md:text-7xl leading-[1.1] tracking-tighter mb-8">
+                        Precision Engineering <br/>for the Specialty Coffee Sector.
+                    </h1>
+<p class="text-lg text-slate-600 leading-relaxed max-w-2xl">
+                        A systematic approach to café architecture, operational excellence, and sensory development. We bridge the gap between artisanal passion and rigorous commercial profitability.
+                    </p>
+</div>
+<div class="md:w-1/3 flex flex-col items-start gap-4 pb-4">
+<div class="bg-tertiary-container p-6 rounded-xl w-full">
+<span class="text-on-tertiary-container font-headline font-bold text-3xl">15+</span>
+<p class="text-on-tertiary-container/80 text-sm font-medium mt-1 uppercase tracking-wider">Years of Market Expertise</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Expertise Bento Grid -->
+<section class="max-w-7xl mx-auto px-8 mb-32">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Specialty 1: Coffee Business Development -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(29,59,145,0.04)] group">
+<div class="flex flex-col md:flex-row h-full">
+<div class="p-10 md:w-1/2 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-secondary text-4xl mb-6">analytics</span>
+<h3 class="font-headline font-semibold text-2xl text-secondary mb-4">Coffee Business Development</h3>
+<p class="text-slate-600 leading-relaxed text-sm mb-6">
+                                    Comprehensive market analysis, site selection feasibility, and financial modeling designed to ensure long-term scalability.
+                                </p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-sm text-secondary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                                        Market Penetration Strategy
+                                    </li>
+<li class="flex items-center gap-3 text-sm text-secondary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                                        Financial Projections &amp; ROI
+                                    </li>
+<li class="flex items-center gap-3 text-sm text-secondary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                                        Brand Positioning
+                                    </li>
+</ul>
+</div>
+</div>
+<div class="md:w-1/2 min-h-[300px] bg-slate-200">
+<img class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-700" data-alt="Modern minimalist office space for strategy planning" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn-9_JsLJdEIJR1SXcvnngWwrPCHwQ3IrU5xkZUHrtXmiLvb5mi9rRB1p3uzdFxHnvD8lXqgBNJ5HpFD16Ly_qjRRx9b7eqefRvYrK0hr3BTTOWURkIfqZk3B0Hi2JcqDJ2XI0Q4aReDjgwWpvZZ_3T825U8URvsZde7VgLHd18e5Atclt5pl9eYXMNM4z0kUeHLVvmNOSIIja-8MqqEF4KOt6UCEyFwj2jACfz9olwJI2L50N3pDb2fkoap2FKPZNS4cyvbr3Lj4"/>
+</div>
+</div>
+</div>
+<!-- Specialty 2: Menu Engineering -->
+<div class="md:col-span-4 bg-secondary text-white p-10 rounded-xl flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary-container text-4xl mb-6">menu_book</span>
+<h3 class="font-headline font-semibold text-2xl mb-4">Menu Engineering</h3>
+<p class="text-blue-100/80 leading-relaxed text-sm">
+                            Optimizing product mix for both sensory impact and gross margin contribution.
+                        </p>
+</div>
+<div class="mt-12 space-y-4">
+<div class="h-[1px] bg-white/20 w-full"></div>
+<p class="font-mentoring italic text-lg">"Balance is not just found in the cup, but in the spreadsheet."</p>
+</div>
+</div>
+<!-- Specialty 3: Barista Training -->
+<div class="md:col-span-4 bg-surface-container-high p-10 rounded-xl flex flex-col group">
+<span class="material-symbols-outlined text-secondary text-4xl mb-6">school</span>
+<h3 class="font-headline font-semibold text-2xl text-secondary mb-4">Barista Training</h3>
+<p class="text-slate-600 leading-relaxed text-sm mb-8">
+                        Technical proficiency programs focused on extraction science, workflow ergonomics, and hospitality.
+                    </p>
+<div class="mt-auto overflow-hidden rounded-lg h-48">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close up of professional barista preparing espresso" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB80BzvNj-HTT98AJrQIbhDCdh567Pi9_z-EDXGXqiM8LnSZ1ST0TB0acmSIyNrFI93ul69kN1XPd5ON_VEs75KNkv7YHn_8w99dx1t82aLA8d6reRSWv46jDJl3P16K8HVPkiHXzFaT7cklHpmwg56WdQeIp_VJ29Otp_26a-8vQcmjohnWaFgi46fGo1l_0f1wNfuu_mGOy4cGFVtUm5xxLNPKOva52bYqLnGFt5rLrn02tnhCdgNacAVklbBL6bRMiX2ZtSO9zY"/>
+</div>
+</div>
+<!-- Specialty 4: Technical Standards -->
+<div class="md:col-span-4 bg-surface-container-lowest p-10 rounded-xl border border-outline-variant/10 flex flex-col">
+<span class="material-symbols-outlined text-secondary text-4xl mb-6">precision_manufacturing</span>
+<h3 class="font-headline font-semibold text-2xl text-secondary mb-4">Technical Standards</h3>
+<p class="text-slate-600 leading-relaxed text-sm mb-6">
+                        Equipment specification and water chemistry management to ensure consistency across multiple locations.
+                    </p>
+<div class="bg-surface p-6 rounded-lg">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Calibration Quality</span>
+<span class="text-secondary font-bold text-xs">99.8%</span>
+</div>
+<div class="w-full bg-slate-200 h-1.5 rounded-full">
+<div class="bg-primary-container h-1.5 rounded-full w-[99%]"></div>
+</div>
+</div>
+</div>
+<!-- Specialty 5: Café Operational Systems -->
+<div class="md:col-span-4 bg-primary-container text-on-primary-container p-10 rounded-xl flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-on-primary-container text-4xl mb-6">settings_suggest</span>
+<h3 class="font-headline font-semibold text-2xl mb-4">Operational Systems</h3>
+<p class="text-on-primary-container/80 leading-relaxed text-sm">
+                            Custom SOPs, inventory management frameworks, and waste reduction protocols.
+                        </p>
+</div>
+<button class="mt-8 flex items-center gap-2 font-headline font-bold text-sm uppercase group">
+                        Systemize Growth
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- The Mentoring Perspective Section -->
+<section class="bg-surface-container-low py-32">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid md:grid-cols-2 gap-20 items-center">
+<div>
+<h2 class="font-headline font-bold text-4xl text-secondary mb-8 leading-tight">The Architectural Approach to Hospitality.</h2>
+<div class="space-y-10">
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 bg-white rounded-full flex items-center justify-center text-secondary shadow-sm">
+<span class="font-bold">01</span>
+</div>
+<div>
+<h4 class="font-headline font-semibold text-lg text-secondary mb-2">Audit &amp; Diagnosis</h4>
+<p class="text-slate-600 text-sm leading-relaxed">We begin by identifying structural leaks in your current operation through data-driven performance metrics.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 bg-white rounded-full flex items-center justify-center text-secondary shadow-sm">
+<span class="font-bold">02</span>
+</div>
+<div>
+<h4 class="font-headline font-semibold text-lg text-secondary mb-2">Framework Design</h4>
+<p class="text-slate-600 text-sm leading-relaxed">Designing bespoke operational modules that align with your brand identity and staff capabilities.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-12 h-12 bg-white rounded-full flex items-center justify-center text-secondary shadow-sm">
+<span class="font-bold">03</span>
+</div>
+<div>
+<h4 class="font-headline font-semibold text-lg text-secondary mb-2">Sustainable Implementation</h4>
+<p class="text-slate-600 text-sm leading-relaxed">Training and coaching to ensure the new standards become part of the organizational DNA.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="aspect-square bg-slate-300 rounded-2xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="Modern clean coffee shop interior design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB80BzvNj-HTT98AJrQIbhDCdh567Pi9_z-EDXGXqiM8LnSZ1ST0TB0acmSIyNrFI93ul69kN1XPd5ON_VEs75KNkv7YHn_8w99dx1t82aLA8d6reRSWv46jDJl3P16K8HVPkiHXzFaT7cklHpmwg56WdQeIp_VJ29Otp_26a-8vQcmjohnWaFgi46fGo1l_0f1wNfuu_mGOy4cGFVtUm5xxLNPKOva52bYqLnGFt5rLrn02tnhCdgNacAVklbBL6bRMiX2ZtSO9zY"/>
+</div>
+<div class="absolute -bottom-8 -left-8 bg-secondary p-8 rounded-xl max-w-xs text-white shadow-xl">
+<p class="font-mentoring italic text-lg leading-relaxed mb-4">
+                                "John transformed our workflow from chaotic to rhythmic. Our throughput increased by 22% without sacrificing quality."
+                            </p>
+<span class="block text-primary-container font-headline font-bold text-xs uppercase tracking-widest">Aurelius Brew Co.</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-32 text-center max-w-3xl mx-auto px-8">
+<h2 class="font-headline font-bold text-4xl text-secondary mb-6">Ready to recalibrate your business?</h2>
+<p class="text-slate-600 mb-10 text-lg">Schedule a high-level assessment of your current operational standards and profitability roadmap.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-secondary text-white px-8 py-4 rounded-md font-headline font-bold uppercase tracking-widest text-sm hover:bg-on-secondary-fixed-variant transition-all">
+                    Request Expertise Profile
+                </button>
+<button class="bg-transparent border border-outline-variant text-secondary px-8 py-4 rounded-md font-headline font-bold uppercase tracking-widest text-sm hover:bg-slate-50 transition-all">
+                    View Portfolio
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-950 w-full py-12 border-t border-slate-200 dark:border-slate-800">
+<div class="flex flex-col md:flex-row justify-between items-start max-w-7xl mx-auto px-8 gap-8">
+<div class="flex flex-col gap-4">
+<div class="text-lg font-bold text-secondary">John Salde Consulting</div>
+<p class="font-['Montserrat'] text-sm leading-relaxed text-slate-500 max-w-sm">
+                    Providing analytical rigor and architectural mentoring to the specialty coffee world since 2009.
+                </p>
+</div>
+<div class="flex flex-wrap gap-12">
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-secondary">Services</span>
+<ul class="flex flex-col gap-2">
+<li><a class="font-['Montserrat'] text-sm text-slate-500 hover:text-secondary transition-colors" href="#">Development</a></li>
+<li><a class="font-['Montserrat'] text-sm text-slate-500 hover:text-secondary transition-colors" href="#">Engineering</a></li>
+<li><a class="font-['Montserrat'] text-sm text-slate-500 hover:text-secondary transition-colors" href="#">Training</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-xs font-bold uppercase tracking-widest text-secondary">Company</span>
+<ul class="flex flex-col gap-2">
+<li><a class="font-['Montserrat'] text-sm text-slate-500 hover:text-secondary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="font-['Montserrat'] text-sm text-slate-500 hover:text-secondary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="font-['Montserrat'] text-sm text-slate-500 hover:text-secondary transition-colors font-bold text-secondary" href="#">LinkedIn</a></li>
+<li><a class="font-['Montserrat'] text-sm text-slate-500 hover:text-secondary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-12 pt-8 border-t border-slate-200">
+<p class="font-['Montserrat'] text-sm text-slate-400">© 2024 John Salde Consulting. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

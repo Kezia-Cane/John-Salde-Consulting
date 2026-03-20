@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&amp;family=Montserrat:ital,wght@0,400;0,500;1,400&amp;family=Manrope:wght@600;800&amp;family=Inter:wght@400;500&amp;family=Lora:ital@1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "background": "#f8f9ff",
+                "surface-container-low": "#eef4ff",
+                "on-primary-fixed": "#191e00",
+                "inverse-surface": "#27313e",
+                "on-secondary": "#ffffff",
+                "surface": "#f8f9ff",
+                "on-primary": "#ffffff",
+                "error": "#ba1a1a",
+                "on-tertiary-fixed-variant": "#003ea8",
+                "on-surface": "#121c28",
+                "surface-dim": "#d1dbec",
+                "on-tertiary-fixed": "#00174b",
+                "on-tertiary": "#ffffff",
+                "outline": "#767963",
+                "primary": "#566500",
+                "inverse-on-surface": "#eaf1ff",
+                "surface-container-high": "#dfe9fa",
+                "tertiary": "#0053db",
+                "on-surface-variant": "#464835",
+                "tertiary-fixed-dim": "#b4c5ff",
+                "on-tertiary-container": "#0050d3",
+                "secondary-container": "#88a1fd",
+                "on-secondary-container": "#13348a",
+                "on-primary-fixed-variant": "#414c00",
+                "on-primary-container": "#546100",
+                "secondary-fixed-dim": "#b6c4ff",
+                "surface-container-lowest": "#ffffff",
+                "primary-container": "#c6e03d",
+                "surface-variant": "#d9e3f4",
+                "surface-tint": "#566500",
+                "on-secondary-fixed-variant": "#234096",
+                "inverse-primary": "#b9d22f",
+                "on-background": "#121c28",
+                "secondary": "#1D3B91",
+                "surface-container": "#e5eeff",
+                "error-container": "#ffdad6",
+                "surface-bright": "#f8f9ff",
+                "outline-variant": "#c6c8af",
+                "tertiary-container": "#c6d2ff",
+                "on-error": "#ffffff",
+                "tertiary-fixed": "#dbe1ff",
+                "surface-container-highest": "#d9e3f4",
+                "on-error-container": "#93000a",
+                "primary-fixed": "#d4ef4b",
+                "secondary-fixed": "#dce1ff",
+                "primary-fixed-dim": "#b9d22f",
+                "on-secondary-fixed": "#00164f"
+              },
+              fontFamily: {
+                "headline": ["Poppins", "Manrope", "sans-serif"],
+                "body": ["Montserrat", "Inter", "sans-serif"],
+                "label": ["Inter", "sans-serif"],
+                "mentor": ["Lora", "serif"]
+              },
+              borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+      </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4 w-full relative">
+<div class="text-xl font-bold tracking-tighter text-secondary">
+                John Salde Consulting
+            </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-['Poppins'] font-semibold tracking-tight text-sm uppercase text-slate-600 hover:text-secondary transition-colors" href="#">Philosophy</a>
+<a class="font-['Poppins'] font-semibold tracking-tight text-sm uppercase text-secondary border-b-2 border-primary-container pb-1" href="#">Pillars</a>
+<a class="font-['Poppins'] font-semibold tracking-tight text-sm uppercase text-slate-600 hover:text-secondary transition-colors" href="#">Expertise</a>
+<a class="font-['Poppins'] font-semibold tracking-tight text-sm uppercase text-slate-600 hover:text-secondary transition-colors" href="#">Portfolio</a>
+<a class="font-['Poppins'] font-semibold tracking-tight text-sm uppercase text-slate-600 hover:text-secondary transition-colors" href="#">Process</a>
+<a class="font-['Poppins'] font-semibold tracking-tight text-sm uppercase text-slate-600 hover:text-secondary transition-colors" href="#">Contact</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-md font-['Poppins'] font-semibold text-sm uppercase hover:bg-primary-fixed-dim transition-all duration-300 active:scale-95 shadow-sm">
+                Book a Consultation
+            </button>
+<div class="bg-slate-100/50 h-[1px] w-full absolute bottom-0 left-0"></div>
+</div>
+</nav>
+<main class="pt-32 pb-20">
+<!-- Hero Section -->
+<header class="max-w-7xl mx-auto px-8 mb-24">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+<div class="md:col-span-8">
+<span class="text-secondary font-semibold tracking-[0.2em] uppercase text-sm mb-4 block">Our Methodology</span>
+<h1 class="text-5xl md:text-7xl font-headline font-bold text-secondary leading-tight tracking-tighter">
+                        The Three Pillars of <br/><span class="text-primary italic font-mentor font-normal">Sustainable Growth</span>
+</h1>
+</div>
+<div class="md:col-span-4 pb-2">
+<p class="text-on-surface-variant text-lg leading-relaxed border-l-2 border-primary-container pl-6">
+                        A structured approach to coffee business excellence, blending architectural precision with deep industry mentorship.
+                    </p>
+</div>
+</div>
+<!-- Pillars Bento Grid -->
+<section class="max-w-7xl mx-auto px-8 space-y-20 mt-20">
+<!-- Pillar 1: Operational Architecture -->
+<div class="bg-surface-container-low p-10 md:p-16 rounded-xl flex flex-col md:flex-row gap-12 items-center">
+<div class="w-full md:w-1/2">
+<div class="w-16 h-16 bg-primary-container flex items-center justify-center rounded-lg mb-8">
+<span class="material-symbols-outlined text-on-primary-container text-3xl" data-icon="architecture">architecture</span>
+</div>
+<h2 class="text-3xl md:text-4xl font-headline font-bold text-secondary mb-6">Operational Architecture</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8 max-w-xl">
+                        We engineer the skeleton of your business. From workflow optimization to supply chain integrity, we build systems that scale without sacrificing the artisanal quality of your product.
+                    </p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3 text-secondary font-medium">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+                            Workflow Efficiency Mapping
+                        </li>
+<li class="flex items-start gap-3 text-secondary font-medium">
+<span class="material-symbols-outlined text-primary" data-icon="check_circle">check_circle</span>
+                            Inventory Management Systems
+                        </li>
+</ul>
+</div>
+<div class="w-full md:w-1/2 aspect-video bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm relative group">
+<img alt="Operational Excellence" class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700" data-alt="Close up of high end espresso machine and clean workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB80BzvNj-HTT98AJrQIbhDCdh567Pi9_z-EDXGXqiM8LnSZ1ST0TB0acmSIyNrFI93ul69kN1XPd5ON_VEs75KNkv7YHn_8w99dx1t82aLA8d6reRSWv46jDJl3P16K8HVPkiHXzFaT7cklHpmwg56WdQeIp_VJ29Otp_26a-8vQcmjohnWaFgi46fGo1l_0f1wNfuu_mGOy4cGFVtUm5xxLNPKOva52bYqLnGFt5rLrn02tnhCdgNacAVklbBL6bRMiX2ZtSO9zY"/>
+<div class="absolute inset-0 bg-secondary/10"></div>
+</div>
+</div>
+<!-- Pillar 2: Financial Rigor -->
+<div class="flex flex-col md:flex-row-reverse gap-12 items-center">
+<div class="w-full md:w-1/2 p-10 md:p-16">
+<div class="w-16 h-16 bg-tertiary-container flex items-center justify-center rounded-lg mb-8">
+<span class="material-symbols-outlined text-on-tertiary-container text-3xl" data-icon="query_stats">query_stats</span>
+</div>
+<h2 class="text-3xl md:text-4xl font-headline font-bold text-secondary mb-6">Financial Rigor</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8 max-w-xl">
+                        Profitability is not an accident; it's a design choice. We dive deep into your P&amp;L, COGS, and labor models to ensure your growth is mathematically sound and professionally resilient.
+                    </p>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-outline-variant/15">
+<div class="flex items-center justify-between mb-4">
+<span class="text-sm font-bold text-secondary uppercase tracking-widest">Growth Metric</span>
+<span class="text-primary font-bold">+24% Avg. Margin</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full w-[74%]"></div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 aspect-square md:aspect-auto md:h-[500px] bg-surface-container-high rounded-xl overflow-hidden relative">
+<img alt="Financial Analysis" class="w-full h-full object-cover grayscale contrast-125" data-alt="Minimalistic workspace with financial documents and coffee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATnfAR2my-qdBXZMJMWnZguDgAvO3WF80tDtoSrSJUXXKIJZ3r_dDMln-L0Us6K3DvIxHzH59c7Cm3jRZ5zSd4urL1BtvoCtsyfpyTo2kHpcl1OuFzULuj6qxOMaKNi2Wzh1muV3uRWZvqmGWPgxNf68ftD5r-D0CUEFqb91T0W-tGLUq-zrlSLfsiT1YOYismDpsNb1j5GpqwizOt1G_AOQdg5f3mub28lfs5hE9xYtTt34QKAxHzvBaC-IJVpGz7vKC1y_cMzks"/>
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/40 to-transparent"></div>
+</div>
+</div>
+<!-- Pillar 3: Brand Mentorship -->
+<div class="bg-secondary text-white p-10 md:p-16 rounded-xl flex flex-col md:flex-row gap-12 items-center">
+<div class="w-full md:w-1/2">
+<div class="w-16 h-16 bg-primary-container flex items-center justify-center rounded-lg mb-8">
+<span class="material-symbols-outlined text-on-primary-container text-3xl" data-icon="psychology">psychology</span>
+</div>
+<h2 class="text-3xl md:text-4xl font-headline font-bold mb-6">Strategic Mentorship</h2>
+<p class="text-surface-variant text-lg leading-relaxed mb-8 max-w-xl">
+                        We bridge the gap between being a coffee enthusiast and a market leader. Our mentorship focuses on leadership development, brand storytelling, and high-end hospitality standards.
+                    </p>
+<blockquote class="font-mentor italic text-2xl text-primary-container mb-4">
+                        "The most successful cafés aren't just selling coffee; they're selling an architectural experience of time."
+                    </blockquote>
+<cite class="text-sm uppercase tracking-widest opacity-70">— John Salde</cite>
+</div>
+<div class="w-full md:w-1/2 grid grid-cols-2 gap-4">
+<div class="aspect-square rounded-lg bg-white/10 flex flex-col items-center justify-center p-6 text-center">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4" data-icon="groups">groups</span>
+<span class="text-sm font-bold uppercase">Culture Design</span>
+</div>
+<div class="aspect-square rounded-lg bg-white/10 flex flex-col items-center justify-center p-6 text-center">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-sm font-bold uppercase">Experience Quality</span>
+</div>
+<div class="aspect-square rounded-lg bg-white/10 flex flex-col items-center justify-center p-6 text-center">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4" data-icon="record_voice_over">record_voice_over</span>
+<span class="text-sm font-bold uppercase">Brand Voice</span>
+</div>
+<div class="aspect-square rounded-lg bg-white/10 flex flex-col items-center justify-center p-6 text-center">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-4" data-icon="map">map</span>
+<span class="text-sm font-bold uppercase">Market Positioning</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="max-w-7xl mx-auto px-8 mt-40">
+<div class="bg-surface-container py-24 px-8 rounded-3xl text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container/20 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+<div class="relative z-10">
+<h2 class="text-4xl md:text-5xl font-headline font-bold text-secondary mb-8">Ready to build your foundation?</h2>
+<p class="text-xl text-on-surface-variant max-w-2xl mx-auto mb-12">
+                        Every consultation starts with a deep dive into your current metrics and a vision for your structural potential.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-6 justify-center">
+<button class="bg-secondary text-white px-10 py-4 rounded-md font-['Poppins'] font-bold text-lg hover:bg-on-secondary-fixed transition-all duration-300">
+                            Book a Discovery Call
+                        </button>
+<button class="bg-white border border-outline-variant/30 text-secondary px-10 py-4 rounded-md font-['Poppins'] font-bold text-lg hover:bg-surface-container-low transition-all duration-300">
+                            View Case Studies
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</header></main>
+<!-- Footer -->
+<footer class="bg-slate-50 border-t border-slate-200">
+<div class="flex flex-col md:flex-row justify-between items-start max-w-7xl mx-auto px-8 py-20 gap-12">
+<div class="max-w-sm">
+<div class="text-lg font-bold text-secondary mb-6">John Salde Consulting</div>
+<p class="text-slate-500 font-['Montserrat'] text-sm leading-relaxed">
+                    Architectural business mentorship for the modern hospitality industry. Precision in operation, excellence in cup.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-16">
+<div>
+<h4 class="font-bold text-secondary mb-6 text-sm uppercase tracking-widest">Navigation</h4>
+<ul class="space-y-4 font-['Montserrat'] text-sm">
+<li><a class="text-slate-500 hover:text-secondary transition-colors" href="#">Philosophy</a></li>
+<li><a class="font-bold text-secondary" href="#">Pillars</a></li>
+<li><a class="text-slate-500 hover:text-secondary transition-colors" href="#">Expertise</a></li>
+<li><a class="text-slate-500 hover:text-secondary transition-colors" href="#">Portfolio</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-secondary mb-6 text-sm uppercase tracking-widest">Connect</h4>
+<ul class="space-y-4 font-['Montserrat'] text-sm">
+<li><a class="text-slate-500 hover:text-secondary transition-colors" href="#">LinkedIn</a></li>
+<li><a class="text-slate-500 hover:text-secondary transition-colors" href="#">Contact</a></li>
+<li><a class="text-slate-500 hover:text-secondary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 hover:text-secondary transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 pb-12">
+<div class="pt-8 border-t border-slate-200 flex justify-between items-center text-xs font-['Montserrat'] text-slate-400">
+<span>© 2024 John Salde Consulting. All rights reserved.</span>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-sm" data-icon="coffee">coffee</span>
+<span class="material-symbols-outlined text-sm" data-icon="architecture">architecture</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Montserrat:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@600&amp;family=Inter:wght@400;600&amp;family=Lora:italic&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "background": "#f8f9ff",
+                        "surface-container-low": "#eef4ff",
+                        "on-primary-fixed": "#191e00",
+                        "inverse-surface": "#27313e",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#003ea8",
+                        "on-surface": "#121c28",
+                        "surface-dim": "#d1dbec",
+                        "on-tertiary-fixed": "#00174b",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#767963",
+                        "primary": "#566500",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-high": "#dfe9fa",
+                        "tertiary": "#0053db",
+                        "on-surface-variant": "#464835",
+                        "tertiary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-container": "#0050d3",
+                        "secondary-container": "#88a1fd",
+                        "on-secondary-container": "#13348a",
+                        "on-primary-fixed-variant": "#414c00",
+                        "on-primary-container": "#546100",
+                        "secondary-fixed-dim": "#b6c4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#c6e03d",
+                        "surface-variant": "#d9e3f4",
+                        "surface-tint": "#566500",
+                        "on-secondary-fixed-variant": "#234096",
+                        "inverse-primary": "#b9d22f",
+                        "on-background": "#121c28",
+                        "secondary": "#1d3b91",
+                        "surface-container": "#e5eeff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9ff",
+                        "outline-variant": "#c6c8af",
+                        "tertiary-container": "#c6d2ff",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#dbe1ff",
+                        "surface-container-highest": "#d9e3f4",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#d4ef4b",
+                        "secondary-fixed": "#dce1ff",
+                        "primary-fixed-dim": "#b9d22f",
+                        "on-secondary-fixed": "#00164f"
+                    },
+                    fontFamily: {
+                        "headline": ["Poppins", "Manrope", "sans-serif"],
+                        "body": ["Montserrat", "Inter", "sans-serif"],
+                        "serif": ["Lora", "serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        .tonal-nesting {
+            background-color: #f8f9ff;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 glass-nav shadow-sm">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4 w-full">
+<div class="text-xl font-headline font-bold tracking-tighter text-secondary">
+                John Salde Consulting
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-headline font-semibold tracking-tight text-sm uppercase text-slate-600 hover:text-secondary transition-colors" href="#">Philosophy</a>
+<a class="font-headline font-semibold tracking-tight text-sm uppercase text-slate-600 hover:text-secondary transition-colors" href="#">Pillars</a>
+<a class="font-headline font-semibold tracking-tight text-sm uppercase text-slate-600 hover:text-secondary transition-colors" href="#">Expertise</a>
+<a class="font-headline font-semibold tracking-tight text-sm uppercase text-secondary border-b-2 border-primary-container pb-1" href="#">Portfolio</a>
+<a class="font-headline font-semibold tracking-tight text-sm uppercase text-slate-600 hover:text-secondary transition-colors" href="#">Process</a>
+<a class="font-headline font-semibold tracking-tight text-sm uppercase text-slate-600 hover:text-secondary transition-colors" href="#">Contact</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-md font-headline font-semibold text-sm hover:bg-primary-fixed-dim transition-all duration-300 active:scale-95">
+                Book a Consultation
+            </button>
+</div>
+<div class="bg-slate-100/50 h-[1px] w-full absolute bottom-0"></div>
+</nav>
+<main class="pt-32 pb-20">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-8 mb-24">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+<div class="lg:col-span-8">
+<span class="text-primary font-headline font-semibold tracking-widest text-sm uppercase mb-4 block">Proven Trajectories</span>
+<h1 class="text-secondary font-headline text-5xl md:text-6xl font-semibold leading-[1.1] mb-8">
+                        Architecting Growth through Analytical Rigor.
+                    </h1>
+<p class="text-on-surface-variant text-lg max-w-2xl leading-relaxed">
+                        Explore our portfolio of strategic interventions. From boutique roasteries to international hospitality chains, we apply a consistent methodology focused on operational excellence and sustainable profitability.
+                    </p>
+</div>
+<div class="lg:col-span-4 flex justify-start lg:justify-end pb-2">
+<div class="p-6 bg-surface-container-high rounded-xl border-l-4 border-primary-container">
+<p class="font-serif italic text-secondary text-lg">
+                            "Strategy is not a document; it is the discipline of continuous improvement."
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Case Studies Grid (Bento Style) -->
+<section class="max-w-7xl mx-auto px-8 space-y-20">
+<!-- Featured Case Study -->
+<div class="grid grid-cols-1 md:grid-cols-2 bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-500">
+<div class="relative h-64 md:h-auto overflow-hidden">
+<img alt="Premium Coffee Shop Interior" class="w-full h-full object-cover" data-alt="Modern high-end espresso bar interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCu-1Z6rtulQhvA8CZxiPxGVY0WbTJArXzayUhiAXmaUb4b6yDPRRce0xB-PxJS55i8H6c4htZSPKicNQsOUx9JINZevkwcTfmcCYqOOUIpI-zJrlW5IzVJnJfMeVHyKtUnSym3rGmQQnRZ5BQaAfDuTSRXURZKZIicYTuYguH9ftQ1CFV3SyoU8_r5urEJeLaW_gXDpCMKc8hjpnmfE_OeQl5XPmMRkRtsHff5-8MjxEAiGh_vic_fyEpPjiSrUvh0e5WT5Zxukg"/>
+</div>
+<div class="p-10 md:p-16 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-6">
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container text-xs font-bold rounded-full uppercase tracking-wider">Profitability Optimization</span>
+<span class="text-slate-400 text-xs font-semibold uppercase tracking-widest">2023 Engagement</span>
+</div>
+<h2 class="text-secondary font-headline text-3xl font-semibold mb-6">Metropolis Roasters: Scale &amp; Structure</h2>
+<p class="text-on-surface-variant mb-8 leading-relaxed">
+                        Implementing a hub-and-spoke operational model across 12 locations, focusing on supply chain consolidation and middle-management mentorship.
+                    </p>
+<div class="grid grid-cols-2 gap-8 mb-10 border-t border-slate-100 pt-8">
+<div>
+<span class="text-primary font-headline text-2xl font-bold">24%</span>
+<p class="text-xs text-slate-500 uppercase tracking-tighter mt-1">Operational Margin Increase</p>
+</div>
+<div>
+<span class="text-primary font-headline text-2xl font-bold">14.2mo</span>
+<p class="text-xs text-slate-500 uppercase tracking-tighter mt-1">ROI Breakeven Point</p>
+</div>
+</div>
+<a class="inline-flex items-center text-secondary font-headline font-bold text-sm group" href="#">
+                        VIEW FULL CASE STUDY 
+                        <span class="material-symbols-outlined ml-2 transition-transform group-hover:translate-x-1" style="font-size: 18px;">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Grid Layout for Secondary Case Studies -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div>
+<div class="mb-8">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="analytics">analytics</span>
+</div>
+<h3 class="text-secondary font-headline text-xl font-semibold mb-4">The Artisan Collective</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+                            Crisis management and debt restructuring for a multi-unit hospitality group in Seattle.
+                        </p>
+</div>
+<div class="pt-6 border-t border-outline-variant/20">
+<div class="flex justify-between items-center">
+<span class="text-xs font-bold text-slate-500 uppercase">Consultancy</span>
+<span class="text-primary font-headline font-bold">+18% Revenue</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div>
+<div class="mb-8">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="psychology">psychology</span>
+</div>
+<h3 class="text-secondary font-headline text-xl font-semibold mb-4">Origin Coffee Systems</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+                            Development of a 5-year mentorship program for executive leadership within B2B coffee supply chains.
+                        </p>
+</div>
+<div class="pt-6 border-t border-outline-variant/20">
+<div class="flex justify-between items-center">
+<span class="text-xs font-bold text-slate-500 uppercase">Leadership</span>
+<span class="text-primary font-headline font-bold">95% Retention</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col justify-between hover:bg-surface-container-high transition-colors">
+<div>
+<div class="mb-8">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="account_balance">account_balance</span>
+</div>
+<h3 class="text-secondary font-headline text-xl font-semibold mb-4">Capital Growth Partners</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-6">
+                            Due diligence and acquisition strategy for a private equity firm targeting the specialty cafe market.
+                        </p>
+</div>
+<div class="pt-6 border-t border-outline-variant/20">
+<div class="flex justify-between items-center">
+<span class="text-xs font-bold text-slate-500 uppercase">M&amp;A Strategy</span>
+<span class="text-primary font-headline font-bold">$4.2M Valuation</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Tonal Section for Results -->
+<div class="bg-secondary rounded-xl p-12 md:p-20 text-white relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[20rem]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<div class="relative z-10 max-w-3xl">
+<h2 class="font-headline text-4xl font-semibold mb-8">Aggregate Impact Across the Portfolio</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+<div>
+<div class="text-primary-container text-4xl font-headline font-bold mb-2">50+</div>
+<div class="text-secondary-fixed text-xs font-bold uppercase tracking-widest">Global Clients</div>
+</div>
+<div>
+<div class="text-primary-container text-4xl font-headline font-bold mb-2">$120M</div>
+<div class="text-secondary-fixed text-xs font-bold uppercase tracking-widest">Revenue Managed</div>
+</div>
+<div>
+<div class="text-primary-container text-4xl font-headline font-bold mb-2">15%</div>
+<div class="text-secondary-fixed text-xs font-bold uppercase tracking-widest">Avg. Profit Lift</div>
+</div>
+<div>
+<div class="text-primary-container text-4xl font-headline font-bold mb-2">8</div>
+<div class="text-secondary-fixed text-xs font-bold uppercase tracking-widest">Exit Acquisitions</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Analysis Module -->
+<div class="pt-12 border-t border-slate-200">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+<h2 class="text-secondary font-headline text-3xl font-semibold">Active Engagements</h2>
+<p class="text-on-surface-variant max-w-md text-sm">Our current focus remains on sustainable automation and supply-chain resilience for boutique-at-scale operations.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="flex gap-6 group">
+<div class="shrink-0 w-16 h-16 bg-surface-container flex items-center justify-center rounded-lg group-hover:bg-primary-container transition-colors duration-300">
+<span class="material-symbols-outlined text-secondary" data-icon="factory">factory</span>
+</div>
+<div>
+<h4 class="font-headline font-semibold text-lg text-secondary mb-2">Inventory Logic 2.0</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-4">Implementing automated procurement systems for a regional franchise to eliminate stock waste.</p>
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest">In Progress</span>
+</div>
+</div>
+<div class="flex gap-6 group">
+<div class="shrink-0 w-16 h-16 bg-surface-container flex items-center justify-center rounded-lg group-hover:bg-primary-container transition-colors duration-300">
+<span class="material-symbols-outlined text-secondary" data-icon="groups">groups</span>
+</div>
+<div>
+<h4 class="font-headline font-semibold text-lg text-secondary mb-2">Cultural Architecture</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-4">Mentoring 15 regional managers on KPI-driven empathetic leadership in high-stress retail environments.</p>
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest">Deployment Phase</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-slate-200 bg-slate-50">
+<div class="flex flex-col md:flex-row justify-between items-start max-w-7xl mx-auto px-8 gap-8">
+<div class="max-w-xs">
+<div class="text-lg font-bold text-secondary mb-4">John Salde Consulting</div>
+<p class="text-slate-500 text-sm leading-relaxed font-body">
+                    Strategic mentorship for the next generation of hospitality and coffee enterprise leaders.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-12">
+<div class="flex flex-col gap-3">
+<span class="text-xs font-bold text-secondary uppercase tracking-widest mb-2">Explore</span>
+<a class="text-slate-500 hover:text-secondary transition-colors text-sm font-body" href="#">Case Studies</a>
+<a class="text-slate-500 hover:text-secondary transition-colors text-sm font-body" href="#">Methodology</a>
+<a class="text-slate-500 hover:text-secondary transition-colors text-sm font-body" href="#">LinkedIn</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="text-xs font-bold text-secondary uppercase tracking-widest mb-2">Legal</span>
+<a class="text-slate-500 hover:text-secondary transition-colors text-sm font-body" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-secondary transition-colors text-sm font-body" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-secondary transition-colors text-sm font-body" href="#">Contact</a>
+</div>
+</div>
+<div class="w-full md:w-auto mt-8 md:mt-0 pt-8 md:pt-0 border-t md:border-t-0 border-slate-200">
+<p class="text-slate-400 text-xs font-body">
+                    © 2024 John Salde Consulting. All rights reserved.
+                </p>
+</div>
+</div>
+</footer>
+</body></html>

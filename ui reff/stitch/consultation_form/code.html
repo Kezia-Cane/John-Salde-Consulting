@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Book a Consultation | John Salde Consulting</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Manrope:wght@600;800&amp;family=Montserrat:ital,wght@0,400;0,600;1,400&amp;family=Inter:wght@400;500&amp;family=Lora:ital@1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "background": "#f8f9ff",
+              "surface-container-low": "#eef4ff",
+              "on-primary-fixed": "#191e00",
+              "inverse-surface": "#27313e",
+              "on-secondary": "#ffffff",
+              "surface": "#f8f9ff",
+              "on-primary": "#ffffff",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed-variant": "#003ea8",
+              "on-surface": "#121c28",
+              "surface-dim": "#d1dbec",
+              "on-tertiary-fixed": "#00174b",
+              "on-tertiary": "#ffffff",
+              "outline": "#767963",
+              "primary": "#566500",
+              "inverse-on-surface": "#eaf1ff",
+              "surface-container-high": "#dfe9fa",
+              "tertiary": "#0053db",
+              "on-surface-variant": "#464835",
+              "tertiary-fixed-dim": "#b4c5ff",
+              "on-tertiary-container": "#0050d3",
+              "secondary-container": "#88a1fd",
+              "on-secondary-container": "#13348a",
+              "on-primary-fixed-variant": "#414c00",
+              "on-primary-container": "#546100",
+              "secondary-fixed-dim": "#b6c4ff",
+              "surface-container-lowest": "#ffffff",
+              "primary-container": "#c6e03d",
+              "surface-variant": "#d9e3f4",
+              "surface-tint": "#566500",
+              "on-secondary-fixed-variant": "#234096",
+              "inverse-primary": "#b9d22f",
+              "on-background": "#121c28",
+              "secondary": "#1d3b91",
+              "surface-container": "#e5eeff",
+              "error-container": "#ffdad6",
+              "surface-bright": "#f8f9ff",
+              "outline-variant": "#c6c8af",
+              "tertiary-container": "#c6d2ff",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#dbe1ff",
+              "surface-container-highest": "#d9e3f4",
+              "on-error-container": "#93000a",
+              "primary-fixed": "#d4ef4b",
+              "secondary-fixed": "#dce1ff",
+              "primary-fixed-dim": "#b9d22f",
+              "on-secondary-fixed": "#00164f"
+            },
+            fontFamily: {
+              "headline": ["Manrope", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"],
+              "accent": ["Lora", "serif"],
+              "brand": ["Poppins", "sans-serif"],
+              "analytical": ["Montserrat", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .ghost-border {
+            outline: 1px solid rgba(198, 200, 175, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 glass-nav shadow-sm">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-4 w-full">
+<div class="text-xl font-brand font-bold tracking-tighter text-secondary">
+                John Salde Consulting
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-brand font-semibold tracking-tight text-sm uppercase text-slate-500 hover:text-secondary transition-colors" href="#">Philosophy</a>
+<a class="font-brand font-semibold tracking-tight text-sm uppercase text-slate-500 hover:text-secondary transition-colors" href="#">Pillars</a>
+<a class="font-brand font-semibold tracking-tight text-sm uppercase text-slate-500 hover:text-secondary transition-colors" href="#">Expertise</a>
+<a class="font-brand font-semibold tracking-tight text-sm uppercase text-slate-500 hover:text-secondary transition-colors" href="#">Portfolio</a>
+<a class="font-brand font-semibold tracking-tight text-sm uppercase text-slate-500 hover:text-secondary transition-colors" href="#">Process</a>
+<a class="font-brand font-semibold tracking-tight text-sm uppercase text-slate-500 hover:text-secondary transition-colors" href="#">Contact</a>
+</div>
+<a class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-md font-brand font-semibold text-sm hover:bg-primary-fixed-dim transition-all active:scale-95" href="#">
+                Book a Consultation
+            </a>
+</div>
+<div class="bg-slate-100/50 h-[1px] w-full absolute bottom-0"></div>
+</nav>
+<main class="pt-32 pb-20">
+<div class="max-w-7xl mx-auto px-8">
+<!-- Header Section -->
+<div class="mb-20 max-w-3xl">
+<span class="inline-block text-tertiary font-brand font-semibold tracking-widest text-xs uppercase mb-4">Strategic Partnership</span>
+<h1 class="text-5xl md:text-6xl font-headline font-extrabold text-secondary tracking-tighter leading-tight mb-8">
+                    Architectural growth for your <span class="text-primary italic">hospitality legacy.</span>
+</h1>
+<p class="text-lg text-on-surface-variant font-analytical leading-relaxed max-w-2xl">
+                    Our consultation process is designed for clarity. We move beyond generic advice into rigorous financial analysis and operational strategy. Let's define the blueprint for your expansion.
+                </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Form Section -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-10 md:p-14 rounded-xl ghost-border shadow-[0_20px_40px_rgba(29,59,145,0.06)]">
+<form action="#" class="space-y-10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<!-- Name -->
+<div class="space-y-2">
+<label class="text-xs font-brand font-semibold uppercase tracking-widest text-secondary/60">Full Name</label>
+<input class="w-full bg-surface-container-low border-none rounded-md px-4 py-4 text-on-surface font-analytical focus:ring-2 focus:ring-secondary/40 placeholder:text-on-surface-variant/40" placeholder="Johnathan Doe" type="text"/>
+</div>
+<!-- Business Type -->
+<div class="space-y-2">
+<label class="text-xs font-brand font-semibold uppercase tracking-widest text-secondary/60">Business Type</label>
+<select class="w-full bg-surface-container-low border-none rounded-md px-4 py-4 text-on-surface font-analytical focus:ring-2 focus:ring-secondary/40">
+<option>Boutique Coffee Shop</option>
+<option>Roastery &amp; Wholesale</option>
+<option>Multi-unit Retail</option>
+<option>Hospitality Group</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<!-- Email -->
+<div class="space-y-2">
+<label class="text-xs font-brand font-semibold uppercase tracking-widest text-secondary/60">Email Address</label>
+<input class="w-full bg-surface-container-low border-none rounded-md px-4 py-4 text-on-surface font-analytical focus:ring-2 focus:ring-secondary/40 placeholder:text-on-surface-variant/40" placeholder="strategy@business.com" type="email"/>
+</div>
+<!-- Phone -->
+<div class="space-y-2">
+<label class="text-xs font-brand font-semibold uppercase tracking-widest text-secondary/60">Phone Number</label>
+<input class="w-full bg-surface-container-low border-none rounded-md px-4 py-4 text-on-surface font-analytical focus:ring-2 focus:ring-secondary/40 placeholder:text-on-surface-variant/40" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+<!-- Preferred Time -->
+<div class="space-y-2">
+<label class="text-xs font-brand font-semibold uppercase tracking-widest text-secondary/60">Preferred Consultation Date/Time</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-md px-4 py-4 text-on-surface font-analytical focus:ring-2 focus:ring-secondary/40" type="datetime-local"/>
+</div>
+</div>
+<!-- Message -->
+<div class="space-y-2">
+<label class="text-xs font-brand font-semibold uppercase tracking-widest text-secondary/60">Strategic Objectives</label>
+<textarea class="w-full bg-surface-container-low border-none rounded-md px-4 py-4 text-on-surface font-analytical focus:ring-2 focus:ring-secondary/40 placeholder:text-on-surface-variant/40" placeholder="Describe your current bottleneck or growth objectives..." rows="4"></textarea>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container py-5 rounded-md font-brand font-semibold text-lg hover:bg-primary-fixed-dim transition-all flex justify-center items-center gap-3 active:scale-[0.98]" type="submit">
+                            Submit Consultation Request
+                            <span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</form>
+</div>
+<!-- Info Section / Mentoring Sidebar -->
+<div class="lg:col-span-5 flex flex-col gap-12">
+<!-- Quote Box -->
+<div class="p-8 border-l-2 border-primary-container">
+<p class="font-accent text-2xl text-secondary leading-relaxed mb-4">
+                            "Profitability is not a happy accident; it is a calculated architectural outcome of disciplined operations and visionary mentorship."
+                        </p>
+<p class="font-brand font-semibold text-sm uppercase tracking-tighter text-on-surface-variant">— John Salde</p>
+</div>
+<!-- Process Steps -->
+<div class="bg-surface-container-high p-10 rounded-xl space-y-10">
+<h3 class="font-headline font-extrabold text-2xl text-secondary">The Intake Process</h3>
+<div class="space-y-8">
+<div class="flex gap-6">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container" data-weight="fill">analytics</span>
+</div>
+<div>
+<h4 class="font-brand font-semibold text-secondary text-lg">Initial Audit</h4>
+<p class="text-sm text-on-surface-variant font-analytical mt-1">We review your current business metrics to prepare a data-driven discussion.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center shrink-0 ghost-border">
+<span class="material-symbols-outlined text-secondary">calendar_today</span>
+</div>
+<div>
+<h4 class="font-brand font-semibold text-secondary text-lg">45-Minute Discovery</h4>
+<p class="text-sm text-on-surface-variant font-analytical mt-1">A deep-dive call to identify core levers for growth and profitability.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="w-12 h-12 rounded-full bg-surface-container-lowest flex items-center justify-center shrink-0 ghost-border">
+<span class="material-symbols-outlined text-secondary">map</span>
+</div>
+<div>
+<h4 class="font-brand font-semibold text-secondary text-lg">Actionable Blueprint</h4>
+<p class="text-sm text-on-surface-variant font-analytical mt-1">Receive a post-consultation brief outlining the mentorship roadmap.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Testimonial Metric -->
+<div class="bg-tertiary-container p-8 rounded-xl flex items-center justify-between">
+<div class="space-y-1">
+<p class="text-on-tertiary-container font-brand font-semibold text-sm uppercase tracking-widest">Average Client Growth</p>
+<p class="text-4xl font-headline font-extrabold text-on-tertiary-container">+34%</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-on-tertiary-container font-analytical italic opacity-70">Year-over-year revenue<br/>increase (Retail/Coffee)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 border-t border-slate-200 py-20">
+<div class="flex flex-col md:flex-row justify-between items-start max-w-7xl mx-auto px-8 gap-12">
+<div class="space-y-6">
+<div class="text-2xl font-brand font-bold text-secondary">John Salde Consulting</div>
+<p class="max-w-xs text-slate-500 font-analytical text-sm leading-relaxed">
+                    Precision mentorship for the modern hospitality leader. Built on logic, sustained by expertise.
+                </p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-16">
+<div class="space-y-4">
+<h5 class="text-xs font-brand font-semibold uppercase tracking-widest text-secondary">Navigation</h5>
+<ul class="space-y-2">
+<li><a class="text-slate-500 hover:text-secondary text-sm font-analytical transition-colors" href="#">Philosophy</a></li>
+<li><a class="text-slate-500 hover:text-secondary text-sm font-analytical transition-colors" href="#">Portfolio</a></li>
+<li><a class="text-slate-500 hover:text-secondary text-sm font-analytical transition-colors" href="#">Methodology</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="text-xs font-brand font-semibold uppercase tracking-widest text-secondary">Resources</h5>
+<ul class="space-y-2">
+<li><a class="text-slate-500 hover:text-secondary text-sm font-analytical transition-colors" href="#">Case Studies</a></li>
+<li><a class="text-slate-500 hover:text-secondary text-sm font-analytical transition-colors" href="#">Insights</a></li>
+<li><a class="text-slate-500 hover:text-secondary text-sm font-analytical transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="text-xs font-brand font-semibold uppercase tracking-widest text-secondary">Legal</h5>
+<ul class="space-y-2">
+<li><a class="text-slate-500 hover:text-secondary text-sm font-analytical transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 hover:text-secondary text-sm font-analytical transition-colors" href="#">Terms of Service</a></li>
+<li><a class="text-slate-500 hover:text-secondary text-sm font-analytical transition-colors" href="#">LinkedIn</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-20 pt-8 border-t border-slate-200 flex justify-between items-center">
+<p class="text-slate-400 text-xs font-analytical italic">© 2024 John Salde Consulting. All rights reserved.</p>
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-slate-400 hover:bg-primary-container hover:text-on-primary-container transition-all cursor-pointer">
+<span class="material-symbols-outlined text-lg">share</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
