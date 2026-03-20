@@ -22,14 +22,15 @@ export default function SectionPhilosophy() {
 
                         <SectionReveal delay={200}>
                             <h2 style={{
-                                fontFamily: 'var(--font-playfair)',
+                                fontFamily: 'var(--font-display)',
                                 color: 'white',
                                 lineHeight: 1.2,
                                 fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-                                letterSpacing: '-0.02em'
+                                letterSpacing: '-0.02em',
+                                fontWeight: 600,
                             }}>
                                 &ldquo;Growth requires{" "}
-                                <i style={{ fontStyle: 'italic', color: 'var(--color-accent)', fontWeight: 500 }}>
+                                <i style={{ fontStyle: 'italic', color: 'var(--color-accent)', fontWeight: 400, fontFamily: 'var(--font-accent)' }}>
                                     systems thinking
                                 </i>
                                 ,{" "}not just hype.&rdquo;

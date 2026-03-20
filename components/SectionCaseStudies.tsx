@@ -26,7 +26,7 @@ export default function SectionCaseStudies() {
                                         style={{ objectFit: 'contain', transform: 'scale(2.0)' }}
                                     />
                                 </div>
-                                <h2 className="text-display-md" style={{ fontFamily: 'var(--font-playfair)', lineHeight: 1.1, color: 'white', margin: 0, position: 'relative', zIndex: 20 }}>
+                                <h2 className="text-display-md" style={{ fontFamily: 'var(--font-display)', lineHeight: 1.1, color: 'white', margin: 0, position: 'relative', zIndex: 20 }}>
                                     Garden Oases Resort /<br />The Ritz Hotel
                                 </h2>
                             </div>
@@ -52,7 +52,7 @@ export default function SectionCaseStudies() {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
                         <SectionReveal delay={200}>
                             <div style={{ borderLeft: '2px solid rgba(198, 224, 61, 0.5)', paddingLeft: '1.5rem' }}>
-                                <h3 className="text-h3" style={{ fontFamily: 'var(--font-playfair)', color: 'white', marginBottom: '1rem' }}>
+                                <h3 className="text-h3" style={{ fontFamily: 'var(--font-display)', color: 'white', marginBottom: '1rem' }}>
                                     <span style={{ color: 'var(--color-accent)', marginRight: '0.5rem' }}>01.</span> Challenge
                                 </h3>
                                 <p className="text-body-md" style={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.8 }}>
@@ -63,7 +63,7 @@ export default function SectionCaseStudies() {
 
                         <SectionReveal delay={400}>
                             <div style={{ borderLeft: '2px solid rgba(198, 224, 61, 0.5)', paddingLeft: '1.5rem' }}>
-                                <h3 className="text-h3" style={{ fontFamily: 'var(--font-playfair)', color: 'white', marginBottom: '1rem' }}>
+                                <h3 className="text-h3" style={{ fontFamily: 'var(--font-display)', color: 'white', marginBottom: '1rem' }}>
                                     <span style={{ color: 'var(--color-accent)', marginRight: '0.5rem' }}>02.</span> Intervention
                                 </h3>
                                 <p className="text-body-md" style={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.8 }}>
@@ -74,7 +74,7 @@ export default function SectionCaseStudies() {
 
                         <SectionReveal delay={600}>
                             <div style={{ borderLeft: '2px solid rgba(198, 224, 61, 1)', paddingLeft: '1.5rem', backgroundColor: 'rgba(255,255,255,0.03)', padding: '1.5rem', borderRadius: '4px' }}>
-                                <h3 className="text-h3" style={{ fontFamily: 'var(--font-playfair)', color: 'white', marginBottom: '1.5rem' }}>
+                                <h3 className="text-h3" style={{ fontFamily: 'var(--font-display)', color: 'white', marginBottom: '1.5rem' }}>
                                     <span style={{ color: 'var(--color-accent)', marginRight: '0.5rem' }}>03.</span> Impact
                                 </h3>
                                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem', color: 'white' }}>

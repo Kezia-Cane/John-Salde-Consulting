@@ -39,7 +39,7 @@ export default function SectionAuthority() {
             <p className="text-accent" style={{ color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>
               The Foundation
             </p>
-            <h2 className="text-h2" style={{ fontFamily: 'var(--font-playfair)', color: 'var(--color-primary)' }}>
+            <h2 className="text-h2" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-primary)' }}>
               Structuring Passion into <br />
               <span style={{ color: 'var(--color-accent)' }}>Profitable Reality.</span>
             </h2>
@@ -61,7 +61,7 @@ export default function SectionAuthority() {
                 {/* Content */}
                 <div className="bento-content">
                   <feature.Icon className="bento-icon group-hover-scale" />
-                  <h3 className="text-h3" style={{ fontFamily: 'var(--font-playfair)', marginBottom: '0.75rem', zIndex: 10, color: feature.titleColor || 'inherit' }}>
+                  <h3 className="text-h3" style={{ fontFamily: 'var(--font-display)', marginBottom: '0.75rem', zIndex: 10, color: feature.titleColor || 'inherit' }}>
                     {feature.name}
                   </h3>
                   <p className="text-body-md bento-desc">

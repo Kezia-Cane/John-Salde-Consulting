@@ -125,11 +125,12 @@ const NarrativeOverlay = ({ scrollYProgress }: { scrollYProgress: any }) => {
             <div style={{ width: '100%', maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
                 <motion.div style={{ opacity, x, maxWidth: '420px' }}>
                     <h3 style={{
-                        fontFamily: 'var(--font-playfair)',
+                        fontFamily: 'var(--font-display)',
                         color: 'var(--color-accent)',
                         fontSize: 'clamp(3rem, 5vw, 4.5rem)',
                         marginBottom: '1.5rem',
                         lineHeight: 1.1,
+                        fontWeight: 700,
                         textShadow: '0 10px 30px rgba(0,0,0,0.8)'
                     }}>
                         6 Years <br />of Mastery
@@ -138,7 +139,7 @@ const NarrativeOverlay = ({ scrollYProgress }: { scrollYProgress: any }) => {
                         color: 'white',
                         fontSize: 'clamp(1.25rem, 2vw, 1.75rem)',
                         lineHeight: 1.5,
-                        fontFamily: 'var(--font-dm-sans)',
+                        fontFamily: 'var(--font-body)',
                         fontWeight: 500,
                         textShadow: '0 2px 10px rgba(0,0,0,0.5)'
                     }}>
@@ -263,9 +264,9 @@ const StoryContent = () => {
                         color: "var(--color-accent)",
                         marginBottom: "0.5rem",
                         textTransform: "uppercase",
-                        letterSpacing: "0.05em",
+                        letterSpacing: "0.08em",
                         fontWeight: 600,
-                        fontFamily: "var(--font-accent)",
+                        fontFamily: "var(--font-display)",
                         fontSize: "0.75rem",
                     }}
                 >
@@ -273,12 +274,13 @@ const StoryContent = () => {
                 </p>
                 <h2
                     style={{
-                        fontFamily: "var(--font-playfair)",
+                        fontFamily: "var(--font-display)",
                         color: "white",
                         marginBottom: "1rem",
                         fontSize: "clamp(1.5rem, 2.5vw, 2rem)",
                         letterSpacing: "-0.01em",
                         lineHeight: 1.15,
+                        fontWeight: 600,
                     }}
                 >
                     From Cafe{" "}

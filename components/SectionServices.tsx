@@ -32,13 +32,13 @@ export default function SectionServices() {
                             color: 'var(--color-text-muted)',
                             marginBottom: '1rem',
                             textTransform: 'uppercase',
-                            letterSpacing: '0.05em',
+                            letterSpacing: '0.08em',
                             fontWeight: 600,
-                            fontFamily: 'var(--font-accent)',
+                            fontFamily: 'var(--font-display)',
                             fontSize: '0.75rem',
                         }}>Core Consulting Pillars</p>
                         <h2 style={{
-                            fontFamily: 'var(--font-playfair)',
+                            fontFamily: 'var(--font-display)',
                             fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
                             color: 'var(--color-primary)',
                             letterSpacing: '-0.01em',

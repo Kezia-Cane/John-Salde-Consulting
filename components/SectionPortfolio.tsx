@@ -23,7 +23,7 @@ export default function SectionPortfolio() {
                         <p className="text-accent" style={{ color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>
                             Selected Client Portfolio
                         </p>
-                        <h2 className="text-h2 mb-4" style={{ fontFamily: 'var(--font-playfair)', color: 'var(--color-primary)', marginBottom: '1.5rem', lineHeight: '1.2' }}>
+                        <h2 className="text-h2 mb-4" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-primary)', marginBottom: '1.5rem', lineHeight: '1.2' }}>
                             Trusted Across Mindanao's <br className="hidden md:block" />Top Hospitality Brands
                         </h2>
                         <p className="text-body-lg mt-6" style={{ color: 'var(--color-text-muted)', fontSize: '1.125rem', lineHeight: '1.7', marginTop: '1.5rem' }}>

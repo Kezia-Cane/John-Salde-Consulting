@@ -36,11 +36,11 @@ export default function ServiceCard({ title, pill, description, outcomes, delay 
                         padding: '6px 16px',
                         backgroundColor: 'rgba(198, 224, 61, 0.15)',
                         color: 'var(--color-accent)',
-                        fontFamily: 'var(--font-accent)',
+                        fontFamily: 'var(--font-display)',
                         fontSize: '0.7rem',
                         fontWeight: 600,
                         textTransform: 'uppercase',
-                        letterSpacing: '0.08em',
+                        letterSpacing: '0.1em',
                         borderRadius: '999px',
                     }}>
                         {pill}
@@ -50,7 +50,7 @@ export default function ServiceCard({ title, pill, description, outcomes, delay 
                 {/* Title & Description */}
                 <div style={{ marginBottom: '2rem' }}>
                     <h3 style={{
-                        fontFamily: 'var(--font-playfair)',
+                        fontFamily: 'var(--font-display)',
                         fontSize: 'clamp(1.35rem, 2vw, 1.75rem)',
                         fontWeight: 600,
                         color: 'white',

@@ -20,9 +20,9 @@ export default function SectionCTA() {
                     gap: '2.5rem'
                 }}>
                     <SectionReveal>
-                        <h2 className="text-display-lg" style={{ fontFamily: 'var(--font-playfair)', color: 'white', lineHeight: 1.1 }}>
+                        <h2 className="text-display-lg" style={{ fontFamily: 'var(--font-display)', color: 'white', lineHeight: 1.1, fontWeight: 700 }}>
                             Ready to scale your <br className="md-hidden" />
-                            <span style={{ color: 'var(--color-accent)', fontStyle: 'italic', fontWeight: 500 }}>passion</span>?
+                            <span style={{ color: 'var(--color-accent)', fontStyle: 'italic', fontWeight: 500, fontFamily: 'var(--font-accent)' }}>passion</span>?
                         </h2>
                     </SectionReveal>
 

@@ -167,7 +167,7 @@ export default function Hero() {
 
         /* ── Typography ── */
         .hero-h1 {
-          font-family: var(--font-playfair);
+          font-family: var(--font-display);
           font-size: clamp(3.5rem, 8vw, 6.5rem);
           line-height: 1;
           margin: 0;

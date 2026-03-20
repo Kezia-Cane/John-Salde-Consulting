@@ -15,7 +15,7 @@ export default function SectionProcess() {
                 <SectionReveal>
                     <div style={{ maxWidth: '700px', marginBottom: '4rem' }}>
                         <p className="text-accent" style={{ color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>Methodology</p>
-                        <h2 className="text-h2" style={{ fontFamily: 'var(--font-playfair)' }}>The 5-Step Consulting Process</h2>
+                        <h2 className="text-h2" style={{ fontFamily: 'var(--font-display)' }}>The 5-Step Consulting Process</h2>
                     </div>
                 </SectionReveal>
 
@@ -35,7 +35,7 @@ export default function SectionProcess() {
                                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                                         marginBottom: '1.5rem',
                                         color: 'var(--color-primary)',
-                                        fontFamily: 'var(--font-accent)',
+                                        fontFamily: 'var(--font-display)',
                                         fontWeight: 600,
                                         position: 'relative',
                                         zIndex: 2,
@@ -43,7 +43,7 @@ export default function SectionProcess() {
                                     }}>
                                         {p.step}
                                     </div>
-                                    <h3 className="text-h3" style={{ marginBottom: '1rem', fontFamily: 'var(--font-playfair)', fontSize: '1.25rem', color: 'var(--color-primary)' }}>{p.name}</h3>
+                                    <h3 className="text-h3" style={{ marginBottom: '1rem', fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'var(--color-primary)' }}>{p.name}</h3>
                                     <p className="text-body-md" style={{ fontSize: '0.9rem', lineHeight: 1.6 }}>{p.desc}</p>
                                 </div>
                             </SectionReveal>

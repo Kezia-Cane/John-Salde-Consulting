@@ -25,7 +25,7 @@ export default function SectionTestimonials() {
                 <SectionReveal>
                     <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 4rem auto' }}>
                         <p className="text-accent" style={{ color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>Client Feedback</p>
-                        <h2 className="text-h2" style={{ fontFamily: 'var(--font-playfair)' }}>What Our Partners Say</h2>
+                        <h2 className="text-h2" style={{ fontFamily: 'var(--font-display)' }}>What Our Partners Say</h2>
                     </div>
                 </SectionReveal>
 
@@ -45,13 +45,13 @@ export default function SectionTestimonials() {
                                     <path d="M10 11L8 15H11V19H5V15L7 11H5V7H10V11ZM20 11L18 15H21V19H15V15L17 11H15V7H20V11Z" fill="var(--color-primary)" />
                                 </svg>
 
-                                <p className="text-body-lg" style={{ color: 'var(--color-text-main)', fontStyle: 'italic', marginBottom: '2.5rem', lineHeight: 1.7 }}>
+                                <p className="text-body-lg" style={{ color: 'var(--color-text-main)', fontStyle: 'italic', fontFamily: 'var(--font-accent)', marginBottom: '2.5rem', lineHeight: 1.8 }}>
                                     "{t.quote}"
                                 </p>
 
                                 <div>
-                                    <p style={{ fontWeight: 600, color: 'var(--color-primary)', fontFamily: 'var(--font-playfair)', fontSize: '1.125rem' }}>{t.name}</p>
-                                    <p className="text-xs" style={{ color: 'var(--color-text-muted)', marginTop: '0.25rem', fontFamily: 'var(--font-accent)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t.role}</p>
+                                    <p style={{ fontWeight: 600, color: 'var(--color-primary)', fontFamily: 'var(--font-display)', fontSize: '1.05rem', letterSpacing: '0.01em' }}>{t.name}</p>
+                                    <p className="text-xs" style={{ color: 'var(--color-text-muted)', marginTop: '0.25rem', fontFamily: 'var(--font-display)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{t.role}</p>
                                 </div>
                             </div>
                         </SectionReveal>

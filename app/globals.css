@@ -38,10 +38,10 @@
   --space-24: 6rem;
   --space-32: 8rem;
 
-  /* Fonts */
-  --font-display: var(--font-playfair), serif;
-  --font-body: var(--font-dm-sans), sans-serif;
-  --font-accent: var(--font-space), sans-serif;
+  /* Fonts — Montserrat (body), Poppins (display/headers), Lora (quotes/accents) */
+  --font-display: var(--font-poppins), 'Poppins', sans-serif;
+  --font-body: var(--font-montserrat), 'Montserrat', sans-serif;
+  --font-accent: var(--font-lora), 'Lora', Georgia, serif;
 
   /* Border Radius */
   --radius: 1rem;
@@ -73,7 +73,8 @@ h5,
 h6 {
   font-family: var(--font-display);
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
   color: var(--color-primary);
 }
 
@@ -142,10 +143,11 @@ select {
 }
 
 .text-accent {
-  font-family: var(--font-accent);
+  font-family: var(--font-display);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
 /* Flex & Grid Utilities */
@@ -213,11 +215,11 @@ select {
   align-items: center;
   justify-content: center;
   padding: var(--space-4) var(--space-8);
-  font-family: var(--font-accent);
-  font-size: 0.875rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   transition: all 0.3s ease;
   min-height: 44px;
   border-radius: var(--radius);
