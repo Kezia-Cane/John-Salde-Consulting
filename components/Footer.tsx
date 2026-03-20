@@ -4,20 +4,26 @@ export default function Footer() {
     return (
         <footer className="section" style={{ paddingBottom: '3rem', paddingTop: '4rem', backgroundColor: 'var(--color-primary)', color: 'white' }}>
             <div className="container">
-                <div className="grid gap-12" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
-                    <div className="flex-col gap-6" style={{ display: 'flex' }}>
-                        <h3 className="text-h3" style={{ fontFamily: 'var(--font-playfair)', color: 'white' }}>John Salde Consulting</h3>
-                        <p className="text-body-md" style={{ color: 'rgba(255,255,255,0.7)', maxWidth: '400px' }}>
+                <div className="grid gap-12" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', alignItems: 'start' }}>
+                    {/* Left col: logo + tagline */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
+                        <img
+                            src="/images/logo/logo%20footer.png"
+                            alt="John Salde Consulting"
+                            style={{ width: 'auto', maxWidth: '400px', height: 'auto', display: 'block', borderRadius: '4px' }}
+                        />
+                        <p className="text-body-md" style={{ color: 'rgba(255,255,255,0.7)', maxWidth: '400px', margin: 0 }}>
                             When Passion Meets Execution. We help coffee and food business owners transform passion into profitable, scalable operations.
                         </p>
                     </div>
 
-                    <div className="flex-col gap-4" style={{ display: 'flex' }}>
-                        <h4 className="text-accent" style={{ color: 'var(--color-accent)' }}>Contact & Discovery</h4>
-                        <a href="mailto:hello@johnsalde.com" className="text-body-md" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'underline' }}>
-                            hello@johnsalde.com
+                    {/* Right col: contact */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
+                        <h4 className="text-accent" style={{ color: 'var(--color-accent)', margin: 0 }}>Contact &amp; Discovery</h4>
+                        <a href="mailto:thejohnsalde@gmail.com" className="text-body-md" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'underline' }}>
+                            thejohnsalde@gmail.com
                         </a>
-                        <p className="text-body-md" style={{ color: 'rgba(255,255,255,0.7)' }}>
+                        <p className="text-body-md" style={{ color: 'rgba(255,255,255,0.7)', margin: 0 }}>
                             Mindanao, Philippines
                         </p>
                     </div>
@@ -36,9 +42,6 @@ export default function Footer() {
                 }}>
                     <p className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>
                         &copy; {currentYear} John Salde Consulting. All rights reserved.
-                    </p>
-                    <p className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>
-                        System Architecture by Kezia
                     </p>
                 </div>
             </div>

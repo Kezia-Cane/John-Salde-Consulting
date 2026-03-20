@@ -43,10 +43,9 @@ export function FluidExpandingGrid({
     id = "evolution-grid",
 }: FluidExpandingGridProps) {
     const [layout, setLayout] = useState(() => {
-        const ids = items.map((item) => item.id);
         return {
-            row1: ids.slice(0, 2),
-            row2: ids.slice(2, 3),
+            row1: ["operations"],        // Operations full-width on top
+            row2: ["marketing", "systems"], // Digital Marketing + Systems side-by-side below
         };
     });
 

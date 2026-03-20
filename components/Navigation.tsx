@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
@@ -11,124 +11,297 @@ const NAV_LINKS = [
     { label: "Process", href: "#process" },
 ];
 
+// scrolled = compact white-glass logo-only pill
+// default  = full dark pill with all links
+type ScrollState = "default" | "scrolled";
+
 export default function Navigation() {
-    const [isScrolled, setIsScrolled] = useState(false);
+    const [scrollState, setScrollState] = useState<ScrollState>("default");
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const lastScrollY = useRef(0);
+    const ticking = useRef(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
+            if (!ticking.current) {
+                requestAnimationFrame(() => {
+                    const currentScrollY = window.scrollY;
+                    const prev = lastScrollY.current;
+
+                    if (currentScrollY < 80) {
+                        // Always default at the top
+                        setScrollState("default");
+                    } else if (currentScrollY > prev + 3) {
+                        // Scrolling DOWN anywhere → show compact
+                        setScrollState("scrolled");
+                    } else if (currentScrollY < prev - 3) {
+                        // Scrolling UP anywhere → restore full pill
+                        setScrollState("default");
+                    }
+
+                    lastScrollY.current = currentScrollY;
+                    ticking.current = false;
+                });
+                ticking.current = true;
+            }
         };
-        window.addEventListener("scroll", handleScroll);
-        handleScroll();
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const isScrolled = scrollState === "scrolled";
+
     return (
         <>
-            <header
+            {/* ── Floating pill wrapper — always visible, never hides ── */}
+            <div
+                className={`nav-pill-wrapper${isScrolled ? " is-scrolled" : ""}`}
                 style={{
-                    position: 'fixed',
-                    top: 0, left: 0, right: 0,
+                    position: "fixed",
+                    top: "1.25rem",
+                    left: "50%",
+                    transform: "translateX(-50%)",
                     zIndex: 50,
-                    transition: 'all 0.3s ease',
-                    backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.98)' : 'transparent',
-                    backdropFilter: isScrolled ? 'blur(10px)' : 'none',
-                    boxShadow: isScrolled ? '0 1px 2px rgba(0,0,0,0.05)' : 'none',
-                    padding: isScrolled ? '1rem 0' : '1.5rem 0'
+                    willChange: "transform",
                 }}
             >
-                <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    {/* Logo element */}
-                    <a href="#" style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                        <span style={{
-                            fontFamily: 'var(--font-playfair)',
-                            fontWeight: 700,
-                            fontSize: '1.25rem',
-                            color: isScrolled ? 'var(--color-primary)' : 'white',
-                            letterSpacing: '-0.02em',
-                            textTransform: 'uppercase',
-                            transition: 'color 0.3s ease'
-                        }}>
-                            John Salde Consulting
-                        </span>
+                <div
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        borderRadius: "999px",
+                        overflow: "hidden",
+                        // Glassmorphism background using translucent brand navy
+                        background: "rgba(29, 59, 145, 0.45)",
+                        backdropFilter: "blur(24px)",
+                        WebkitBackdropFilter: "blur(24px)",
+                        border: "1px solid rgba(255,255,255,0.15)",
+                        boxShadow: isScrolled
+                            ? "0 10px 40px rgba(0,0,0,0.35)"
+                            : "0 8px 32px rgba(0,0,0,0.28)",
+                        transition: "box-shadow 0.2s ease, padding 0.22s ease, height 0.2s ease",
+                        // No padding when scrolled — image fills pill edge-to-edge
+                        padding: isScrolled ? "0" : "0.45rem 0.45rem",
+                        // Fixed height when scrolled keeps the pill compact
+                        height: isScrolled ? "56px" : "auto",
+                        width: "100%",
+                        justifyContent: "space-between",
+                    }}
+                >
+                    {/* ── Circle Logo — visible only in default state ── */}
+                    <a
+                        href="#"
+                        aria-label="Home"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            // Width collapses to 0 when scrolled
+                            width: isScrolled ? "0px" : "46px",
+                            height: isScrolled ? "0px" : "46px",
+                            minWidth: isScrolled ? "0" : "46px",
+                            borderRadius: "50%",
+                            background: "white",
+                            flexShrink: 0,
+                            marginRight: isScrolled ? "0" : "0.75rem",
+                            overflow: "hidden",
+                            cursor: "pointer",
+                            opacity: isScrolled ? 0 : 1,
+                            pointerEvents: isScrolled ? "none" : "auto",
+                            transition: "width 0.22s ease, height 0.22s ease, min-width 0.22s ease, margin 0.22s ease, opacity 0.18s ease",
+                        }}
+                    >
+                        <img
+                            src="/images/logo/logo%20navbar%20circle3.png"
+                            alt="John Salde Consulting"
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                objectFit: "cover",
+                                borderRadius: "50%",
+                                display: "block",
+                                flexShrink: 0,
+                            }}
+                        />
                     </a>
 
-                    {/* Desktop Nav */}
+                    <a
+                        href="#"
+                        aria-label="Home"
+                        style={{
+                            display: isScrolled ? "flex" : "none",
+                            alignItems: "stretch",
+                            justifyContent: "center",
+                            // Fill the entire pill — no clipping, no gaps
+                            flex: isScrolled ? "1" : "0",
+                            alignSelf: "stretch",
+                            overflow: "hidden",
+                            cursor: "pointer",
+                            opacity: isScrolled ? 1 : 0,
+                            transition: "opacity 0.18s ease",
+                        }}
+                    >
+                        <img
+                            src="/images/logo/logo%20navbar2.png"
+                            alt="John Salde Consulting"
+                            style={{
+                                height: "100%",
+                                width: "auto",
+                                objectFit: "contain",
+                                objectPosition: "center",
+                                display: "block",
+                                borderRadius: "0",
+                                maxHeight: "56px",
+                            }}
+                        />
+                    </a>
+
+                    {/* ── Desktop Nav Links — collapse when scrolled ── */}
                     <nav
-                        className="md-nav"
-                        style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}
+                        className="pill-nav"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "0.1rem",
+                            overflow: "hidden",
+                            maxWidth: isScrolled ? "0" : "600px",
+                            opacity: isScrolled ? 0 : 1,
+                            pointerEvents: isScrolled ? "none" : "auto",
+                            transition: "max-width 0.22s ease, opacity 0.18s ease",
+                            whiteSpace: "nowrap",
+                        }}
                     >
                         {NAV_LINKS.map((link) => (
                             <a
                                 key={link.label}
                                 href={link.href}
-                                className="text-accent hover-link"
+                                className="pill-link"
                                 style={{
-                                    color: isScrolled ? 'var(--color-text-main)' : 'rgba(255,255,255,0.9)',
-                                    fontSize: '0.75rem',
+                                    color: "rgba(255,255,255,0.82)",
+                                    fontSize: "0.78rem",
                                     fontWeight: 600,
-                                    transition: 'color 0.2s ease'
+                                    fontFamily: "var(--font-accent)",
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.06em",
+                                    padding: "0.5rem 0.85rem",
+                                    borderRadius: "999px",
+                                    whiteSpace: "nowrap",
+                                    cursor: "pointer",
+                                    transition: "color 0.15s ease, background 0.15s ease",
                                 }}
                             >
                                 {link.label}
                             </a>
                         ))}
-                        <a href="#contact" className="btn btn-primary" style={{ marginLeft: '1rem', minHeight: '40px', padding: '0 1.5rem' }}>
-                            Consultation
-                        </a>
                     </nav>
 
-                    {/* Mobile Menu Toggle */}
-                    <button
-                        className="mobile-toggle"
-                        onClick={() => setMobileMenuOpen(true)}
+                    {/* ── CTA Button — collapse when scrolled ── */}
+                    <a
+                        href="#contact"
+                        className="pill-cta"
                         style={{
-                            padding: '0.25rem',
-                            color: isScrolled ? 'var(--color-primary)' : 'white',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            transition: 'color 0.3s ease'
+                            background: "white",
+                            color: "var(--color-primary)",
+                            fontSize: "0.78rem",
+                            fontWeight: 700,
+                            fontFamily: "var(--font-accent)",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.06em",
+                            padding: "0.5rem 1.25rem",
+                            borderRadius: "999px",
+                            whiteSpace: "nowrap",
+                            cursor: "pointer",
+                            flexShrink: 0,
+                            overflow: "hidden",
+                            maxWidth: isScrolled ? "0" : "180px",
+                            marginLeft: isScrolled ? "0" : "0.5rem",
+                            paddingLeft: isScrolled ? "0" : "1.25rem",
+                            paddingRight: isScrolled ? "0" : "1.25rem",
+                            opacity: isScrolled ? 0 : 1,
+                            pointerEvents: isScrolled ? "none" : "auto",
+                            transition: "max-width 0.22s ease, margin 0.22s ease, padding 0.22s ease, opacity 0.18s ease, background 0.15s ease",
                         }}
-                        aria-label="Open menu"
                     >
-                        <Menu size={28} />
+                        Consultation
+                    </a>
+
+                    {/* ── Mobile Hamburger ── */}
+                    <button
+                        className="pill-hamburger"
+                        onClick={() => setMobileMenuOpen(true)}
+                        aria-label="Open menu"
+                        style={{
+                            display: "none",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            marginLeft: "0.5rem",
+                            padding: "0.4rem",
+                            color: "white",
+                            cursor: "pointer",
+                            borderRadius: "999px",
+                            background: "rgba(255,255,255,0.1)",
+                            width: "36px",
+                            height: "36px",
+                            flexShrink: 0,
+                            transition: "color 0.2s ease, background 0.2s ease",
+                        }}
+                    >
+                        <Menu size={20} />
                     </button>
                 </div>
-            </header>
+            </div>
 
-            {/* Mobile Menu Drawer */}
+            {/* ── Mobile Full-Screen Drawer ── */}
             <div
                 style={{
-                    position: 'fixed',
+                    position: "fixed",
                     top: 0, left: 0, right: 0, bottom: 0,
-                    backgroundColor: 'var(--color-primary)',
-                    color: 'var(--color-background)',
+                    backgroundColor: "var(--color-primary)",
                     zIndex: 100,
-                    transform: mobileMenuOpen ? 'translateY(0)' : 'translateY(-100%)',
-                    transition: 'transform 0.4s cubic-bezier(0.85, 0, 0.15, 1)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    padding: '2rem'
-                }}
+                    transform: mobileMenuOpen ? "translateY(0)" : "translateY(-100%)",
+                    transition: "transform 0.38s cubic-bezier(0.85, 0, 0.15, 1)",
+                    display: "flex",
+                    flexDirection: "column",
+                    padding: "1.75rem 2rem",
+                }
+                }
             >
-                <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <div style={{ height: "32px" }}>
+                        <img
+                            src="/images/logo/logo%20navbar2.png"
+                            alt="John Salde Consulting"
+                            style={{
+                                height: "100%",
+                                width: "auto",
+                                filter: "brightness(0) invert(1)",
+                                borderRadius: "0",
+                                display: "block",
+                            }}
+                        />
+                    </div>
                     <button
                         onClick={() => setMobileMenuOpen(false)}
-                        style={{ padding: '0.5rem', color: 'white' }}
+                        style={{
+                            padding: "0.5rem",
+                            color: "white",
+                            cursor: "pointer",
+                            borderRadius: "999px",
+                            background: "rgba(255,255,255,0.1)",
+                        }}
                         aria-label="Close menu"
                     >
-                        <X size={32} />
+                        <X size={24} />
                     </button>
                 </div>
 
                 <nav style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '2.5rem',
-                    marginTop: '4rem',
-                    alignItems: 'center'
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "2rem",
+                    marginTop: "4rem",
+                    alignItems: "center",
                 }}>
                     {NAV_LINKS.map((link) => (
                         <a
@@ -136,27 +309,84 @@ export default function Navigation() {
                             href={link.href}
                             className="text-h2"
                             style={{
-                                color: 'white',
+                                color: "white",
                                 opacity: 0.9,
-                                fontFamily: 'var(--font-playfair)'
+                                fontFamily: "var(--font-playfair)",
+                                cursor: "pointer",
                             }}
                             onClick={() => setMobileMenuOpen(false)}
                         >
                             {link.label}
                         </a>
                     ))}
+                    <a
+                        href="#contact"
+                        onClick={() => setMobileMenuOpen(false)}
+                        style={{
+                            marginTop: "1rem",
+                            background: "var(--color-accent)",
+                            color: "var(--color-primary)",
+                            fontSize: "0.875rem",
+                            fontWeight: 700,
+                            fontFamily: "var(--font-accent)",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.06em",
+                            padding: "0.85rem 2.5rem",
+                            borderRadius: "999px",
+                            cursor: "pointer",
+                        }}
+                    >
+                        Consultation
+                    </a>
                 </nav>
             </div>
 
+            {/* ── Scoped Styles ── */}
             <style dangerouslySetInnerHTML={{
                 __html: `
-        .md-nav { display: none !important; }
-        .hover-link:hover { opacity: 0.7; }
-        @media (min-width: 768px) {
-          .md-nav { display: flex !important; }
-          .mobile-toggle { display: none !important; }
-        }
-      `}} />
+                .pill-link:hover {
+                    color: rgba(255,255,255,1) !important;
+                    background: rgba(255,255,255,0.10) !important;
+                }
+                .pill-cta:hover {
+                    background: #f2f2f2 !important;
+                    transform: translateY(-1px);
+                }
+                /* Mobile layout — pill stretches edge-to-edge with margin */
+                @media (max-width: 767px) {
+                    .pill-nav { display: none !important; }
+                    .pill-cta { display: none !important; }
+                    /* Hide hamburger when scrolled — logo fills pill alone */
+                    .pill-hamburger { display: flex !important; }
+                    .nav-pill-wrapper.is-scrolled .pill-hamburger { display: none !important; }
+                    /* Make the fixed wrapper span the mobile viewport */
+                    .nav-pill-wrapper {
+                        left: 1rem !important;
+                        right: 1rem !important;
+                        transform: none !important;
+                        width: calc(100vw - 2rem) !important;
+                        max-width: none !important;
+                    }
+                    /* Default state: pill fills full width, logo left + hamburger right */
+                    .nav-pill-wrapper > div {
+                        width: 100%;
+                        justify-content: space-between;
+                    }
+                    /* Scrolled state: pill shrinks to fit logo, centered */
+                    .nav-pill-wrapper.is-scrolled {
+                        left: 50% !important;
+                        right: auto !important;
+                        transform: translateX(-50%) !important;
+                        width: auto !important;
+                    }
+                    .nav-pill-wrapper.is-scrolled > div {
+                        justify-content: center;
+                    }
+                }
+                @media (prefers-reduced-motion: reduce) {
+                    * { transition-duration: 0ms !important; }
+                }
+            `}} />
         </>
     );
 }

@@ -132,7 +132,7 @@ const NarrativeOverlay = ({ scrollYProgress }: { scrollYProgress: any }) => {
                         lineHeight: 1.1,
                         textShadow: '0 10px 30px rgba(0,0,0,0.8)'
                     }}>
-                        15+ Years <br />of Mastery
+                        6 Years <br />of Mastery
                     </h3>
                     <p style={{
                         color: 'white',
@@ -142,7 +142,7 @@ const NarrativeOverlay = ({ scrollYProgress }: { scrollYProgress: any }) => {
                         fontWeight: 500,
                         textShadow: '0 2px 10px rgba(0,0,0,0.5)'
                     }}>
-                        100+ Concepts Launched. <br />
+                        20+ Cafés Served. <br />
                         From operational chaos to <br />
                         scalable business systems.
                     </p>
@@ -299,12 +299,7 @@ const StoryContent = () => {
                         fontSize: "0.95rem",
                     }}
                 >
-                    It all began behind the counter of a single cafe. Years of
-                    grinding, learning, and perfecting every detail of the business
-                    turned into a proven system that works. Now, those same
-                    battle-tested strategies are helping business owners build
-                    stronger operations, smarter marketing, and scalable systems
-                    designed for long-term growth.
+                    It all started with 6 years of mastery in café operations. Today, as Mindanao’s leading coffee business consultant, I have expanded into comprehensive service pillars to drive total revenue success for over 20+ clients.
                 </p>
             </SectionReveal>
 

@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import TypingText from './ui/TypingText';
+
 
 export default function Hero() {
   return (
@@ -17,12 +19,7 @@ export default function Hero() {
           background: 'radial-gradient(circle, rgba(37, 99, 235, 0.4), transparent 60%)',
           filter: 'blur(100px)',
         }} />
-        <div style={{
-          position: 'absolute',
-          top: '50%', left: '-10%', width: '50%', height: '60%',
-          background: 'radial-gradient(circle, rgba(198, 224, 61, 0.15), transparent 70%)',
-          filter: 'blur(80px)',
-        }} />
+
       </div>
 
       {/* Main Content — 3-column grid, ALL vertically centered */}
@@ -35,7 +32,7 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.6 }}
         >
-          <h1 className="hero-h1">
+          <h1 className="hero-h1 text-gradient-primary">
             John<br />Salde
           </h1>
         </motion.div>
@@ -63,15 +60,27 @@ export default function Hero() {
           />
         </div>
 
-        {/* RIGHT: "Consulting." + tagline + CTA */}
+        {/* RIGHT: "[Typing] Consultant." + tagline + CTA */}
         <motion.div
           className="hero-col hero-right"
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.8 }}
         >
-          <h1 className="hero-h1" style={{ marginBottom: '1.25rem' }}>
-            Business<br />Consultant<span style={{ color: 'var(--color-accent)' }}>.</span>
+          <h1 className="hero-h1 text-gradient-accent" style={{ marginBottom: '1.25rem' }}>
+            <TypingText
+              as="span"
+              text={["Business", "Coffee"]}
+              typingSpeed={55}
+              deletingSpeed={30}
+              pauseDuration={2000}
+              loop={true}
+              showCursor={true}
+              cursorCharacter="|"
+              cursorClassName="text-accent"
+              style={{ color: 'inherit', fontFamily: 'inherit', fontSize: 'inherit', fontWeight: 'inherit', letterSpacing: 'inherit', lineHeight: 'inherit' }}
+            /><br />
+            Consultant<span style={{ color: 'var(--color-accent)' }}>.</span>
           </h1>
           <p className="hero-desc">
             Bridging cafe passion and explosive profitability through reality-tested systems.
@@ -159,12 +168,28 @@ export default function Hero() {
         /* ── Typography ── */
         .hero-h1 {
           font-family: var(--font-playfair);
-          color: white;
-          font-size: clamp(3.5rem, 12vw, 5rem);
-          line-height: 0.9;
-          font-weight: 800;
-          letter-spacing: -0.03em;
+          font-size: clamp(3.5rem, 8vw, 6.5rem);
+          line-height: 1;
+          margin: 0;
+          font-weight: 700;
+          letter-spacing: -0.02em;
         }
+
+        /* ── Modern Text Gradients ── */
+        .text-gradient-primary {
+          background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .text-gradient-accent {
+          background: linear-gradient(135deg, #ffffff 0%, var(--color-accent) 150%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
         .hero-desc {
           max-width: 300px;
           color: rgba(255,255,255,0.9);
