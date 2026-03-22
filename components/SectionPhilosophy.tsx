@@ -2,7 +2,31 @@ import SectionReveal from "./SectionReveal";
 
 export default function SectionPhilosophy() {
     return (
-        <section id="philosophy" className="section bg-primary" style={{ padding: '8rem 0' }}>
+        <section id="philosophy" className="section" style={{ padding: '8rem 0', position: 'relative', overflow: 'hidden', background: 'linear-gradient(135deg, #0e1d4e 0%, #1D3B91 55%, #1a47a8 100%)' }}>
+
+            {/* ── Premium Background ── */}
+            <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                {/* Cobalt radial glow – top-right */}
+                <div style={{
+                    position: 'absolute',
+                    top: '-20%', right: '-10%', width: '60%', height: '80%',
+                    background: 'radial-gradient(circle, rgba(37,99,235,0.35), transparent 65%)',
+                    filter: 'blur(100px)'
+                }} />
+                {/* Lime accent glow – bottom-left (subtle) */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: '-15%', left: '-5%', width: '45%', height: '55%',
+                    background: 'radial-gradient(circle, rgba(198,224,61,0.07), transparent 65%)',
+                    filter: 'blur(80px)'
+                }} />
+                {/* Diagonal lines */}
+                <div className="bg-layer bg-diagonal-lines" />
+                {/* Organic dark curves */}
+                <div className="bg-layer bg-curves" />
+                {/* Noise texture */}
+                <div className="bg-layer bg-noise-dark" />
+            </div>
             <div className="container">
                 <div style={{
                     display: 'flex',
@@ -48,7 +72,7 @@ export default function SectionPhilosophy() {
                                 fontSize: '1.05rem',
                                 maxWidth: '540px'
                             }}>
-                                In an industry filled with trend-chasers, the most sustainable brands are built on operational excellence, clear standard operating procedures, and rigorous financial logic. We focus purely on profitability, workflow optimization, and scalable brand authority.
+                                In an industry filled with trend-chasers, the most sustainable brands are built on operational excellence, clear standard operating procedures, and rigorous financial logic. I focus purely on profitability, workflow optimization, and scalable brand authority.
                             </p>
                         </SectionReveal>
                     </div>

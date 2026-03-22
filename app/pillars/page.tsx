@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import AnimatedButton from '@/components/AnimatedButton';
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ const PILLARS = [
         icon: "architecture",
         title: "Operational Architecture",
         description:
-            "We engineer the skeleton of your business. From workflow optimization to supply chain integrity, we build systems that scale without sacrificing the artisanal quality of your product.",
+            "I engineer the skeleton of your business. From workflow optimization to supply chain integrity, I build systems that scale without sacrificing the artisanal quality of your product.",
         points: ["Workflow Efficiency Mapping", "Inventory Management Systems", "SOP Development & Standardization"],
         bg: "#eef4ff",
         iconBg: "var(--color-accent)",
@@ -28,7 +29,7 @@ const PILLARS = [
         icon: "query_stats",
         title: "Financial Rigor",
         description:
-            "Profitability is not an accident; it's a design choice. We dive deep into your P&L, COGS, and labor models to ensure your growth is mathematically sound and professionally resilient.",
+            "Profitability is not an accident; it's a design choice. I dive deep into your P&L, COGS, and labor models to ensure your growth is mathematically sound and professionally resilient.",
         stat: { label: "Average Margin Increase", value: "+24%", width: "74%" },
         bg: "#ffffff",
         iconBg: "#c6d2ff",
@@ -41,7 +42,7 @@ const PILLARS = [
         icon: "psychology",
         title: "Strategic Mentorship",
         description:
-            "We bridge the gap between being a coffee enthusiast and a market leader. Our mentorship focuses on leadership development, brand storytelling, and high-end hospitality standards.",
+            "I bridge the gap between being a coffee enthusiast and a market leader. My mentorship focuses on leadership development, brand storytelling, and high-end hospitality standards.",
         quote: `"The most successful cafés aren't just selling coffee - they're selling an architectural experience of time."`,
         gridItems: [
             { icon: "groups", label: "Culture Design" },
@@ -107,7 +108,7 @@ export default function PillarsPage() {
                     }}
                 >
                     <div style={{ maxWidth: "640px" }}>
-                        <span className="page-label" style={{ color: "var(--color-accent)" }}>Our Methodology</span>
+                        <span className="page-label" style={{ color: "var(--color-accent)" }}>My Methodology</span>
                         <h1
                             className="text-display-md"
                             style={{ color: "white", lineHeight: 1.1, textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}
@@ -140,9 +141,27 @@ export default function PillarsPage() {
                         backgroundColor: pillar.bg,
                         padding: "5rem 0",
                         borderTop: index === 0 ? "none" : "1px solid rgba(29,59,145,0.06)",
+                        position: 'relative',
+                        overflow: 'hidden'
                     }}
                 >
-                    <div className="container">
+                    {/* ── Premium Background ── */}
+                    <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                        {pillar.bg === 'var(--color-primary)' ? (
+                            <>
+                                <div className="bg-layer bg-noise-dark" />
+                                <div className="bg-layer bg-diagonal-lines" style={{ opacity: 0.5 }} />
+                                <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '50%', height: '70%', background: 'radial-gradient(circle, rgba(198,224,61,0.08), transparent 65%)', filter: 'blur(80px)' }} />
+                            </>
+                        ) : (
+                            <>
+                                <div className="bg-layer bg-dot-grid" style={{ opacity: pillar.bg === '#ffffff' ? 0.2 : 0.45 }} />
+                                <div style={{ position: 'absolute', top: '-10%', left: '-5%', width: '40%', height: '60%', background: 'radial-gradient(circle, rgba(37,99,235,0.04), transparent 65%)', filter: 'blur(80px)' }} />
+                            </>
+                        )}
+                    </div>
+
+                    <div className="container" style={{ position: 'relative', zIndex: 2 }}>
                         <div
                             className="grid gap-12"
                             style={{
@@ -291,35 +310,43 @@ export default function PillarsPage() {
                 <div className="container">
                     <div
                         style={{
-                            background: "#e5eeff",
+                            background: "linear-gradient(135deg, #e5eeff 0%, #f4f8ff 100%)",
                             borderRadius: "var(--radius-lg)",
                             padding: "5rem 3rem",
                             textAlign: "center",
                             position: "relative",
                             overflow: "hidden",
+                            boxShadow: "0 20px 40px rgba(29,59,145,0.05)",
                         }}
                     >
-                        <div
-                            style={{
-                                position: "absolute",
-                                top: "-4rem",
-                                right: "-4rem",
-                                width: "16rem",
-                                height: "16rem",
-                                background: "rgba(198,224,61,0.2)",
-                                borderRadius: "50%",
-                                filter: "blur(40px)",
-                            }}
-                        />
-                        <h2 className="text-h2" style={{ color: "var(--color-primary)", marginBottom: "1.25rem" }}>
-                            Ready to build your foundation?
-                        </h2>
-                        <p className="text-body-lg" style={{ maxWidth: "520px", margin: "0 auto 2.5rem" }}>
-                            Every consultation starts with a deep dive into your current metrics and a vision for your structural potential.
-                        </p>
-                        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-                            <Link href="/consultation" className="btn btn-primary">Book a Discovery Call</Link>
-                            <Link href="/portfolio" className="btn btn-secondary">View Case Studies</Link>
+                        {/* ── CTA Background ── */}
+                        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                            <div className="bg-layer bg-line-grid" style={{ opacity: 0.5 }} />
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    top: "-4rem",
+                                    right: "-4rem",
+                                    width: "20rem",
+                                    height: "20rem",
+                                    background: "radial-gradient(circle, rgba(198,224,61,0.15), transparent 70%)",
+                                    filter: "blur(60px)",
+                                }}
+                            />
+                            <div style={{ position: 'absolute', bottom: '-20%', left: '-10%', width: '50%', height: '70%', background: 'radial-gradient(circle, rgba(37,99,235,0.08), transparent 70%)', filter: 'blur(80px)' }} />
+                        </div>
+
+                        <div style={{ position: 'relative', zIndex: 2 }}>
+                            <h2 className="text-h2" style={{ color: "var(--color-primary)", marginBottom: "1.25rem" }}>
+                                Ready to build your foundation?
+                            </h2>
+                            <p className="text-body-lg" style={{ maxWidth: "520px", margin: "0 auto 2.5rem" }}>
+                                Every consultation starts with a deep dive into your current metrics and a vision for your structural potential.
+                            </p>
+                            <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+                                <AnimatedButton href="/consultation" text1="Book a Discovery Call" text2="Booking..." />
+                                <Link href="/portfolio" className="btn btn-secondary">View Case Studies</Link>
+                            </div>
                         </div>
                     </div>
                 </div>

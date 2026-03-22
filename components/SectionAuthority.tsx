@@ -32,8 +32,34 @@ const bentoFeatures = [
 
 export default function SectionAuthority() {
   return (
-    <section id="authority" className="section bg-surface" style={{ padding: '8rem 0' }}>
-      <div className="container">
+    <section id="authority" className="section bg-surface" style={{ padding: '8rem 0', position: 'relative', overflow: 'hidden' }}>
+
+      {/* ── Premium Background ── */}
+      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+        {/* Base gradient */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(150deg, #f8fafc 0%, #eef4ff 50%, #f0f6ff 100%)'
+        }} />
+        {/* Line grid */}
+        <div className="bg-layer bg-line-grid" />
+        {/* Cobalt glow – top-right */}
+        <div style={{
+          position: 'absolute',
+          top: '-20%', right: '-8%', width: '55%', height: '65%',
+          background: 'radial-gradient(circle, rgba(37,99,235,0.09), transparent 65%)',
+          filter: 'blur(90px)'
+        }} />
+        {/* Navy glow – bottom-left */}
+        <div style={{
+          position: 'absolute',
+          bottom: '-10%', left: '-5%', width: '40%', height: '50%',
+          background: 'radial-gradient(circle, rgba(29,59,145,0.06), transparent 65%)',
+          filter: 'blur(80px)'
+        }} />
+      </div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <SectionReveal>
           <div style={{ maxWidth: '800px', marginBottom: '4rem' }}>
             <p className="text-accent" style={{ color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>

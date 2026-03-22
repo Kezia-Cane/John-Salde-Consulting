@@ -3,7 +3,29 @@ import SectionReveal from "./SectionReveal";
 
 export default function SectionCaseStudies() {
     return (
-        <section id="case-studies" className="section" style={{ padding: '8rem 0', backgroundColor: 'var(--color-primary)', color: 'white' }}>
+        <section id="case-studies" className="section" style={{ padding: '8rem 0', color: 'white', position: 'relative', overflow: 'hidden', background: 'linear-gradient(150deg, #0b1840 0%, #1D3B91 50%, #172f7a 100%)' }}>
+
+            {/* ── Premium Background ── */}
+            <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                {/* Cobalt glow – top-right */}
+                <div style={{
+                    position: 'absolute',
+                    top: '-15%', right: '-5%', width: '55%', height: '65%',
+                    background: 'radial-gradient(circle, rgba(37,99,235,0.28), transparent 65%)',
+                    filter: 'blur(100px)'
+                }} />
+                {/* Lime glow – bottom-left */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: '-10%', left: '-5%', width: '45%', height: '55%',
+                    background: 'radial-gradient(circle, rgba(198,224,61,0.09), transparent 65%)',
+                    filter: 'blur(90px)'
+                }} />
+                {/* Organic curves */}
+                <div className="bg-layer bg-curves" />
+                {/* Noise texture */}
+                <div className="bg-layer bg-noise-dark" />
+            </div>
             <div className="container">
                 <SectionReveal>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '3rem', marginBottom: '4rem' }}>
@@ -33,7 +55,7 @@ export default function SectionCaseStudies() {
 
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                                 <p className="text-body-lg" style={{ color: 'rgba(255,255,255,0.85)', margin: 0 }}>
-                                    A major hospitality partner focusing on high-end dining and resort services. We work directly with their purchasing and dining supervisors to ensure premium standards.
+                                    A major hospitality partner focusing on high-end dining and resort services. I work directly with their purchasing and dining supervisors to ensure premium standards.
                                 </p>
                                 <div style={{ marginTop: '0.5rem' }}>
                                     <p style={{ color: 'var(--color-accent)', fontWeight: 600, marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '0.875rem' }}>Operational Focus:</p>
@@ -67,7 +89,7 @@ export default function SectionCaseStudies() {
                                     <span style={{ color: 'var(--color-accent)', marginRight: '0.5rem' }}>02.</span> Intervention
                                 </h3>
                                 <p className="text-body-md" style={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.8 }}>
-                                    Comprehensive coffee business development. We executed rigorous barista masterclasses, established strict beverage SOPs, and completely re-engineered the menu to align with high-end standards.
+                                    Comprehensive coffee business development. I executed rigorous barista masterclasses, established strict beverage SOPs, and completely re-engineered the menu to align with high-end standards.
                                 </p>
                             </div>
                         </SectionReveal>

@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { ArrowRight } from "lucide-react";
+import AnimatedButton from "./AnimatedButton";
 import SectionReveal from './SectionReveal';
 
 interface ExpertiseCategory {
@@ -17,7 +19,7 @@ const EXPERTISE_CATEGORIES: ExpertiseCategory[] = [
     id: 1,
     title: "Deep Operational Expertise",
     subtitle: "Operations & Management",
-    description: "Building efficient systems behind exceptional coffee. From inventory control to process optimization, we streamline every aspect of your operations for maximum profitability.",
+    description: "Building efficient systems behind exceptional coffee. From inventory control to process optimization, I streamline every aspect of your operations for maximum profitability.",
     items: [
       "Coffee Business Development",
       "Barista Training & Standardization",
@@ -32,7 +34,7 @@ const EXPERTISE_CATEGORIES: ExpertiseCategory[] = [
     id: 2,
     title: "Digital Marketing",
     subtitle: "Brand & Growth",
-    description: "Elevating your brand presence across all digital platforms. We craft compelling narratives that connect with your audience and drive measurable business growth.",
+    description: "Elevating your brand presence across all digital platforms. I craft compelling narratives that connect with your audience and drive measurable business growth.",
     items: [
       "Brand Development",
       "Social Media Strategy",
@@ -48,7 +50,7 @@ const EXPERTISE_CATEGORIES: ExpertiseCategory[] = [
     id: 3,
     title: "Custom Systems Development",
     subtitle: "Technology & Innovation",
-    description: "Tailored software solutions designed specifically for your business needs. From POS systems to advanced analytics, we build tools that power your growth.",
+    description: "Tailored software solutions designed specifically for your business needs. From POS systems to advanced analytics, I build tools that power your growth.",
     items: [
       "Point of Sale (POS) Systems",
       "Staff Attendance Tracking",
@@ -108,7 +110,25 @@ export default function SectionExpertise() {
       onTouchStart={() => setIsPaused(true)}
       onTouchEnd={() => setIsPaused(false)}
     >
-      <div className="container">
+      {/* ── Premium Background ── */}
+      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+        {/* Soft diagonal gradient */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(135deg, #f8fafc 0%, #eef4ff 50%, #f4f8ff 100%)'
+        }} />
+        {/* Line grid */}
+        <div className="bg-layer bg-line-grid" style={{ opacity: 0.7 }} />
+        {/* Cobalt soft glow – top-right */}
+        <div style={{
+          position: 'absolute',
+          top: '-20%', right: '-15%', width: '60%', height: '80%',
+          background: 'radial-gradient(circle, rgba(37,99,235,0.06), transparent 70%)',
+          filter: 'blur(90px)'
+        }} />
+      </div>
+
+      <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <SectionReveal>
           <div className="expertise-header">
             <p className="text-accent" style={{ color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>Areas of Specialization</p>
@@ -192,9 +212,7 @@ export default function SectionExpertise() {
 
         <SectionReveal delay={400}>
           <div className="expertise-cta">
-            <a href="#contact" className="btn btn-primary">
-              Explore Our Expertise
-            </a>
+            <AnimatedButton href="#contact" text1="Explore My Expertise" text2="Exploring..." />
           </div>
         </SectionReveal>
       </div>
@@ -202,20 +220,8 @@ export default function SectionExpertise() {
       <style dangerouslySetInnerHTML={{
         __html: `
         .expertise-section {
-          background: linear-gradient(135deg, var(--color-surface) 0%, #EEF2FF 50%, var(--color-surface) 100%);
           position: relative;
           overflow: hidden;
-        }
-
-        .expertise-section::before {
-          content: '';
-          position: absolute;
-          top: -50%;
-          right: -20%;
-          width: 600px;
-          height: 600px;
-          background: radial-gradient(circle, rgba(29, 59, 145, 0.03) 0%, transparent 70%);
-          pointer-events: none;
         }
 
         .expertise-header {

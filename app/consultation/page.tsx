@@ -17,7 +17,7 @@ const INTAKE_STEPS = [
     {
         icon: "analytics",
         title: "Initial Audit",
-        desc: "We review your current business metrics to prepare a data-driven discussion.",
+        desc: "I review your current business metrics to prepare a data-driven discussion.",
         filled: true,
     },
     {
@@ -74,10 +74,18 @@ export default function ConsultationPage() {
     }
 
     return (
-        <main style={{ backgroundColor: "#f8f9ff" }}>
+        <main style={{ backgroundColor: "#f8f9ff", position: "relative", overflow: "hidden" }}>
             <Navigation />
 
-            <div className="container page-hero" style={{ paddingBottom: "5rem" }}>
+            {/* ── Premium Background for entire page ── */}
+            <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '800px', background: 'linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%)' }} />
+                <div className="bg-layer bg-line-grid" style={{ opacity: 0.4 }} />
+                <div style={{ position: 'absolute', top: '10%', left: '-10%', width: '50%', height: '600px', background: 'radial-gradient(circle, rgba(37,99,235,0.03), transparent 70%)', filter: 'blur(80px)' }} />
+                <div style={{ position: 'absolute', top: '30%', right: '-15%', width: '60%', height: '800px', background: 'radial-gradient(circle, rgba(198,224,61,0.02), transparent 70%)', filter: 'blur(80px)' }} />
+            </div>
+
+            <div className="container page-hero" style={{ paddingBottom: "5rem", position: "relative", zIndex: 2 }}>
                 {/* ── Page Header ── */}
                 <div style={{ maxWidth: "640px", marginBottom: "4rem" }}>
                     <span className="page-label" style={{ color: "var(--color-secondary)" }}>Strategic Partnership</span>
@@ -91,7 +99,7 @@ export default function ConsultationPage() {
                         </span>
                     </h1>
                     <p className="text-body-lg" style={{ maxWidth: "580px" }}>
-                        Our consultation process is designed for clarity. We move beyond generic advice into rigorous financial analysis and operational strategy. Let&apos;s define the blueprint for your expansion.
+                        My consultation process is designed for clarity. I move beyond generic advice into rigorous financial analysis and operational strategy. Let&apos;s define the blueprint for your expansion.
                     </p>
                 </div>
 
@@ -113,7 +121,7 @@ export default function ConsultationPage() {
                                 <span className="material-symbols-outlined" style={{ fontSize: "4rem", color: "var(--color-accent)", marginBottom: "1.5rem", display: "block" }}>check_circle</span>
                                 <h2 className="text-h2" style={{ color: "var(--color-primary)", marginBottom: "1rem" }}>Request Received</h2>
                                 <p className="text-body-lg" style={{ maxWidth: "420px", margin: "0 auto 2rem" }}>
-                                    Thank you, {form.name}! We&apos;ll review your details and reach out within 24 hours to confirm your consultation.
+                                    Thank you, {form.name}! I&apos;ll review your details and reach out within 24 hours to confirm your consultation.
                                 </p>
                                 <button
                                     className="btn btn-secondary"

@@ -2,12 +2,12 @@ import SectionReveal from "./SectionReveal";
 
 const TESTIMONIALS = [
     {
-        quote: "John's systems thinking completely transformed our workflow. We cut wait times by 40% while improving consistency across all shifts.",
+        quote: "John's systems thinking completely transformed my workflow. I cut wait times by 40% while improving consistency across all shifts.",
         name: "Carmen's Garden Cafe",
         role: "Management Team"
     },
     {
-        quote: "The menu engineering strategies implemented by John Salde Consulting immediately impacted our bottom line. Highly methodical and data-driven.",
+        quote: "The menu engineering strategies implemented by John Salde Consulting immediately impacted my bottom line. Highly methodical and data-driven.",
         name: "The Ritz Hotel",
         role: "F&B Director"
     },
@@ -20,12 +20,34 @@ const TESTIMONIALS = [
 
 export default function SectionTestimonials() {
     return (
-        <section id="testimonials" className="section bg-surface">
-            <div className="container">
+        <section id="testimonials" className="section bg-surface" style={{ position: 'relative', overflow: 'hidden' }}>
+
+            {/* ── Premium Background ── */}
+            <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                {/* Horizontal gradient */}
+                <div style={{
+                    position: 'absolute', inset: 0,
+                    background: 'linear-gradient(180deg, #eef4ff 0%, #f8fafc 55%, #eef6ff 100%)'
+                }} />
+                {/* Dot grid */}
+                <div className="bg-layer bg-dot-grid" />
+                {/* Light curves */}
+                <div className="bg-layer bg-curves-light" />
+                {/* Bottom-center cobalt glow */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: '-20%', left: '50%', transform: 'translateX(-50%)',
+                    width: '60%', height: '70%',
+                    background: 'radial-gradient(circle, rgba(37,99,235,0.07), transparent 65%)',
+                    filter: 'blur(90px)'
+                }} />
+            </div>
+
+            <div className="container" style={{ position: 'relative', zIndex: 2 }}>
                 <SectionReveal>
                     <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 4rem auto' }}>
                         <p className="text-accent" style={{ color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>Client Feedback</p>
-                        <h2 className="text-h2" style={{ fontFamily: 'var(--font-display)' }}>What Our Partners Say</h2>
+                        <h2 className="text-h2" style={{ fontFamily: 'var(--font-display)' }}>What My Partners Say</h2>
                     </div>
                 </SectionReveal>
 

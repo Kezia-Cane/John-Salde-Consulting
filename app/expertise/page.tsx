@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import AnimatedButton from '@/components/AnimatedButton';
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -15,22 +16,29 @@ export default function ExpertisePage() {
             <Navigation />
 
             {/* ── Hero ── */}
-            <section className="container page-hero" style={{ paddingBottom: "3rem" }}>
+            <section className="page-hero" style={{ paddingBottom: "5rem", position: "relative", overflow: "hidden", backgroundColor: "var(--color-primary)" }}>
+                <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #0e1d4e 0%, #1D3B91 100%)' }} />
+                    <div className="bg-layer bg-noise-dark" />
+                    <div className="bg-layer bg-diagonal-lines" style={{ opacity: 0.3 }} />
+                    <div style={{ position: 'absolute', top: '10%', right: '-5%', width: '50%', height: '80%', background: 'radial-gradient(circle, rgba(198,224,61,0.15), transparent 60%)', filter: 'blur(80px)' }} />
+                    <div style={{ position: 'absolute', bottom: '-10%', left: '-10%', width: '40%', height: '60%', background: 'radial-gradient(circle, rgba(37,99,235,0.4), transparent 70%)', filter: 'blur(80px)' }} />
+                </div>
                 <div
-                    className="grid gap-12 md:grid-cols-2"
-                    style={{ alignItems: "center" }}
+                    className="container grid gap-12 md:grid-cols-2"
+                    style={{ alignItems: "center", position: "relative", zIndex: 2 }}
                 >
                     {/* Left: text */}
                     <div>
-                        <span className="page-label">Core Competencies</span>
+                        <span className="page-label" style={{ color: "var(--color-accent)" }}>Core Competencies</span>
                         <h1
                             className="text-display-md"
-                            style={{ color: "var(--color-primary)", lineHeight: 1.1, marginBottom: "1.5rem" }}
+                            style={{ color: "white", lineHeight: 1.1, marginBottom: "1.5rem" }}
                         >
                             Precision Engineering for the Specialty Coffee Sector.
                         </h1>
-                        <p className="text-body-lg" style={{ maxWidth: "480px", marginBottom: "2rem" }}>
-                            A systematic approach to café architecture, operational excellence, and sensory development. We bridge the gap between artisanal passion and rigorous commercial profitability.
+                        <p className="text-body-lg" style={{ color: "rgba(255,255,255,0.85)", maxWidth: "480px", marginBottom: "2rem" }}>
+                            A systematic approach to café architecture, operational excellence, and sensory development. I bridge the gap between artisanal passion and rigorous commercial profitability.
                         </p>
                         {/* Stat badge */}
                         <div
@@ -64,32 +72,19 @@ export default function ExpertisePage() {
                             />
                         </div>
                         {/* Floating quote card - copied from process page style */}
-                        <div
-                            style={{
-                                position: "absolute",
-                                bottom: 0,
-                                left: 0,
-                                background: "var(--color-primary)",
-                                borderRadius: "var(--radius)",
-                                padding: "1.75rem",
-                                maxWidth: "280px",
-                                boxShadow: "0 20px 48px rgba(29,59,145,0.3)",
-                            }}
-                        >
-                            <p className="lora-quote" style={{ fontSize: "1rem", color: "rgba(255,255,255,0.9)", marginBottom: "0.75rem" }}>
-                                &ldquo;Expertise is built through precise repetition and relentless refinement.&rdquo;
-                            </p>
-                            <cite style={{ fontStyle: "normal", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-accent)" }}>
-                                - John Salde
-                            </cite>
-                        </div>
+
                     </div>
                 </div>
             </section>
 
             {/* ── Expertise Bento Grid ── */}
-            <section className="container" style={{ paddingBottom: "5rem" }}>
-                <div className="grid gap-6" style={{ gridTemplateColumns: "1fr" }}>
+            <section style={{ position: "relative", overflow: "hidden", paddingBottom: "5rem" }}>
+                <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%)' }} />
+                    <div className="bg-layer bg-dot-grid" style={{ opacity: 0.5 }} />
+                    <div style={{ position: 'absolute', bottom: '0', right: '-10%', width: '50%', height: '80%', background: 'radial-gradient(circle, rgba(37,99,235,0.06), transparent 70%)', filter: 'blur(80px)' }} />
+                </div>
+                <div className="container grid gap-6" style={{ gridTemplateColumns: "1fr", position: "relative", zIndex: 2 }}>
 
                     {/* Card 1 - Featured: Coffee Business Development */}
                     <div
@@ -250,8 +245,13 @@ export default function ExpertisePage() {
             </section>
 
             {/* ── Architectural Approach ── */}
-            <section style={{ backgroundColor: "#eef4ff", padding: "6rem 0" }}>
-                <div className="container">
+            <section style={{ backgroundColor: "#eef4ff", padding: "6rem 0", position: "relative", overflow: "hidden" }}>
+                {/* ── Premium Background ── */}
+                <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                    <div className="bg-layer bg-dot-grid" style={{ opacity: 0.4 }} />
+                    <div style={{ position: 'absolute', top: '-20%', left: '-10%', width: '60%', height: '80%', background: 'radial-gradient(circle, rgba(37,99,235,0.06), transparent 70%)', filter: 'blur(80px)' }} />
+                </div>
+                <div className="container" style={{ position: "relative", zIndex: 2 }}>
                     <div className="grid gap-16 md:grid-cols-2" style={{ alignItems: "center" }}>
                         <div>
                             <h2 className="text-h2" style={{ color: "var(--color-primary)", marginBottom: "3rem" }}>
@@ -259,7 +259,7 @@ export default function ExpertisePage() {
                             </h2>
                             <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
                                 {[
-                                    { n: "01", title: "Audit & Diagnosis", desc: "We begin by identifying structural leaks through data-driven performance metrics." },
+                                    { n: "01", title: "Audit & Diagnosis", desc: "I begin by identifying structural leaks through data-driven performance metrics." },
                                     { n: "02", title: "Framework Design", desc: "Designing bespoke operational modules that align with your brand identity and staff capabilities." },
                                     { n: "03", title: "Sustainable Implementation", desc: "Training and coaching to ensure the new standards become part of the organizational DNA." },
                                 ].map((step) => (
@@ -319,7 +319,7 @@ export default function ExpertisePage() {
                                 }}
                             >
                                 <p className="lora-quote" style={{ fontSize: "1rem", color: "rgba(255,255,255,0.9)", marginBottom: "1rem" }}>
-                                    &ldquo;John transformed our workflow from chaotic to rhythmic. Our throughput increased by 22% without sacrificing quality.&rdquo;
+                                    &ldquo;John transformed my workflow from chaotic to rhythmic. My throughput increased by 22% without sacrificing quality.&rdquo;
                                 </p>
                                 <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-accent)" }}>
                                     - Mindanao Client
@@ -331,8 +331,14 @@ export default function ExpertisePage() {
             </section>
 
             {/* ── CTA ── */}
-            <section className="section" style={{ textAlign: "center" }}>
-                <div className="container" style={{ maxWidth: "640px" }}>
+            <section className="section" style={{ textAlign: "center", position: "relative", overflow: "hidden" }}>
+                {/* ── Premium Background ── */}
+                <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%)' }} />
+                    <div className="bg-layer bg-line-grid" style={{ opacity: 0.5 }} />
+                    <div style={{ position: 'absolute', bottom: '-20%', right: '-10%', width: '50%', height: '80%', background: 'radial-gradient(circle, rgba(198,224,61,0.05), transparent 70%)', filter: 'blur(80px)' }} />
+                </div>
+                <div className="container" style={{ maxWidth: "640px", position: "relative", zIndex: 2 }}>
                     <h2 className="text-h2" style={{ color: "var(--color-primary)", marginBottom: "1rem" }}>
                         Ready to recalibrate your business?
                     </h2>
@@ -340,7 +346,7 @@ export default function ExpertisePage() {
                         Schedule a high-level assessment of your current operational standards and profitability roadmap.
                     </p>
                     <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-                        <Link href="/consultation" className="btn btn-primary">Request Expertise Profile</Link>
+                        <AnimatedButton href="/consultation" text1="Request Profile" text2="Booking..." />
                         <Link href="/portfolio" className="btn btn-secondary">View Portfolio</Link>
                     </div>
                 </div>

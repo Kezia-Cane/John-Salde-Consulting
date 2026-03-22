@@ -6,8 +6,24 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="section" style={{ paddingBottom: '3rem', paddingTop: '4rem', backgroundColor: 'var(--color-primary)', color: 'white' }}>
-            <div className="container">
+        <footer className="section" style={{ paddingBottom: '3rem', paddingTop: '4rem', color: 'white', position: 'relative', overflow: 'hidden', background: 'linear-gradient(180deg, #1D3B91 0%, #152d70 50%, #0e1d4e 100%)' }}>
+
+            {/* ── Premium Background ── */}
+            <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                {/* Dot grid (white on dark) */}
+                <div className="bg-layer bg-dot-grid-dark" />
+                {/* Lime accent glow – top-right */}
+                <div style={{
+                    position: 'absolute',
+                    top: '-20%', right: '-5%', width: '45%', height: '60%',
+                    background: 'radial-gradient(circle, rgba(198,224,61,0.06), transparent 65%)',
+                    filter: 'blur(80px)'
+                }} />
+                {/* Noise texture */}
+                <div className="bg-layer bg-noise-dark" />
+            </div>
+
+            <div className="container" style={{ position: 'relative', zIndex: 2 }}>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12" style={{ alignItems: 'start' }}>
                     {/* Column 1: logo + tagline */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
@@ -19,7 +35,7 @@ export default function Footer() {
                             />
                         </Link>
                         <p className="text-body-md" style={{ color: 'rgba(255,255,255,0.7)', maxWidth: '400px', margin: 0, fontSize: '0.9rem' }}>
-                            When Passion Meets Execution. We help coffee and food business owners transform passion into profitable, scalable operations.
+                            When Passion Meets Execution. I help coffee and food business owners transform passion into profitable, scalable operations.
                         </p>
                     </div>
 

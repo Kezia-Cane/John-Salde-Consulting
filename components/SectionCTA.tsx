@@ -1,12 +1,22 @@
 import SectionReveal from "./SectionReveal";
+import AnimatedButton from "./AnimatedButton";
 
 export default function SectionCTA() {
     return (
-        <section id="contact" className="section" style={{ backgroundColor: 'var(--color-primary)', color: 'white', padding: '8rem 0', position: 'relative', overflow: 'hidden' }}>
+        <section id="contact" className="section" style={{ color: 'white', padding: '8rem 0', position: 'relative', overflow: 'hidden', background: 'linear-gradient(135deg, #0c1a52 0%, #1D3B91 40%, #1e50c3 100%)' }}>
 
-            {/* Background accents */}
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1, pointerEvents: 'none' }}>
-                <div style={{ position: 'absolute', top: '-30%', right: '-10%', width: '70%', height: '90%', background: 'radial-gradient(circle, rgba(198, 224, 61, 0.2), transparent 70%)', filter: 'blur(80px)' }} />
+            {/* ── Premium Background ── */}
+            <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1 }}>
+                {/* Cobalt glow – top-right */}
+                <div style={{ position: 'absolute', top: '-30%', right: '-10%', width: '70%', height: '90%', background: 'radial-gradient(circle, rgba(37,99,235,0.35), transparent 65%)', filter: 'blur(90px)' }} />
+                {/* Lime glow – bottom-left (CTA punch) */}
+                <div style={{ position: 'absolute', bottom: '-20%', left: '-8%', width: '60%', height: '80%', background: 'radial-gradient(circle, rgba(198,224,61,0.22), transparent 60%)', filter: 'blur(80px)' }} />
+                {/* Espresso ripple rings – centered */}
+                <div className="bg-layer bg-ripple-rings" />
+                {/* Diagonal lines */}
+                <div className="bg-layer bg-diagonal-lines" />
+                {/* Noise texture */}
+                <div className="bg-layer bg-noise-dark" />
             </div>
 
             <div className="container" style={{ position: 'relative', zIndex: 10 }}>
@@ -34,9 +44,7 @@ export default function SectionCTA() {
 
                     <SectionReveal delay={400}>
                         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '1.5rem' }}>
-                            <a href="mailto:hello@johnsalde.com" className="btn btn-primary" style={{ padding: '0 3rem', minHeight: '56px', fontSize: '1rem' }}>
-                                Book a Discovery Session
-                            </a>
+                            <AnimatedButton href="mailto:hello@johnsalde.com" text1="Discovery Session" text2="Booking..." />
                         </div>
                         <p className="text-xs" style={{ color: 'rgba(255,255,255,0.5)', marginTop: '2rem', fontFamily: 'var(--font-accent)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                             Strictly limited client capacity per quarter

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
+import AnimatedButton from "./AnimatedButton";
 
 const NAV_LINKS = [
     { label: "Philosophy", href: "/philosophy" },
@@ -177,54 +178,26 @@ export default function Navigation() {
                                 key={link.label}
                                 href={link.href}
                                 className="pill-link"
-                                style={{
-                                    color: "rgba(255,255,255,0.82)",
-                                    fontSize: "0.78rem",
-                                    fontWeight: 600,
-                                    fontFamily: "var(--font-display)",
-                                    textTransform: "uppercase",
-                                    letterSpacing: "0.08em",
-                                    padding: "0.5rem 0.85rem",
-                                    borderRadius: "999px",
-                                    whiteSpace: "nowrap",
-                                    cursor: "pointer",
-                                    transition: "color 0.15s ease, background 0.15s ease",
-                                }}
+                                data-text={link.label}
                             >
-                                {link.label}
+                                <span>{link.label}</span>
                             </a>
                         ))}
                     </nav>
 
                     {/* ── CTA Button - collapse when scrolled ── */}
-                    <a
-                        href="/consultation"
-                        className="pill-cta"
+                    <div
                         style={{
-                            background: "white",
-                            color: "var(--color-primary)",
-                            fontSize: "0.78rem",
-                            fontWeight: 700,
-                            fontFamily: "var(--font-display)",
-                            textTransform: "uppercase",
-                            letterSpacing: "0.08em",
-                            padding: "0.5rem 1.25rem",
-                            borderRadius: "999px",
-                            whiteSpace: "nowrap",
-                            cursor: "pointer",
-                            flexShrink: 0,
                             overflow: "hidden",
                             maxWidth: isScrolled ? "0" : "180px",
-                            marginLeft: isScrolled ? "0" : "0.5rem",
-                            paddingLeft: isScrolled ? "0" : "1.25rem",
-                            paddingRight: isScrolled ? "0" : "1.25rem",
+                            marginLeft: isScrolled ? "0" : "0.75rem",
                             opacity: isScrolled ? 0 : 1,
                             pointerEvents: isScrolled ? "none" : "auto",
-                            transition: "max-width 0.22s ease, margin 0.22s ease, padding 0.22s ease, opacity 0.18s ease, background 0.15s ease",
+                            transition: "max-width 0.22s ease, margin 0.22s ease, opacity 0.18s ease",
                         }}
                     >
-                        Consultation
-                    </a>
+                        <AnimatedButton href="/consultation" text1="Consultation" text2="Booking..." />
+                    </div>
 
                     {/* ── Mobile Hamburger ── */}
                     <button
@@ -321,34 +294,60 @@ export default function Navigation() {
                             {link.label}
                         </a>
                     ))}
-                    <a
-                        href="/consultation"
-                        onClick={() => setMobileMenuOpen(false)}
-                        style={{
-                            marginTop: "1rem",
-                            background: "var(--color-accent)",
-                            color: "var(--color-primary)",
-                            fontSize: "0.875rem",
-                            fontWeight: 700,
-                            fontFamily: "var(--font-display)",
-                            textTransform: "uppercase",
-                            letterSpacing: "0.08em",
-                            padding: "0.85rem 2.5rem",
-                            borderRadius: "999px",
-                            cursor: "pointer",
-                        }}
-                    >
-                        Consultation
-                    </a>
+                    <div onClick={() => setMobileMenuOpen(false)} style={{ marginTop: "1rem" }}>
+                        <AnimatedButton href="/consultation" text1="Consultation" text2="Booking..." />
+                    </div>
                 </nav>
             </div>
 
             {/* ── Scoped Styles ── */}
             <style dangerouslySetInnerHTML={{
                 __html: `
+                .pill-link {
+                    position: relative;
+                    color: var(--color-accent) !important;
+                    font-size: 0.78rem;
+                    font-weight: 600;
+                    font-family: var(--font-display);
+                    text-transform: uppercase;
+                    letter-spacing: 0.08em;
+                    padding: 0.5rem 0.85rem;
+                    border-radius: 999px;
+                    white-space: nowrap;
+                    cursor: pointer;
+                    overflow: hidden;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: background 0.3s ease;
+                }
+                .pill-link > span {
+                    display: inline-block;
+                    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+                }
+                .pill-link::after {
+                    content: attr(data-text);
+                    position: absolute;
+                    left: 0;
+                    top: 100%;
+                    width: 100%;
+                    text-align: center;
+                    color: white;
+                    padding: 0.5rem 0.85rem;
+                    box-sizing: border-box;
+                    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                    text-shadow: 0 0 10px rgba(198,224,61,0.6);
+                }
                 .pill-link:hover {
                     color: rgba(255,255,255,1) !important;
-                    background: rgba(255,255,255,0.10) !important;
+                    background: rgba(255,255,255,0.05) !important;
+                }
+                .pill-link:hover > span {
+                    transform: translateY(-150%);
+                    opacity: 0;
+                }
+                .pill-link:hover::after {
+                    transform: translateY(-100%);
                 }
                 .pill-cta:hover {
                     background: #f2f2f2 !important;

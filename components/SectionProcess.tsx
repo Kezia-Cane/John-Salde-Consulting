@@ -10,8 +10,26 @@ const PROCESS_STEPS = [
 
 export default function SectionProcess() {
     return (
-        <section id="process" className="section" style={{ padding: '8rem 0' }}>
-            <div className="container">
+        <section id="process" className="section" style={{ padding: '8rem 0', position: 'relative', overflow: 'hidden' }}>
+            {/* ── Premium Background ── */}
+            <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(170deg, #ffffff 0%, #f4f8ff 50%, #eef4ff 100%)' }} />
+                <div className="bg-layer bg-line-grid" style={{ opacity: 0.5 }} />
+                <div style={{
+                    position: 'absolute',
+                    top: '-10%', left: '-5%', width: '40%', height: '60%',
+                    background: 'radial-gradient(circle, rgba(29,59,145,0.05), transparent 60%)',
+                    filter: 'blur(80px)'
+                }} />
+                <div style={{
+                    position: 'absolute',
+                    bottom: '-15%', right: '-10%', width: '50%', height: '70%',
+                    background: 'radial-gradient(circle, rgba(37,99,235,0.05), transparent 65%)',
+                    filter: 'blur(80px)'
+                }} />
+            </div>
+
+            <div className="container" style={{ position: 'relative', zIndex: 2 }}>
                 <SectionReveal>
                     <div style={{ maxWidth: '700px', marginBottom: '4rem' }}>
                         <p className="text-accent" style={{ color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>Methodology</p>

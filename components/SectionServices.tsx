@@ -24,8 +24,34 @@ const SERVICES = [
 
 export default function SectionServices() {
     return (
-        <section id="services" className="section" style={{ backgroundColor: 'var(--color-surface)', padding: '6rem 0' }}>
-            <div className="container">
+        <section id="services" className="section" style={{ backgroundColor: '#f0f6ff', padding: '6rem 0', position: 'relative', overflow: 'hidden' }}>
+
+            {/* ── Premium Background ── */}
+            <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                {/* Base gradient */}
+                <div style={{
+                    position: 'absolute', inset: 0,
+                    background: 'linear-gradient(160deg, #eaf2ff 0%, #f4f8ff 40%, #eef3ff 100%)'
+                }} />
+                {/* Dot grid */}
+                <div className="bg-layer bg-dot-grid" />
+                {/* Cobalt glow – top-left */}
+                <div style={{
+                    position: 'absolute',
+                    top: '-15%', left: '-5%', width: '50%', height: '70%',
+                    background: 'radial-gradient(circle, rgba(37,99,235,0.08), transparent 65%)',
+                    filter: 'blur(80px)'
+                }} />
+                {/* Lime accent glow – bottom-right */}
+                <div style={{
+                    position: 'absolute',
+                    bottom: '-15%', right: '-5%', width: '45%', height: '60%',
+                    background: 'radial-gradient(circle, rgba(198,224,61,0.07), transparent 65%)',
+                    filter: 'blur(80px)'
+                }} />
+            </div>
+
+            <div className="container" style={{ position: 'relative', zIndex: 2 }}>
                 <SectionReveal>
                     <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 4rem auto' }}>
                         <p style={{

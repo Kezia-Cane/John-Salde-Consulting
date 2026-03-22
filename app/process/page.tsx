@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Navigation from "@/components/Navigation";
+import AnimatedButton from "@/components/AnimatedButton";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
@@ -15,7 +16,7 @@ const PHASES = [
         label: "AUDIT",
         title: "Phase 01: The Structural Audit",
         description:
-            "A comprehensive extraction of current financial health, operational flow, and brand equity. We identify the hairline fractures in your business model before they become structural failures.",
+            "A comprehensive extraction of current financial health, operational flow, and brand equity. I identify the hairline fractures in your business model before they become structural failures.",
         tags: ["P&L Analysis", "Staff Efficiency", "Brand Equity Mapping"],
         circleStyle: { background: "var(--color-primary)", color: "var(--color-accent)" },
         tagStyle: { background: "#dfe9fa", color: "var(--color-primary)" },
@@ -26,7 +27,7 @@ const PHASES = [
         label: "VISION",
         title: "Phase 02: Blueprints & Modeling",
         description:
-            "We map the ideal future state. Using predictive modeling, we forecast growth trajectories based on optimized supply chains and refined menu architecture.",
+            "I map the ideal future state. Using predictive modeling, I forecast growth trajectories based on optimized supply chains and refined menu architecture.",
         tags: ["Growth Forecasts", "Unit Economics", "Menu Architecture"],
         circleStyle: { background: "var(--color-accent)", color: "var(--color-primary)" },
         tagStyle: { background: "#c6d2ff", color: "#1D3B91" },
@@ -37,7 +38,7 @@ const PHASES = [
         label: "REFINEMENT",
         title: "Phase 03: Operational Refinement",
         description:
-            "Implementation of the 'Architectural Mentor' philosophy. We train your leadership to execute high-level decisions with precision, focusing on the marginal gains that drive massive shifts.",
+            "Implementation of the 'Architectural Mentor' philosophy. I train your leadership to execute high-level decisions with precision, focusing on the marginal gains that drive massive shifts.",
         tags: ["Leadership Mentoring", "Standard Operating Procedures"],
         circleStyle: { background: "var(--color-primary)", color: "var(--color-accent)" },
         tagStyle: { background: "#dfe9fa", color: "var(--color-primary)" },
@@ -48,7 +49,7 @@ const PHASES = [
         label: "SCALE",
         title: "Phase 04: Market Scaling",
         description:
-            "Deploying the refined model across multiple locations or deeper into your primary market. We ensure the DNA of the business remains intact as it expands.",
+            "Deploying the refined model across multiple locations or deeper into your primary market. I ensure the DNA of the business remains intact as it expands.",
         tags: ["Market Penetration", "Franchise Ready", "Multi-Unit Ops"],
         circleStyle: { background: "var(--color-accent)", color: "var(--color-primary)" },
         tagStyle: { background: "#c6d2ff", color: "#1D3B91" },
@@ -62,21 +63,28 @@ export default function ProcessPage() {
             <Navigation />
 
             {/* ── Hero ── */}
-            <section className="container page-hero" style={{ paddingBottom: "4rem" }}>
-                <div className="grid gap-16 md:grid-cols-2" style={{ alignItems: "center" }}>
+            <section className="page-hero" style={{ paddingBottom: "5rem", position: "relative", overflow: "hidden", backgroundColor: "var(--color-primary)" }}>
+                <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #0e1d4e 0%, #1D3B91 100%)' }} />
+                    <div className="bg-layer bg-noise-dark" />
+                    <div className="bg-layer bg-diagonal-lines" style={{ opacity: 0.3 }} />
+                    <div style={{ position: 'absolute', top: '10%', right: '-5%', width: '50%', height: '80%', background: 'radial-gradient(circle, rgba(198,224,61,0.15), transparent 60%)', filter: 'blur(80px)' }} />
+                    <div style={{ position: 'absolute', bottom: '-10%', left: '-10%', width: '40%', height: '60%', background: 'radial-gradient(circle, rgba(37,99,235,0.4), transparent 70%)', filter: 'blur(80px)' }} />
+                </div>
+                <div className="container grid gap-16 md:grid-cols-2" style={{ alignItems: "center", position: "relative", zIndex: 2 }}>
                     <div>
-                        <span className="page-label" style={{ color: "var(--color-secondary)" }}>Methodology</span>
+                        <span className="page-label" style={{ color: "var(--color-accent)" }}>Methodology</span>
                         <h1
                             className="text-display-md"
-                            style={{ color: "var(--color-primary)", lineHeight: 1.1, marginBottom: "1.5rem" }}
+                            style={{ color: "white", lineHeight: 1.1, marginBottom: "1.5rem" }}
                         >
                             An Architectural Approach to{" "}
-                            <span style={{ background: "var(--color-primary)", color: "var(--color-accent)", padding: "0 0.35em", borderRadius: "4px" }}>
+                            <span style={{ background: "var(--color-accent)", color: "var(--color-primary)", padding: "0 0.35em", borderRadius: "4px" }}>
                                 Growth
                             </span>
                         </h1>
-                        <p className="text-body-lg" style={{ maxWidth: "480px" }}>
-                            We don&apos;t believe in generic templates. Our process is a rigorous, analytical journey designed to dismantle operational inefficiencies and rebuild your coffee enterprise for sustainable profitability.
+                        <p className="text-body-lg" style={{ color: "rgba(255,255,255,0.85)", maxWidth: "480px" }}>
+                            I don&apos;t believe in generic templates. My process is a rigorous, analytical journey designed to dismantle operational inefficiencies and rebuild your coffee enterprise for sustainable profitability.
                         </p>
                     </div>
 
@@ -91,7 +99,7 @@ export default function ProcessPage() {
                         >
                             <img
                                 src="/images/heroes pages/process.jpeg"
-                                alt="Our Process"
+                                alt="My Process"
                                 style={{
                                     width: "100%",
                                     height: "100%",
@@ -114,7 +122,7 @@ export default function ProcessPage() {
                             }}
                         >
                             <p className="lora-quote" style={{ fontSize: "1rem", color: "rgba(255,255,255,0.9)", marginBottom: "0.75rem" }}>
-                                &ldquo;Profitability is the byproduct of structural integrity. We build the skeleton; you brew the soul.&rdquo;
+                                &ldquo;Profitability is the byproduct of structural integrity. I build the skeleton; you brew the soul.&rdquo;
                             </p>
                             <cite style={{ fontStyle: "normal", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-accent)" }}>
                                 - John Salde
@@ -125,8 +133,14 @@ export default function ProcessPage() {
             </section>
 
             {/* ── Process Timeline ── */}
-            <section style={{ backgroundColor: "#eef4ff", padding: "6rem 0" }}>
-                <div className="container">
+            <section style={{ backgroundColor: "#eef4ff", padding: "6rem 0", position: "relative", overflow: "hidden" }}>
+                {/* ── Premium Background ── */}
+                <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #f4f8ff 0%, #eef4ff 100%)' }} />
+                    <div className="bg-layer bg-dot-grid" style={{ opacity: 0.35 }} />
+                    <div style={{ position: 'absolute', top: '10%', right: '-10%', width: '40%', height: '60%', background: 'radial-gradient(circle, rgba(37,99,235,0.06), transparent 70%)', filter: 'blur(80px)' }} />
+                </div>
+                <div className="container" style={{ position: "relative", zIndex: 2 }}>
                     {/* Header */}
                     <div
                         style={{
@@ -205,8 +219,13 @@ export default function ProcessPage() {
             </section>
 
             {/* ── CTA Bento ── */}
-            <section className="section container">
-                <div className="grid gap-8 md:grid-cols-3">
+            <section className="section" style={{ position: "relative", overflow: "hidden", backgroundColor: "#ffffff" }}>
+                <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%)' }} />
+                    <div className="bg-layer bg-dot-grid" style={{ opacity: 0.5 }} />
+                    <div style={{ position: 'absolute', top: '10%', right: '-5%', width: '40%', height: '60%', background: 'radial-gradient(circle, rgba(37,99,235,0.06), transparent 70%)', filter: 'blur(80px)' }} />
+                </div>
+                <div className="container grid gap-8 md:grid-cols-3" style={{ position: "relative", zIndex: 2 }}>
                     {/* CTA card (2/3) */}
                     <div
                         className="bento-card"
@@ -226,11 +245,11 @@ export default function ProcessPage() {
                                 Ready to audit your structure?
                             </h2>
                             <p className="text-body-lg" style={{ color: "rgba(255,255,255,0.75)", maxWidth: "440px", marginBottom: "2rem" }}>
-                                We take on a limited number of consulting partners each quarter to ensure the depth and rigor required for true transformation.
+                                I take on a limited number of consulting partners each quarter to ensure the depth and rigor required for true transformation.
                             </p>
                         </div>
                         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-                            <Link href="/consultation" className="btn btn-primary">Request Your Audit</Link>
+                            <AnimatedButton href="/consultation" text1="Request Your Audit" text2="Booking..." />
                             <Link href="/portfolio" className="btn btn-white">View Case Studies</Link>
                         </div>
                     </div>

@@ -14,8 +14,20 @@ const PORTFOLIO_IMAGES = [
 export default function SectionPortfolio() {
     return (
         <section id="portfolio" className="section bg-surface relative w-full overflow-hidden">
-            {/* Background gradient structure */}
-            <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: 'linear-gradient(135deg, rgba(29, 59, 145, 0.02) 0%, rgba(37, 99, 235, 0.03) 100%)' }} />
+            {/* ── Premium Background ── */}
+            <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                {/* Base soft gradient */}
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #f8fafc 0%, #edf3ff 50%, #f4f8ff 100%)' }} />
+                {/* Dot grid pattern */}
+                <div className="bg-layer bg-dot-grid" />
+                {/* Subtle cobalt glow - top center */}
+                <div style={{
+                    position: 'absolute',
+                    top: '-15%', left: '20%', width: '60%', height: '70%',
+                    background: 'radial-gradient(circle, rgba(37,99,235,0.06), transparent 70%)',
+                    filter: 'blur(80px)'
+                }} />
+            </div>
 
             <div className="container relative z-10">
                 <SectionReveal>
@@ -27,7 +39,7 @@ export default function SectionPortfolio() {
                             Trusted Across Mindanao's <br className="hidden md:block" />Top Hospitality Brands
                         </h2>
                         <p className="text-body-lg mt-6" style={{ color: 'var(--color-text-muted)', fontSize: '1.125rem', lineHeight: '1.7', marginTop: '1.5rem' }}>
-                            From high-volume banquet workflows and dual-concept regional expansions, to specialized barista standardizations. We've optimized the best to be better.
+                            From high-volume banquet workflows and dual-concept regional expansions, to specialized barista standardizations. I've optimized the best to be better.
                         </p>
                     </div>
                 </SectionReveal>

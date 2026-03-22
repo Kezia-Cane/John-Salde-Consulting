@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import TypingText from './ui/TypingText';
+import AnimatedButton from "./AnimatedButton";
 
 
 export default function Hero() {
@@ -11,15 +12,31 @@ export default function Hero() {
       id="hero"
       className="hero-section"
     >
-      {/* Abstract Background Layer */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1, pointerEvents: 'none' }}>
+      {/* ── Premium Background Layers ── */}
+      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none', overflow: 'hidden' }}>
+        {/* Base gradient: navy → cobalt */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(135deg, #111f5c 0%, #1D3B91 45%, #1e4fba 100%)'
+        }} />
+        {/* Cobalt radial glow – top-right */}
         <div style={{
           position: 'absolute',
-          top: '-10%', left: '40%', width: '80%', height: '80%',
-          background: 'radial-gradient(circle, rgba(37, 99, 235, 0.4), transparent 60%)',
+          top: '-15%', right: '-5%', width: '70%', height: '80%',
+          background: 'radial-gradient(circle, rgba(37, 99, 235, 0.45), transparent 60%)',
           filter: 'blur(100px)',
         }} />
-
+        {/* Lime accent glow – bottom-left */}
+        <div style={{
+          position: 'absolute',
+          bottom: '-10%', left: '-5%', width: '50%', height: '60%',
+          background: 'radial-gradient(circle, rgba(198, 224, 61, 0.08), transparent 65%)',
+          filter: 'blur(80px)',
+        }} />
+        {/* Diagonal line pattern */}
+        <div className="bg-layer bg-diagonal-lines" />
+        {/* Noise texture */}
+        <div className="bg-layer bg-noise-dark" />
       </div>
 
       {/* Main Content - 3-column grid, ALL vertically centered */}
@@ -85,9 +102,7 @@ export default function Hero() {
           <p className="hero-desc">
             Bridging cafe passion and explosive profitability through reality-tested systems.
           </p>
-          <a href="#services" className="hero-cta">
-            Discover Framework
-          </a>
+          <AnimatedButton href="#services" text1="Discover Framework" text2="Discovering..." />
         </motion.div>
       </div>
 
@@ -101,7 +116,7 @@ export default function Hero() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background-color: var(--color-primary);
+          background-color: #111f5c;
           color: white;
           overflow: hidden;
           padding: 80px 2rem 0;
