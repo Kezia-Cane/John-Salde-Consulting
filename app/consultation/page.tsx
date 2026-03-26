@@ -261,9 +261,7 @@ export default function ConsultationPage() {
                                     check_circle
                                 </span>
                                 <h2 style={{ color: "#1D3B91", fontSize: "2.5rem", fontWeight: 700, marginBottom: "1rem" }}>Request Received</h2>
-                                <p style={{ color: "#4A5568", fontSize: "1.1rem" }}>
-                                    Thank you, {form.name}! I will review your message and reach out within 24 hours.
-                                </p>
+
                                 <p className="text-body-lg" style={{ maxWidth: "420px", margin: "0 auto 2rem" }}>
                                     Thank you, {form.name}! I will review your message and contact you within 24 hours to schedule our call.
                                 </p>

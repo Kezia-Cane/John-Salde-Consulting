@@ -2,39 +2,39 @@ import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
 export async function POST(req: NextRequest) {
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-        console.error("[API /contact] RESEND_API_KEY is not set.");
-        return NextResponse.json({ error: "Email service is not configured." }, { status: 500 });
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error("[API /contact] RESEND_API_KEY is not set.");
+    return NextResponse.json({ error: "Email service is not configured." }, { status: 500 });
+  }
+
+  const resend = new Resend(apiKey);
+
+  try {
+    const body = await req.json();
+    const { name, businessType, email, phone, datetime, message } = body;
+
+    if (!name || !email || !phone || !datetime || !message) {
+      return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
     }
 
-    const resend = new Resend(apiKey);
+    const preferredDate = (() => {
+      try {
+        return new Date(datetime).toLocaleString("en-US", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          timeZone: "Asia/Manila",
+        });
+      } catch {
+        return datetime;
+      }
+    })();
 
-    try {
-        const body = await req.json();
-        const { name, businessType, email, phone, datetime, message } = body;
-
-        if (!name || !email || !phone || !datetime || !message) {
-            return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
-        }
-
-        const preferredDate = (() => {
-            try {
-                return new Date(datetime).toLocaleString("en-US", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    timeZone: "Asia/Manila",
-                });
-            } catch {
-                return datetime;
-            }
-        })();
-
-        const htmlBody = `
+    const htmlBody = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,25 +97,25 @@ export async function POST(req: NextRequest) {
 </html>
         `;
 
-        const result = await resend.emails.send({
-            from: "John Salde Consulting <notifications@john-salde.com>",
-            to: ["thejohnsalde@gmail.com", "keziacane.dev@gmail.com"],
-            subject: "Potential Client Submission",
-            replyTo: email,
-            html: htmlBody,
-        });
+    const result = await resend.emails.send({
+      from: "John Salde Consulting <notifications@john-salde.com>",
+      to: ["thejohnsalde@gmail.com", "keziacane.dev@gmail.com", "melmaquilingva@gmail.com"],
+      subject: "Potential Client Submission",
+      replyTo: email,
+      html: htmlBody,
+    });
 
-        console.log("[Resend Result]", JSON.stringify(result));
+    console.log("[Resend Result]", JSON.stringify(result));
 
-        if (result.error) {
-            console.error("[Resend Error]", result.error);
-            return NextResponse.json({ error: `Failed to send email: ${result.error.message}` }, { status: 500 });
-        }
-
-        return NextResponse.json({ success: true });
-    } catch (err: unknown) {
-        const msg = err instanceof Error ? err.message : String(err);
-        console.error("[API /contact Error]", msg);
-        return NextResponse.json({ error: `Internal server error: ${msg}` }, { status: 500 });
+    if (result.error) {
+      console.error("[Resend Error]", result.error);
+      return NextResponse.json({ error: `Failed to send email: ${result.error.message}` }, { status: 500 });
     }
+
+    return NextResponse.json({ success: true });
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error("[API /contact Error]", msg);
+    return NextResponse.json({ error: `Internal server error: ${msg}` }, { status: 500 });
+  }
 }
