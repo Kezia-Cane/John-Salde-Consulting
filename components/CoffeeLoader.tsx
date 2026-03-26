@@ -1,7 +1,6 @@
 "use client";
 
-import { DotLottiePlayer } from "@dotlottie/react-player";
-import "@dotlottie/react-player/dist/index.css";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 interface CoffeeLoaderProps {
     size?: number;
@@ -12,7 +11,7 @@ export default function CoffeeLoader({ size = 200, className = "" }: CoffeeLoade
     return (
         <div className={`flex flex-col items-center justify-center ${className}`}>
             <div style={{ width: size, height: size }}>
-                <DotLottiePlayer
+                <DotLottieReact
                     src="/images/Coffee Beans Loader.lottie"
                     autoplay
                     loop
