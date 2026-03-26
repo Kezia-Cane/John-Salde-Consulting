@@ -46,6 +46,7 @@ export default function ConsultationPage() {
         phone: "",
         datetime: "",
         message: "",
+        _honeypot: "",
     });
     const [errors, setErrors] = useState<Partial<typeof form>>({});
 
@@ -267,13 +268,26 @@ export default function ConsultationPage() {
                                 </p>
                                 <button
                                     className="uiverse-button"
-                                    onClick={() => { setSubmitted(false); setForm({ name: "", businessType: BUSINESS_TYPES[0], email: "", phone: "", datetime: "", message: "" }); }}
+                                    onClick={() => { setSubmitted(false); setForm({ name: "", businessType: BUSINESS_TYPES[0], email: "", phone: "", datetime: "", message: "", _honeypot: "" }); }}
                                 >
                                     Submit Another
                                 </button>
                             </div>
                         ) : (
                             <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+                                {/* HONEYPOT - Visually hidden to humans, but bots will fill it */}
+                                <div style={{ display: "none" }} aria-hidden="true">
+                                    <label htmlFor="_honeypot">If you are a human, leave this blank</label>
+                                    <input
+                                        type="text"
+                                        id="_honeypot"
+                                        name="_honeypot"
+                                        value={form._honeypot}
+                                        onChange={(e) => handleChange("_honeypot", e.target.value)}
+                                        tabIndex={-1}
+                                        autoComplete="off"
+                                    />
+                                </div>
                                 <div className="grid gap-8 md:grid-cols-2">
                                     {/* Name */}
                                     <div>

@@ -12,7 +12,23 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const { name, businessType, email, phone, datetime, message } = body;
+    const { name, businessType, email, phone, datetime, message, _honeypot } = body;
+
+    // --- 🛑 LAYER 1: Anti-Spam Honeypot ---
+    // If a bot fills out this hidden field, we just pretend it succeeded and drop the request.
+    if (_honeypot) {
+      console.log("[Honeypot Triggered] Blocked bot submission.");
+      return NextResponse.json({ success: true });
+    }
+
+    // --- 📍 LOCATION TRACKING (via Vercel Headers) ---
+    const ip = req.headers.get("x-forwarded-for") || "Unknown IP";
+    const city = req.headers.get("x-vercel-ip-city") || "Unknown City";
+    const region = req.headers.get("x-vercel-ip-country-region") || "";
+    const country = req.headers.get("x-vercel-ip-country") || "Unknown Country";
+    const locationString = `${city}${region ? `, ${region}` : ""}, ${country}`;
+
+    console.log(`[Form Submission] IP: ${ip} | Location: ${locationString}`);
 
     if (!name || !email || !phone || !datetime || !message) {
       return NextResponse.json({ error: "Missing required fields." }, { status: 400 });
@@ -89,6 +105,14 @@ export async function POST(req: NextRequest) {
       <div class="field">
         <label>What They Need Help With</label>
         <div class="value message">${message.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div>
+      </div>
+
+      <div class="field" style="background:#f1f5f9; padding:16px; border-radius:8px; border:1px solid #cbd5e1; margin-top: 32px;">
+        <label style="color:#475569; font-size:10px; margin-bottom: 8px;">Security &amp; Location Info</label>
+        <div style="font-size:13px; color:#334155; line-height:1.5;">
+          <strong>IP Address:</strong> ${ip}<br/>
+          <strong>Location:</strong> ${locationString}
+        </div>
       </div>
     </div>
     <div class="footer">
