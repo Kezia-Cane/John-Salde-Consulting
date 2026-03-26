@@ -15,6 +15,7 @@ export default function CoffeeLoader({ size = 200, className = "" }: CoffeeLoade
                     src="/images/Coffee Beans Loader.lottie"
                     autoplay
                     loop
+                    speed={2}
                 />
             </div>
         </div>
