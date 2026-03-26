@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
   <style>
     body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
     .wrapper { max-width: 620px; margin: 40px auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-    .header { background: linear-gradient(135deg, #1D3B91 0%, #0F2560 100%); padding: 36px 40px; display: flex; align-items: center; gap: 20px; }
+    .header { background: linear-gradient(135deg, #1D3B91 0%, #0F2560 100%); padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
     .header h1 { color: white; margin: 0; font-size: 22px; font-weight: 700; letter-spacing: 0.02em; }
     .header p { color: rgba(255,255,255,0.7); margin: 6px 0 0; font-size: 13px; }
     .header p a { color: #C6E03D; text-decoration: none; font-weight: 600; }
@@ -76,12 +76,12 @@ export async function POST(req: NextRequest) {
 <body>
   <div class="wrapper">
     <div class="header">
-      <img src="https://john-salde.com/images/js-profile.png" alt="John Salde" style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #C6E03D; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.2);" />
       <div>
         <h1>New Consultation Request</h1>
         <p>Received via <a href="https://john-salde.com">john-salde.com</a></p>
         <span class="badge">Potential Client Submission</span>
       </div>
+      <img src="https://john-salde.com/images/js-profile.png" alt="John Salde" style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #C6E03D; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.2);" />
     </div>
     <div class="body">
       <div class="field">
