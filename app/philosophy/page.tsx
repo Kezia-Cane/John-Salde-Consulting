@@ -100,10 +100,10 @@ export default function PhilosophyPage() {
                             maxWidth: "320px",
                         }}
                     >
-                        <span className="material-symbols-outlined" style={{ fontSize: "2.5rem", color: "var(--color-accent)", marginBottom: "0.75rem", display: "block" }}>architecture</span>
-                        <h3 style={{ color: "white", marginBottom: "0.5rem", fontSize: "1.1rem" }}>Rigorous Logic</h3>
+                        <span className="material-symbols-outlined" style={{ fontSize: "2.5rem", color: "var(--color-accent)", marginBottom: "0.75rem", display: "block" }}>lightbulb</span>
+                        <h3 style={{ color: "white", marginBottom: "0.5rem", fontSize: "1.1rem" }}>Smart Strategy</h3>
                         <p className="text-body-md" style={{ color: "rgba(255,255,255,0.8)" }}>
-                            Structural integrity applied to business modeling and performance scaling.
+                            Simple, proven steps to help you build your business and grow your profits.
                         </p>
                     </div>
                 </div>
@@ -128,10 +128,10 @@ export default function PhilosophyPage() {
                             <h2 className="text-h2" style={{ color: "var(--color-primary)" }}>The Mission</h2>
                             <div className="accent-bar" />
                             <p className="text-body-lg" style={{ color: "#334155", fontWeight: 500 }}>
-                                To empower coffee boutique owners and hospitality leaders with the analytical framework and strategic mentorship required to transform creative passion into an enduring, profitable legacy.
+                                To empower cafe owners and business leaders with the clear strategy and guidance needed to turn your passion for coffee into a growing, profitable business.
                             </p>
-                            <p className="text-body-lg" style={{ color: "rgba(255,255,255,0.75)" }}>
-                                I don&apos;t just solve problems - I engineer systems. My approach treats every business variable as a structural component, ensuring that growth is not just rapid, but resilient against market volatility.
+                            <p className="text-body-lg" style={{ color: "#334155" }}>
+                                I don't just solve problems - I engineer systems. My approach treats every business variable as a structural component, ensuring that growth is not just rapid, but resilient against market volatility.
                             </p>
                         </div>
 
@@ -162,20 +162,29 @@ export default function PhilosophyPage() {
                             </span>
                             <h2 className="text-h2" style={{ color: "var(--color-primary)", marginBottom: "2rem" }}>The Vision</h2>
                             <p className="text-body-lg" style={{ color: "#334155", fontWeight: 500, marginBottom: "1.25rem" }}>
-                                Redefining the standard of consulting by bridging the gap between rigorous fiscal discipline and the intangible beauty of the boutique experience.
+                                Redefining consulting by connecting smart financial habits with a great cafe and coffee experience.
                             </p>
                             <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginTop: "1.5rem", paddingTop: "1.5rem", borderTop: "1px solid #e5eeff" }}>
                                 <div style={{ display: "flex" }}>
-                                    {["#C6E03D", "#1D3B91", "#c6d2ff"].map((c, i) => (
-                                        <div
+                                    {[
+                                        "/images/client.png",
+                                        "/images/client2.png",
+                                        "/images/clent3.png"
+                                    ].map((src, i) => (
+                                        <img
                                             key={i}
+                                            src={src}
+                                            alt={`Client ${i + 1}`}
                                             style={{
                                                 width: "2.25rem",
                                                 height: "2.25rem",
                                                 borderRadius: "50%",
-                                                backgroundColor: c,
+                                                objectFit: "contain",
+                                                backgroundColor: "#ffffff",
                                                 border: "2px solid #ffffff",
                                                 marginLeft: i > 0 ? "-0.6rem" : "0",
+                                                position: "relative",
+                                                zIndex: 3 - i,
                                             }}
                                         />
                                     ))}
@@ -203,17 +212,24 @@ export default function PhilosophyPage() {
                         </p>
                     </div>
 
+                    <style dangerouslySetInnerHTML={{
+                        __html: `
+                            .bento-span-2 { grid-column: span 1; }
+                            @media (min-width: 768px) {
+                                .bento-span-2 { grid-column: span 2; }
+                            }
+                        `
+                    }} />
                     <div className="grid gap-8" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
                         {/* Value 1 - spans 2 cols on md */}
                         <div
-                            className="bento-card"
+                            className="bento-card bento-span-2"
                             style={{
                                 background: "#e5eeff",
                                 padding: "3rem",
                                 display: "flex",
                                 flexDirection: "column",
                                 justifyContent: "space-between",
-                                gridColumn: "span 2",
                             }}
                         >
                             <div>
@@ -247,18 +263,18 @@ export default function PhilosophyPage() {
                         >
                             <span className="material-symbols-outlined" style={{ fontSize: "3rem", color: "var(--color-accent)", marginBottom: "1.5rem", display: "block" }}>precision_manufacturing</span>
                             <h3 style={{ color: "white", marginBottom: "0.75rem", fontSize: "1.25rem" }}>Operational Precision</h3>
-                            <p className="text-body-md" style={{ color: "var(--color-text-muted)" }}>
+                            <p className="text-body-md" style={{ color: "rgba(255,255,255,0.8)" }}>
                                 Small details dictate major outcomes. I obsess over the micro-interactions and backend efficiencies that define a premium brand&apos;s reputation.
                             </p>
                         </div>
 
-                        {/* Value 4 - spans 2 cols on md */}
+                        {/* Value 4 - spans full width */}
                         <div
                             className="bento-card"
                             style={{
                                 background: "#dfe9fa",
                                 padding: "3rem",
-                                gridColumn: "span 2",
+                                gridColumn: "1 / -1",
                             }}
                         >
                             <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
@@ -324,11 +340,11 @@ export default function PhilosophyPage() {
                         </div>
 
                         <div style={{ position: 'relative', zIndex: 2 }}>
-                            <h2 className="text-h2" style={{ color: "white", marginBottom: "1rem" }}>Ready to build your architectural legacy?</h2>
+                            <h2 className="text-h2" style={{ color: "white", marginBottom: "1rem" }}>Ready to build your business legacy?</h2>
                             <p className="text-body-lg" style={{ color: "rgba(255,255,255,0.7)", maxWidth: "480px", margin: "0 auto 2.5rem" }}>
-                                Let&apos;s apply structural rigor to your business model and unlock your next phase of growth.
+                                Let&apos;s build a strong, clear plan for your business and unlock your next phase of growth.
                             </p>
-                            <AnimatedButton href="/consultation" text1="Discovery Audit" text2="Booking..." />
+                            <AnimatedButton href="/consultation" text1="Discovery Audit" />
                         </div>
                     </div>
                 </div>

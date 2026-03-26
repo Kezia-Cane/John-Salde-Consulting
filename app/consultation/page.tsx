@@ -16,26 +16,28 @@ const BUSINESS_TYPES = [
 const INTAKE_STEPS = [
     {
         icon: "analytics",
-        title: "Initial Audit",
-        desc: "I review your current business metrics to prepare a data-driven discussion.",
+        title: "Business Check-Up",
+        desc: "I look at your current numbers to understand your business.",
         filled: true,
     },
     {
         icon: "calendar_today",
-        title: "45-Minute Discovery",
-        desc: "A deep-dive call to identify core levers for growth and profitability.",
+        title: "45-Minute Call",
+        desc: "We discuss the best ways to improve your sales and fix any problems.",
         filled: false,
     },
     {
         icon: "map",
-        title: "Actionable Blueprint",
-        desc: "Receive a post-consultation brief outlining the mentorship roadmap.",
+        title: "Clear Step-by-Step Plan",
+        desc: "You get a simple guide on exactly what to do next to grow your cafe.",
         filled: false,
     },
 ];
 
 export default function ConsultationPage() {
     const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [serverError, setServerError] = useState("");
     const [form, setForm] = useState({
         name: "",
         businessType: BUSINESS_TYPES[0],
@@ -53,11 +55,11 @@ export default function ConsultationPage() {
             e.email = "A valid email is required.";
         if (!form.phone.trim()) e.phone = "Phone number is required.";
         if (!form.datetime) e.datetime = "Please select a preferred date & time.";
-        if (!form.message.trim()) e.message = "Please describe your objectives.";
+        if (!form.message.trim()) e.message = "Please tell me what you need help with.";
         return e;
     }
 
-    function handleSubmit(e: FormEvent) {
+    async function handleSubmit(e: FormEvent) {
         e.preventDefault();
         const errs = validate();
         if (Object.keys(errs).length) {
@@ -65,7 +67,25 @@ export default function ConsultationPage() {
             return;
         }
         setErrors({});
-        setSubmitted(true);
+        setServerError("");
+        setLoading(true);
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(form),
+            });
+            const data = await res.json();
+            if (!res.ok || data.error) {
+                setServerError(data.error || "Something went wrong. Please try again.");
+            } else {
+                setSubmitted(true);
+            }
+        } catch {
+            setServerError("Network error. Please check your connection and try again.");
+        } finally {
+            setLoading(false);
+        }
     }
 
     function handleChange(field: keyof typeof form, value: string) {
@@ -74,57 +94,175 @@ export default function ConsultationPage() {
     }
 
     return (
-        <main style={{ backgroundColor: "#f8f9ff", position: "relative", overflow: "hidden" }}>
+        <main className="page-container-glass" style={{ position: "relative", overflow: "hidden" }}>
             <Navigation />
 
-            {/* ── Premium Background for entire page ── */}
-            <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
-                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '800px', background: 'linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%)' }} />
-                <div className="bg-layer bg-line-grid" style={{ opacity: 0.4 }} />
-                <div style={{ position: 'absolute', top: '10%', left: '-10%', width: '50%', height: '600px', background: 'radial-gradient(circle, rgba(37,99,235,0.03), transparent 70%)', filter: 'blur(80px)' }} />
-                <div style={{ position: 'absolute', top: '30%', right: '-15%', width: '60%', height: '800px', background: 'radial-gradient(circle, rgba(198,224,61,0.02), transparent 70%)', filter: 'blur(80px)' }} />
+            {/* ── Premium Architectural Grid Background ── */}
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                .premium-grid {
+                    position: absolute;
+                    inset: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-size: 60px 60px;
+                    background-image: 
+                        linear-gradient(to right, rgba(29, 59, 145, 0.08) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(29, 59, 145, 0.08) 1px, transparent 1px);
+                    z-index: 1;
+                    /* Fading the grid out smoothly towards the bottom of the hero */
+                    mask-image: linear-gradient(to bottom, black 20%, transparent 60%);
+                    -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 60%);
+                }
+                .page-container-glass {
+                    background-color: #f8f9ff;
+                }
+            `}} />
+            <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden' }}>
+                <div className="premium-grid" />
             </div>
 
             <div className="container page-hero" style={{ paddingBottom: "5rem", position: "relative", zIndex: 2 }}>
-                {/* ── Page Header ── */}
-                <div style={{ maxWidth: "640px", marginBottom: "4rem" }}>
-                    <span className="page-label" style={{ color: "var(--color-secondary)" }}>Strategic Partnership</span>
-                    <h1
-                        className="text-display-md"
-                        style={{ color: "var(--color-primary)", lineHeight: 1.1, marginBottom: "1.5rem" }}
-                    >
-                        Architectural growth for your{" "}
-                        <span className="lora-quote" style={{ color: "var(--color-secondary)", fontWeight: 400, fontSize: "inherit" }}>
-                            hospitality legacy.
-                        </span>
-                    </h1>
-                    <p className="text-body-lg" style={{ maxWidth: "580px" }}>
-                        My consultation process is designed for clarity. I move beyond generic advice into rigorous financial analysis and operational strategy. Let&apos;s define the blueprint for your expansion.
-                    </p>
+
+                {/* ── Page Hero 2-Column Layout ── */}
+                <div className="grid gap-12 md:grid-cols-2" style={{ marginBottom: "5rem", alignItems: "start" }}>
+
+                    {/* Left: Header Text */}
+                    <div style={{ maxWidth: "600px" }}>
+                        <span className="page-label" style={{ color: "var(--color-secondary)" }}>Let's Work Together</span>
+                        <h1
+                            className="text-display-md"
+                            style={{ color: "var(--color-primary)", lineHeight: 1.1, marginBottom: "1.5rem" }}
+                        >
+                            Let's build a stronger, more profitable {" "}
+                            <span className="lora-quote" style={{ color: "var(--color-secondary)", fontWeight: 400, fontSize: "inherit" }}>
+                                cafe business.
+                            </span>
+                        </h1>
+                        <p className="text-body-lg" style={{ maxWidth: "580px", color: "var(--color-text-muted)" }}>
+                            My consultation process is simple and easy to follow. I don't just give general advice, I look closely at your numbers and daily operations to help you grow your profits.
+                        </p>
+                    </div>
+
+                    {/* Right: Bento Grid of Cards */}
+                    <div className="grid gap-6 md:grid-cols-2">
+                        {/* Quote Card (Spans Full Width of this sub-grid) */}
+                        <div className="bento-card md:col-span-2" style={{ background: "#e5eeff", padding: "2rem", borderLeft: "4px solid var(--color-accent)" }}>
+                            <p className="lora-quote" style={{ fontSize: "1.15rem", color: "var(--color-primary)", marginBottom: "0.75rem" }}>
+                                &ldquo;Profitability is not a happy accident; it is the result of strong operations and good guidance.&rdquo;
+                            </p>
+                            <span style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-primary)" }}>
+                                - John Salde
+                            </span>
+                        </div>
+
+                        {/* Average Client Growth */}
+                        <div className="bento-card" style={{ background: "#c6d2ff", padding: "2rem", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                            <span className="page-label" style={{ color: "#1D3B91", opacity: 0.7, marginBottom: "0.5rem" }}>Average Client Growth</span>
+                            <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "2.5rem", color: "#1D3B91", lineHeight: 1, marginBottom: "0.5rem" }}>+34%</div>
+                            <p className="lora-quote" style={{ fontSize: "0.85rem", color: "rgba(29,59,145,0.7)", margin: 0 }}>
+                                Yearly revenue increase
+                            </p>
+                        </div>
+
+                        {/* Intake Process */}
+                        <div className="bento-card" style={{ background: "#dfe9fa", padding: "1.5rem" }}>
+                            <h3 style={{ color: "var(--color-primary)", marginBottom: "1.25rem", fontSize: "1.1rem" }}>How We Start</h3>
+                            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                                {INTAKE_STEPS.map((step) => (
+                                    <div key={step.title} style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
+                                        <span className="material-symbols-outlined" style={{ color: "var(--color-primary)", fontSize: "1.25rem", marginTop: "2px" }}>
+                                            {step.icon}
+                                        </span>
+                                        <div>
+                                            <h4 style={{ color: "var(--color-primary)", fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "0.9rem", marginBottom: "0.2rem" }}>{step.title}</h4>
+                                            <p className="text-body-md" style={{ fontSize: "0.8rem", margin: 0 }}>{step.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                {/* ── Two-Column Layout ── */}
-                <div className="grid gap-16" style={{ gridTemplateColumns: "1fr", alignItems: "start" }}>
-
-                    {/* ── Form ── */}
-                    <div
-                        style={{
-                            background: "#ffffff",
-                            borderRadius: "var(--radius)",
-                            padding: "3rem",
-                            boxShadow: "0 20px 48px rgba(29,59,145,0.07)",
-                            outline: "1px solid rgba(198,200,175,0.12)",
-                        }}
-                    >
+                {/* ── Form Section ── */}
+                <style dangerouslySetInnerHTML={{
+                    __html: `
+                    .uiverse-container {
+                        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(198, 224, 61, 0.15) 100%);
+                        border-radius: 40px;
+                        padding: 3rem;
+                        border: 5px solid #ffffff;
+                        box-shadow: rgba(198, 224, 61, 0.25) 0px 30px 40px -15px;
+                    }
+                    .uiverse-input {
+                        width: 100%;
+                        background: white;
+                        border: none;
+                        padding: 15px 20px;
+                        border-radius: 20px;
+                        box-shadow: rgba(29, 59, 145, 0.04) 0px 10px 10px -5px;
+                        border: 2px solid transparent;
+                        font-family: var(--font-body);
+                        color: var(--color-primary);
+                        font-size: 1rem;
+                        transition: border-color 0.2s ease;
+                    }
+                    .uiverse-input::placeholder {
+                        color: #a0aec0;
+                    }
+                    .uiverse-input:focus {
+                        outline: none;
+                        border-color: var(--color-accent);
+                    }
+                    .uiverse-button {
+                        width: 100%;
+                        font-weight: 700;
+                        background: linear-gradient(45deg, var(--color-accent) 0%, #d4ec4f 100%);
+                        color: var(--color-primary);
+                        padding: 18px;
+                        border-radius: 20px;
+                        box-shadow: rgba(198, 224, 61, 0.5) 0px 20px 10px -15px;
+                        border: none;
+                        font-family: var(--font-display);
+                        font-size: 1rem;
+                        letter-spacing: 0.06em;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 0.5rem;
+                        cursor: pointer;
+                        transition: all 0.2s ease-in-out;
+                    }
+                    .uiverse-button:hover {
+                        transform: scale(1.02);
+                        box-shadow: rgba(198, 224, 61, 0.6) 0px 23px 10px -20px;
+                    }
+                    .uiverse-button:active {
+                        transform: scale(0.98);
+                        box-shadow: rgba(198, 224, 61, 0.5) 0px 15px 10px -10px;
+                    }
+                    .uiverse-label {
+                        display: block;
+                        font-family: var(--font-display);
+                        font-weight: 600;
+                        color: var(--color-primary);
+                        font-size: 0.85rem;
+                        margin-bottom: 0.5rem;
+                        margin-left: 0.5rem;
+                    }
+                `}} />
+                <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+                    <div className="uiverse-container">
                         {submitted ? (
                             <div style={{ textAlign: "center", padding: "3rem 0" }}>
                                 <span className="material-symbols-outlined" style={{ fontSize: "4rem", color: "var(--color-accent)", marginBottom: "1.5rem", display: "block" }}>check_circle</span>
                                 <h2 className="text-h2" style={{ color: "var(--color-primary)", marginBottom: "1rem" }}>Request Received</h2>
                                 <p className="text-body-lg" style={{ maxWidth: "420px", margin: "0 auto 2rem" }}>
-                                    Thank you, {form.name}! I&apos;ll review your details and reach out within 24 hours to confirm your consultation.
+                                    Thank you, {form.name}! I will review your message and contact you within 24 hours to schedule our call.
                                 </p>
                                 <button
-                                    className="btn btn-secondary"
+                                    className="uiverse-button"
                                     onClick={() => { setSubmitted(false); setForm({ name: "", businessType: BUSINESS_TYPES[0], email: "", phone: "", datetime: "", message: "" }); }}
                                 >
                                     Submit Another
@@ -135,11 +273,11 @@ export default function ConsultationPage() {
                                 <div className="grid gap-8 md:grid-cols-2">
                                     {/* Name */}
                                     <div>
-                                        <label htmlFor="cf-name" className="form-label">Full Name</label>
+                                        <label htmlFor="cf-name" className="uiverse-label">Full Name</label>
                                         <input
                                             id="cf-name"
                                             type="text"
-                                            className="form-field"
+                                            className="uiverse-input"
                                             placeholder="Maria Santos"
                                             value={form.name}
                                             onChange={(e) => handleChange("name", e.target.value)}
@@ -152,10 +290,10 @@ export default function ConsultationPage() {
 
                                     {/* Business Type */}
                                     <div>
-                                        <label htmlFor="cf-btype" className="form-label">Business Type</label>
+                                        <label htmlFor="cf-btype" className="uiverse-label">Business Type</label>
                                         <select
                                             id="cf-btype"
-                                            className="form-field"
+                                            className="uiverse-input"
                                             value={form.businessType}
                                             onChange={(e) => handleChange("businessType", e.target.value)}
                                         >
@@ -167,11 +305,11 @@ export default function ConsultationPage() {
                                 <div className="grid gap-8 md:grid-cols-2">
                                     {/* Email */}
                                     <div>
-                                        <label htmlFor="cf-email" className="form-label">Email Address</label>
+                                        <label htmlFor="cf-email" className="uiverse-label">Email Address</label>
                                         <input
                                             id="cf-email"
                                             type="email"
-                                            className="form-field"
+                                            className="uiverse-input"
                                             placeholder="you@business.com"
                                             value={form.email}
                                             onChange={(e) => handleChange("email", e.target.value)}
@@ -184,11 +322,11 @@ export default function ConsultationPage() {
 
                                     {/* Phone */}
                                     <div>
-                                        <label htmlFor="cf-phone" className="form-label">Phone Number</label>
+                                        <label htmlFor="cf-phone" className="uiverse-label">Phone Number</label>
                                         <input
                                             id="cf-phone"
                                             type="tel"
-                                            className="form-field"
+                                            className="uiverse-input"
                                             placeholder="+63 912 345 6789"
                                             value={form.phone}
                                             onChange={(e) => handleChange("phone", e.target.value)}
@@ -202,11 +340,11 @@ export default function ConsultationPage() {
 
                                 {/* Preferred Date/Time */}
                                 <div>
-                                    <label htmlFor="cf-datetime" className="form-label">Preferred Consultation Date &amp; Time</label>
+                                    <label htmlFor="cf-datetime" className="uiverse-label">Preferred Date & Time for Call</label>
                                     <input
                                         id="cf-datetime"
                                         type="datetime-local"
-                                        className="form-field"
+                                        className="uiverse-input"
                                         value={form.datetime}
                                         onChange={(e) => handleChange("datetime", e.target.value)}
                                         aria-required="true"
@@ -218,12 +356,12 @@ export default function ConsultationPage() {
 
                                 {/* Message */}
                                 <div>
-                                    <label htmlFor="cf-msg" className="form-label">Strategic Objectives</label>
+                                    <label htmlFor="cf-msg" className="uiverse-label">What do you need help with?</label>
                                     <textarea
                                         id="cf-msg"
-                                        className="form-field"
+                                        className="uiverse-input"
                                         rows={4}
-                                        placeholder="Describe your current bottleneck or growth objectives..."
+                                        placeholder="Tell me about your current challenges or goals..."
                                         value={form.message}
                                         onChange={(e) => handleChange("message", e.target.value)}
                                         aria-required="true"
@@ -234,123 +372,30 @@ export default function ConsultationPage() {
                                     {errors.message && <span id="cf-msg-err" style={{ color: "#ba1a1a", fontSize: "0.75rem", marginTop: "0.25rem", display: "block" }}>{errors.message}</span>}
                                 </div>
 
+                                {serverError && (
+                                    <div style={{ background: "#fff0f0", border: "1px solid #ba1a1a", borderRadius: "12px", padding: "1rem 1.25rem", color: "#ba1a1a", fontSize: "0.9rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                                        <span className="material-symbols-outlined" style={{ fontSize: "1.1rem" }}>error</span>
+                                        {serverError}
+                                    </div>
+                                )}
+
                                 {/* Submit */}
-                                <button
-                                    type="submit"
-                                    style={{
-                                        width: "100%",
-                                        background: "var(--color-accent)",
-                                        color: "var(--color-primary)",
-                                        padding: "1.1rem",
-                                        borderRadius: "var(--radius)",
-                                        fontFamily: "var(--font-display)",
-                                        fontWeight: 700,
-                                        fontSize: "1rem",
-                                        letterSpacing: "0.06em",
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                        gap: "0.5rem",
-                                        cursor: "pointer",
-                                        border: "none",
-                                        transition: "background 0.2s ease, transform 0.15s ease",
-                                    }}
-                                    onMouseEnter={(e) => (e.currentTarget.style.background = "#d4ec4f")}
-                                    onMouseLeave={(e) => (e.currentTarget.style.background = "var(--color-accent)")}
-                                >
-                                    Submit Consultation Request
-                                    <span className="material-symbols-outlined" style={{ fontSize: "1.1rem" }}>arrow_forward</span>
+                                <button type="submit" className="uiverse-button" disabled={loading} style={{ opacity: loading ? 0.75 : 1 }}>
+                                    {loading ? (
+                                        <>
+                                            <span style={{ width: 18, height: 18, border: "2.5px solid rgba(29,59,145,0.3)", borderTopColor: "#1D3B91", borderRadius: "50%", display: "inline-block", animation: "spin 0.7s linear infinite" }} />
+                                            Sending...
+                                        </>
+                                    ) : (
+                                        <>
+                                            Send Request
+                                            <span className="material-symbols-outlined" style={{ fontSize: "1.1rem" }}>arrow_forward</span>
+                                        </>
+                                    )}
                                 </button>
+                                <style dangerouslySetInnerHTML={{ __html: `@keyframes spin { to { transform: rotate(360deg); } }` }} />
                             </form>
                         )}
-                    </div>
-
-                    {/* ── Sidebar ── */}
-                    <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-                        {/* Lora Quote */}
-                        <div style={{ paddingLeft: "1.5rem", borderLeft: "3px solid var(--color-accent)" }}>
-                            <p className="lora-quote" style={{ fontSize: "1.2rem", color: "var(--color-primary)", marginBottom: "0.75rem" }}>
-                                &ldquo;Profitability is not a happy accident; it is a calculated architectural outcome of disciplined operations and visionary mentorship.&rdquo;
-                            </p>
-                            <span style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "0.7rem", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-text-muted)" }}>
-                                - John Salde
-                            </span>
-                        </div>
-
-                        {/* Intake Process Steps */}
-                        <div
-                            style={{
-                                background: "#dfe9fa",
-                                borderRadius: "var(--radius)",
-                                padding: "2.5rem",
-                            }}
-                        >
-                            <h3 style={{ color: "var(--color-primary)", marginBottom: "2rem", fontSize: "1.25rem" }}>The Intake Process</h3>
-                            <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-                                {INTAKE_STEPS.map((step) => (
-                                    <div key={step.title} style={{ display: "flex", gap: "1.25rem" }}>
-                                        <div
-                                            style={{
-                                                width: "2.75rem",
-                                                height: "2.75rem",
-                                                borderRadius: "50%",
-                                                background: step.filled ? "var(--color-accent)" : "white",
-                                                border: step.filled ? "none" : "1px solid rgba(198,200,175,0.3)",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                                flexShrink: 0,
-                                            }}
-                                        >
-                                            <span
-                                                className="material-symbols-outlined"
-                                                style={{ color: step.filled ? "var(--color-primary)" : "var(--color-primary)", fontSize: "1.1rem" }}
-                                            >
-                                                {step.icon}
-                                            </span>
-                                        </div>
-                                        <div>
-                                            <h4 style={{ color: "var(--color-primary)", fontFamily: "var(--font-display)", fontWeight: 600, marginBottom: "0.25rem" }}>{step.title}</h4>
-                                            <p className="text-body-md">{step.desc}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Metric Card */}
-                        <div
-                            style={{
-                                background: "#c6d2ff",
-                                borderRadius: "var(--radius)",
-                                padding: "2rem",
-                                display: "flex",
-                                justifyContent: "space-between",
-                                alignItems: "center",
-                                flexWrap: "wrap",
-                                gap: "1rem",
-                            }}
-                        >
-                            <div>
-                                <span className="page-label" style={{ color: "#1D3B91", opacity: 0.7 }}>Average Client Growth</span>
-                                <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: "2.5rem", color: "#1D3B91", lineHeight: 1 }}>+34%</div>
-                            </div>
-                            <p className="lora-quote" style={{ fontSize: "0.82rem", color: "rgba(29,59,145,0.65)", textAlign: "right", maxWidth: "160px" }}>
-                                Year-over-year revenue increase (Retail / Coffee)
-                            </p>
-                        </div>
-
-                        {/* Contact info */}
-                        <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                            <p className="page-label" style={{ marginBottom: 0 }}>Prefer to reach out directly?</p>
-                            <a
-                                href="mailto:thejohnsalde@gmail.com"
-                                style={{ fontFamily: "var(--font-body)", color: "var(--color-secondary)", textDecoration: "underline", fontSize: "0.95rem" }}
-                            >
-                                thejohnsalde@gmail.com
-                            </a>
-                            <p className="text-body-md">Mindanao, Philippines</p>
-                        </div>
                     </div>
                 </div>
             </div>

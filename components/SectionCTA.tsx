@@ -44,7 +44,7 @@ export default function SectionCTA() {
 
                     <SectionReveal delay={400}>
                         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '1.5rem' }}>
-                            <AnimatedButton href="mailto:hello@johnsalde.com" text1="Discovery Session" text2="Booking..." />
+                            <AnimatedButton href="mailto:hello@johnsalde.com" text1="Discovery Session" />
                         </div>
                         <p className="text-xs" style={{ color: 'rgba(255,255,255,0.5)', marginTop: '2rem', fontFamily: 'var(--font-accent)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                             Strictly limited client capacity per quarter

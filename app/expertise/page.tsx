@@ -78,7 +78,7 @@ export default function ExpertisePage() {
             </section>
 
             {/* ── Expertise Bento Grid ── */}
-            <section style={{ position: "relative", overflow: "hidden", paddingBottom: "5rem" }}>
+            <section style={{ position: "relative", overflow: "hidden", padding: "5rem 0" }}>
                 <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #f8f9ff 0%, #ffffff 100%)' }} />
                     <div className="bg-layer bg-dot-grid" style={{ opacity: 0.5 }} />
@@ -123,14 +123,24 @@ export default function ExpertisePage() {
                             {/* Image panel */}
                             <div
                                 style={{
-                                    background: "linear-gradient(135deg, #dfe9fa 0%, #c6d2ff 100%)",
                                     minHeight: "220px",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
+                                    height: "100%",
+                                    overflow: "hidden",
+                                    position: "relative",
                                 }}
                             >
-                                <span className="material-symbols-outlined" style={{ fontSize: "6rem", color: "rgba(29,59,145,0.15)" }}>storefront</span>
+                                <img
+                                    src="/images/business_dev.png"
+                                    alt="Coffee Business Development"
+                                    style={{
+                                        position: "absolute",
+                                        top: 0,
+                                        left: 0,
+                                        width: "100%",
+                                        height: "100%",
+                                        objectFit: "cover",
+                                    }}
+                                />
                             </div>
                         </div>
                     </div>
@@ -170,15 +180,24 @@ export default function ExpertisePage() {
                             <div
                                 style={{
                                     flex: 1,
-                                    background: "rgba(29,59,145,0.08)",
                                     borderRadius: "var(--radius-sm)",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    minHeight: "100px",
+                                    overflow: "hidden",
+                                    minHeight: "120px",
+                                    position: "relative",
                                 }}
                             >
-                                <span className="material-symbols-outlined" style={{ fontSize: "3.5rem", color: "rgba(29,59,145,0.2)" }}>coffee</span>
+                                <img
+                                    src="/images/barista_training.png"
+                                    alt="Barista Training & Standardization"
+                                    style={{
+                                        position: "absolute",
+                                        top: 0,
+                                        left: 0,
+                                        width: "100%",
+                                        height: "100%",
+                                        objectFit: "cover",
+                                    }}
+                                />
                             </div>
                         </div>
                     </div>
@@ -296,15 +315,23 @@ export default function ExpertisePage() {
                             <div
                                 style={{
                                     aspectRatio: "1",
-                                    background: "#dfe9fa",
                                     borderRadius: "var(--radius-lg)",
                                     overflow: "hidden",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
+                                    position: "relative",
                                 }}
                             >
-                                <span className="material-symbols-outlined" style={{ fontSize: "8rem", color: "rgba(29,59,145,0.12)" }}>coffee_maker</span>
+                                <img
+                                    src="/images/arch_approach.png"
+                                    alt="The Architectural Approach to Hospitality"
+                                    style={{
+                                        position: "absolute",
+                                        top: 0,
+                                        left: 0,
+                                        width: "100%",
+                                        height: "100%",
+                                        objectFit: "cover",
+                                    }}
+                                />
                             </div>
                             <div
                                 style={{
@@ -346,7 +373,7 @@ export default function ExpertisePage() {
                         Schedule a high-level assessment of your current operational standards and profitability roadmap.
                     </p>
                     <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-                        <AnimatedButton href="/consultation" text1="Request Profile" text2="Booking..." />
+                        <AnimatedButton href="/consultation" text1="Request Profile" />
                         <Link href="/portfolio" className="btn btn-secondary">View Portfolio</Link>
                     </div>
                 </div>

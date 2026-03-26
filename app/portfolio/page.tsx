@@ -3,6 +3,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import AnimatedButton from '@/components/AnimatedButton';
 import Link from "next/link";
+import ClientGrid from "@/components/ClientGrid";
 
 export const metadata: Metadata = {
     title: "Portfolio | John Salde Consulting",
@@ -63,15 +64,15 @@ export default function PortfolioPage() {
                     }}
                 >
                     <div style={{ maxWidth: "700px" }}>
-                        <span className="page-label" style={{ color: "var(--color-accent)" }}>Proven Trajectories</span>
+                        <span className="page-label" style={{ color: "var(--color-accent)" }}>Proven Success</span>
                         <h1
                             className="text-display-md"
                             style={{ color: "white", lineHeight: 1.1, marginBottom: "1.5rem", textShadow: "0 2px 20px rgba(0,0,0,0.3)" }}
                         >
-                            Architecting Growth through Analytical Rigor.
+                            Building Growth with Smart Strategies.
                         </h1>
                         <p className="text-body-lg" style={{ maxWidth: "580px", color: "rgba(255,255,255,0.85)" }}>
-                            Explore my portfolio of strategic interventions. From boutique roasteries to regional hospitality brands in Mindanao, I apply a consistent methodology focused on operational excellence and sustainable profitability.
+                            Explore my portfolio of success stories. For cafes and coffee businesses, I apply a proven method focused on smooth operations and growing profits.
                         </p>
                     </div>
 
@@ -88,94 +89,14 @@ export default function PortfolioPage() {
                         }}
                     >
                         <p className="lora-quote" style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.9)" }}>
-                            &ldquo;Strategy is not a document; it is the discipline of continuous improvement.&rdquo;
+                            &ldquo;A good strategy isn't just a plan on paper; it's about getting better every single day.&rdquo;
                         </p>
                     </div>
                 </div>
             </section>
 
-            {/* ── Featured Case Study ── */}
-            <section style={{ position: "relative", overflow: "hidden", paddingBottom: "5rem" }}>
-                <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
-                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #ffffff 0%, #f4f8ff 100%)' }} />
-                    <div className="bg-layer bg-dot-grid" style={{ opacity: 0.5 }} />
-                    <div style={{ position: 'absolute', bottom: '0', right: '-10%', width: '50%', height: '80%', background: 'radial-gradient(circle, rgba(37,99,235,0.06), transparent 70%)', filter: 'blur(80px)' }} />
-                </div>
-                <div className="container" style={{ position: "relative", zIndex: 2 }}>
-                    <div
-                        className="bento-card"
-                        style={{
-                            display: "grid",
-                            gridTemplateColumns: "1fr",
-                            background: "white",
-                            overflow: "hidden",
-                            boxShadow: "0 4px 24px rgba(29,59,145,0.06)",
-                        }}
-                    >
-                        {/* Image panel */}
-                        <div
-                            style={{
-                                background: "linear-gradient(135deg, #dfe9fa 0%, #c6d2ff 100%)",
-                                minHeight: "260px",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                            }}
-                        >
-                            <span className="material-symbols-outlined" style={{ fontSize: "6rem", color: "rgba(29,59,145,0.18)" }}>store</span>
-                        </div>
 
-                        {/* Content */}
-                        <div style={{ padding: "3rem" }}>
-                            <div style={{ display: "flex", gap: "0.75rem", marginBottom: "1.5rem", flexWrap: "wrap" }}>
-                                <span className="tag-pill" style={{ background: "#c6d2ff", color: "#1D3B91" }}>Profitability Optimization</span>
-                                <span className="page-label" style={{ margin: 0, color: "#94a3b8" }}>2024 Engagement</span>
-                            </div>
-                            <h2 className="text-h2" style={{ color: "var(--color-primary)", marginBottom: "1rem" }}>
-                                Davao Roasters: Scale &amp; Structure
-                            </h2>
-                            <p className="text-body-lg" style={{ marginBottom: "2rem" }}>
-                                Implementing a hub-and-spoke operational model across 3 locations, focusing on supply chain consolidation and middle-management mentorship to drive sustainable margin growth.
-                            </p>
-
-                            {/* Stats */}
-                            <div className="grid md:grid-cols-2 gap-8" style={{ borderTop: "1px solid #f1f5f9", paddingTop: "2rem", marginBottom: "2rem" }}>
-                                {[
-                                    { val: "24%", label: "Operational Margin Increase" },
-                                    { val: "8mo", label: "ROI Breakeven Point" },
-                                ].map((s) => (
-                                    <div key={s.label}>
-                                        <div className="portfolio-stat-value">{s.val}</div>
-                                        <p style={{ fontFamily: "var(--font-display)", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#94a3b8", marginTop: "0.25rem" }}>
-                                            {s.label}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <a
-                                href="#"
-                                style={{
-                                    display: "inline-flex",
-                                    alignItems: "center",
-                                    gap: "0.5rem",
-                                    color: "var(--color-primary)",
-                                    fontFamily: "var(--font-display)",
-                                    fontWeight: 700,
-                                    fontSize: "0.8rem",
-                                    letterSpacing: "0.08em",
-                                    textTransform: "uppercase",
-                                }}
-                            >
-                                VIEW FULL CASE STUDY
-                                <span className="material-symbols-outlined" style={{ fontSize: "1rem" }}>arrow_forward</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* ── Secondary Cards Grid ── */}
+            {/* ── Client Portfolio Grid ── */}
             <section style={{ paddingBottom: "5rem", position: "relative", overflow: "hidden" }}>
                 <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #f4f8ff 0%, #ffffff 100%)' }} />
@@ -183,60 +104,11 @@ export default function PortfolioPage() {
                     <div style={{ position: 'absolute', top: '10%', left: '-5%', width: '40%', height: '60%', background: 'radial-gradient(circle, rgba(198,224,61,0.05), transparent 70%)', filter: 'blur(80px)' }} />
                 </div>
                 <div className="container" style={{ position: "relative", zIndex: 2 }}>
-                    <div className="grid gap-8 md:grid-cols-3">
-                        {[
-                            {
-                                icon: "analytics",
-                                title: "The Artisan Collective",
-                                desc: "Operational restructuring and revenue recovery for a multi-unit hospitality group.",
-                                category: "Consultancy",
-                                result: "+18% Revenue",
-                            },
-                            {
-                                icon: "psychology",
-                                title: "Origin Coffee Systems",
-                                desc: "Development of a 24-month mentorship program for executive leadership within B2B coffee supply chains.",
-                                category: "Leadership",
-                                result: "95% Retention",
-                            },
-                            {
-                                icon: "account_balance",
-                                title: "Highland Brew Co.",
-                                desc: "Due diligence and acquisition strategy for a boutique café group targeting the specialty market.",
-                                category: "M&A Strategy",
-                                result: "3.5M Valuation",
-                            },
-                        ].map((card) => (
-                            <div
-                                key={card.title}
-                                className="bento-card"
-                                style={{
-                                    background: "#eef4ff",
-                                    padding: "2rem",
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    justifyContent: "space-between",
-                                    minHeight: "280px",
-                                }}
-                            >
-                                <div>
-                                    <span className="material-symbols-outlined" style={{ fontSize: "2.5rem", color: "var(--color-accent)", marginBottom: "1.5rem", display: "block" }}>
-                                        {card.icon}
-                                    </span>
-                                    <h3 style={{ color: "var(--color-primary)", marginBottom: "0.75rem", fontSize: "1.1rem" }}>{card.title}</h3>
-                                    <p className="text-body-md">{card.desc}</p>
-                                </div>
-                                <div style={{ paddingTop: "1.5rem", marginTop: "1.5rem", borderTop: "1px solid rgba(29,59,145,0.1)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                                    <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.08em", textTransform: "uppercase", color: "#94a3b8" }}>
-                                        {card.category}
-                                    </span>
-                                    <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--color-primary)", fontSize: "0.9rem" }}>
-                                        {card.result}
-                                    </span>
-                                </div>
-                            </div>
-                        ))}
+                    <div style={{ marginBottom: "3rem", textAlign: "center", maxWidth: "600px", margin: "0 auto 3rem" }}>
+
                     </div>
+
+                    <ClientGrid />
                 </div>
             </section>
 
@@ -284,14 +156,14 @@ export default function PortfolioPage() {
                     <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "3rem" }}>
                         <h2 className="text-h2" style={{ color: "var(--color-primary)" }}>Active Engagements</h2>
                         <p className="text-body-lg" style={{ maxWidth: "480px" }}>
-                            My current focus remains on sustainable automation and supply-chain resilience for boutique-at-scale operations.
+                            Here are the exciting new projects I am currently working on.
                         </p>
                     </div>
 
                     <div className="grid gap-12 md:grid-cols-2">
                         {[
-                            { icon: "factory", title: "Inventory Logic 2.0", desc: "Implementing automated procurement systems for a regional franchise to eliminate stock waste.", status: "In Progress" },
-                            { icon: "groups", title: "Cultural Architecture", desc: "Mentoring regional managers on KPI-driven empathetic leadership in high-stress retail environments.", status: "Deployment Phase" },
+                            { icon: "storefront", title: "High-End Cafe Launch (Surigao)", desc: "Managing the entire cafe structure from scratch using my complete Full-Stack Pillars service. Launching soon!", status: "In Progress" },
+                            { icon: "hotel", title: "High-End Hotel & Resort (Hinatuan, Surigao)", desc: "Full rebranding, setting up a hotel management system, and building a booking website utilizing 2 pillars of my services. Coming soon!", status: "In Progress" },
                         ].map((eng) => (
                             <div key={eng.title} style={{ display: "flex", gap: "1.5rem" }}>
                                 <div
@@ -319,7 +191,7 @@ export default function PortfolioPage() {
                     </div>
 
                     <div style={{ marginTop: "4rem", textAlign: "center" }}>
-                        <AnimatedButton href="/consultation" text1="Book a Discovery Call" text2="Booking..." />
+                        <AnimatedButton href="/consultation" text1="Book a Discovery Call" />
                     </div>
                 </div>
             </section>

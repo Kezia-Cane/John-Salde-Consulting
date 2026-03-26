@@ -212,7 +212,7 @@ export default function SectionExpertise() {
 
         <SectionReveal delay={400}>
           <div className="expertise-cta">
-            <AnimatedButton href="#contact" text1="Explore My Expertise" text2="Exploring..." />
+            <AnimatedButton href="/expertise" text1="Explore My Expertise" />
           </div>
         </SectionReveal>
       </div>
@@ -251,24 +251,26 @@ export default function SectionExpertise() {
         }
 
         .expertise-dot {
-          width: 12px;
-          height: 12px;
-          border-radius: 50%;
+          width: 10px;
+          height: 10px;
+          border-radius: 6px;
           background: rgba(29, 59, 145, 0.2);
-          border: none;
+          border: 2px solid rgba(29, 59, 145, 0.3);
           cursor: pointer;
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
           padding: 0;
         }
 
         .expertise-dot:hover {
-          background: rgba(29, 59, 145, 0.4);
-          transform: scale(1.1);
+          background: rgba(29, 59, 145, 0.5);
+          border-color: rgba(29, 59, 145, 0.6);
+          transform: scale(1.15);
         }
 
         .expertise-dot.active {
           background: var(--color-primary);
-          width: 32px;
+          border-color: var(--color-primary);
+          width: 36px;
           border-radius: 6px;
         }
 

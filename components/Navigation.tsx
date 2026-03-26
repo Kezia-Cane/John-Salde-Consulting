@@ -128,34 +128,47 @@ export default function Navigation() {
                     </a>
 
                     <a
-                        href="/"
-                        aria-label="Home"
+                        href="/consultation"
+                        aria-label="Available for Consultation"
+                        className="consultation-pulse-pill"
                         style={{
                             display: isScrolled ? "flex" : "none",
-                            alignItems: "stretch",
+                            alignItems: "center",
                             justifyContent: "center",
+                            gap: "0.5rem",
                             // Fill the entire pill - no clipping, no gaps
                             flex: isScrolled ? "1" : "0",
+                            padding: "0 1.5rem",
+                            margin: "4px", // slight margin inside the nav pill
+                            borderRadius: "999px",
                             alignSelf: "stretch",
                             overflow: "hidden",
                             cursor: "pointer",
                             opacity: isScrolled ? 1 : 0,
+                            textDecoration: "none",
                             transition: "opacity 0.18s ease",
                         }}
                     >
-                        <img
-                            src="/images/logo/logo%20navbar2.png"
-                            alt="John Salde Consulting"
-                            style={{
-                                height: "100%",
-                                width: "auto",
-                                objectFit: "contain",
-                                objectPosition: "center",
-                                display: "block",
-                                borderRadius: "0",
-                                maxHeight: "56px",
-                            }}
-                        />
+                        <span style={{
+                            display: "inline-block",
+                            width: "8px",
+                            height: "8px",
+                            borderRadius: "50%",
+                            backgroundColor: "#C6E03D",
+                            boxShadow: "0 0 0 0 rgba(198, 224, 61, 0.7)",
+                            animation: "pulse-green 1s infinite"
+                        }} />
+                        <span style={{
+                            color: "white",
+                            fontFamily: "var(--font-display)",
+                            fontWeight: 700,
+                            fontSize: "0.85rem",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.05em",
+                            whiteSpace: "nowrap"
+                        }}>
+                            Available for Consultation
+                        </span>
                     </a>
 
                     {/* ── Desktop Nav Links - collapse when scrolled ── */}
@@ -187,16 +200,19 @@ export default function Navigation() {
 
                     {/* ── CTA Button - collapse when scrolled ── */}
                     <div
+                        className="pill-cta"
                         style={{
-                            overflow: "hidden",
-                            maxWidth: isScrolled ? "0" : "180px",
+                            overflow: "visible",
+                            maxWidth: isScrolled ? "0" : "260px",
                             marginLeft: isScrolled ? "0" : "0.75rem",
                             opacity: isScrolled ? 0 : 1,
                             pointerEvents: isScrolled ? "none" : "auto",
                             transition: "max-width 0.22s ease, margin 0.22s ease, opacity 0.18s ease",
+                            display: "flex",
+                            alignItems: "center"
                         }}
                     >
-                        <AnimatedButton href="/consultation" text1="Consultation" text2="Booking..." />
+                        <AnimatedButton href="/consultation" text1="Consultation" />
                     </div>
 
                     {/* ── Mobile Hamburger ── */}
@@ -214,8 +230,8 @@ export default function Navigation() {
                             cursor: "pointer",
                             borderRadius: "999px",
                             background: "rgba(255,255,255,0.1)",
-                            width: "36px",
-                            height: "36px",
+                            width: "48px",
+                            height: "48px",
                             flexShrink: 0,
                             transition: "color 0.2s ease, background 0.2s ease",
                         }}
@@ -241,15 +257,14 @@ export default function Navigation() {
                 }
             >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <div style={{ height: "32px" }}>
+                    <div style={{ height: "36px", width: "36px", borderRadius: "50%", background: "white", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <img
-                            src="/images/logo/logo%20navbar2.png"
+                            src="/images/logo/logo%20navbar%20circle3.png"
                             alt="John Salde Consulting"
                             style={{
                                 height: "100%",
-                                width: "auto",
-                                filter: "brightness(0) invert(1)",
-                                borderRadius: "0",
+                                width: "100%",
+                                objectFit: "cover",
                                 display: "block",
                             }}
                         />
@@ -261,6 +276,11 @@ export default function Navigation() {
                             color: "white",
                             cursor: "pointer",
                             borderRadius: "999px",
+                            minWidth: "48px",
+                            minHeight: "48px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
                             background: "rgba(255,255,255,0.1)",
                         }}
                         aria-label="Close menu"
@@ -295,13 +315,13 @@ export default function Navigation() {
                         </a>
                     ))}
                     <div onClick={() => setMobileMenuOpen(false)} style={{ marginTop: "1rem" }}>
-                        <AnimatedButton href="/consultation" text1="Consultation" text2="Booking..." />
+                        <AnimatedButton href="/consultation" text1="Consultation" />
                     </div>
                 </nav>
             </div>
 
             {/* ── Scoped Styles ── */}
-            <style dangerouslySetInnerHTML={{
+            <style suppressHydrationWarning dangerouslySetInnerHTML={{
                 __html: `
                 .pill-link {
                     position: relative;
@@ -320,6 +340,22 @@ export default function Navigation() {
                     align-items: center;
                     justify-content: center;
                     transition: background 0.3s ease;
+                }
+                .consultation-pulse-pill {
+                    animation: pulse-border 1.5s infinite;
+                    border: 1px solid rgba(198, 224, 61, 0.5);
+                }
+                
+                @keyframes pulse-border {
+                    0% { box-shadow: 0 0 0 0 rgba(198, 224, 61, 0.4); border-color: rgba(198, 224, 61, 0.8); }
+                    70% { box-shadow: 0 0 0 10px rgba(198, 224, 61, 0); border-color: rgba(198, 224, 61, 0.2); }
+                    100% { box-shadow: 0 0 0 0 rgba(198, 224, 61, 0); border-color: rgba(198, 224, 61, 0.8); }
+                }
+
+                @keyframes pulse-green {
+                    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(198, 224, 61, 0.9); }
+                    70% { transform: scale(1); box-shadow: 0 0 0 12px rgba(198, 224, 61, 0); }
+                    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(198, 224, 61, 0); }
                 }
                 .pill-link > span {
                     display: inline-block;
@@ -348,10 +384,6 @@ export default function Navigation() {
                 }
                 .pill-link:hover::after {
                     transform: translateY(-100%);
-                }
-                .pill-cta:hover {
-                    background: #f2f2f2 !important;
-                    transform: translateY(-1px);
                 }
                 /* Mobile layout - pill stretches edge-to-edge with margin */
                 @media (max-width: 767px) {

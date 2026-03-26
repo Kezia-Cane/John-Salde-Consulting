@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 const PILLARS = [
     {
         number: "01",
-        icon: "architecture",
-        title: "Operational Architecture",
+        icon: "campaign",
+        title: "Digital Marketing",
         description:
-            "I engineer the skeleton of your business. From workflow optimization to supply chain integrity, I build systems that scale without sacrificing the artisanal quality of your product.",
-        points: ["Workflow Efficiency Mapping", "Inventory Management Systems", "SOP Development & Standardization"],
+            "Not just generic 'social media posting' or basic ads. I engineer customer acquisition systems and brand positioning specifically designed for cafés, driving local market dominance in the Mindanao context. Every campaign strategy is tied directly to actual sales.",
+        points: ["Customer acquisition systems", "Brand positioning for cafés", "Local market dominance (Mindanao)", "Campaign strategy tied to actual sales"],
         bg: "#eef4ff",
         iconBg: "var(--color-accent)",
         iconColor: "var(--color-primary)",
@@ -26,11 +26,11 @@ const PILLARS = [
     },
     {
         number: "02",
-        icon: "query_stats",
-        title: "Financial Rigor",
+        icon: "local_cafe",
+        title: "Operations",
         description:
-            "Profitability is not an accident; it's a design choice. I dive deep into your P&L, COGS, and labor models to ensure your growth is mathematically sound and professionally resilient.",
-        stat: { label: "Average Margin Increase", value: "+24%", width: "74%" },
+            "Focusing on real café execution grounded in actual café environments. From initial workflow design to daily operational control, I ensure your service remains highly consistent while maximizing your menu profitability.",
+        points: ["Workflow design", "Staff roles and training", "Service consistency", "Menu profitability", "Daily operational control"],
         bg: "#ffffff",
         iconBg: "#c6d2ff",
         iconColor: "#1D3B91",
@@ -39,17 +39,11 @@ const PILLARS = [
     },
     {
         number: "03",
-        icon: "psychology",
-        title: "Strategic Mentorship",
+        icon: "account_tree",
+        title: "Systems",
         description:
-            "I bridge the gap between being a coffee enthusiast and a market leader. My mentorship focuses on leadership development, brand storytelling, and high-end hospitality standards.",
-        quote: `"The most successful cafés aren't just selling coffee - they're selling an architectural experience of time."`,
-        gridItems: [
-            { icon: "groups", label: "Culture Design" },
-            { icon: "auto_awesome", label: "Experience Quality" },
-            { icon: "record_voice_over", label: "Brand Voice" },
-            { icon: "map", label: "Market Positioning" },
-        ],
+            "This is the backbone of your business. I implement robust digital workflows designed for repeatability and scalability, ensuring your café operates seamlessly across all fronts without manual bottlenecks.",
+        points: ["POS systems", "CRM systems", "Inventory tracking", "Automation workflows", "Reporting dashboards"],
         bg: "var(--color-primary)",
         iconBg: "var(--color-accent)",
         iconColor: "var(--color-primary)",
@@ -155,7 +149,7 @@ export default function PillarsPage() {
                             </>
                         ) : (
                             <>
-                                <div className="bg-layer bg-dot-grid" style={{ opacity: pillar.bg === '#ffffff' ? 0.2 : 0.45 }} />
+                                <div className="bg-layer bg-line-grid" style={{ opacity: pillar.bg === '#ffffff' ? 0.3 : 0.6 }} />
                                 <div style={{ position: 'absolute', top: '-10%', left: '-5%', width: '40%', height: '60%', background: 'radial-gradient(circle, rgba(37,99,235,0.04), transparent 65%)', filter: 'blur(80px)' }} />
                             </>
                         )}
@@ -233,119 +227,69 @@ export default function PillarsPage() {
                                     </ul>
                                 )}
 
-                                {/* Stat bar */}
-                                {"stat" in pillar && pillar.stat && (
-                                    <div
-                                        style={{
-                                            background: "white",
-                                            borderRadius: "var(--radius-sm)",
-                                            padding: "1.25rem 1.5rem",
-                                            boxShadow: "0 2px 8px rgba(29,59,145,0.06)",
-                                        }}
-                                    >
-                                        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.75rem" }}>
-                                            <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-primary)" }}>
-                                                {pillar.stat.label}
-                                            </span>
-                                            <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--color-primary)" }}>
-                                                {pillar.stat.value}
-                                            </span>
-                                        </div>
-                                        <div style={{ width: "100%", height: "6px", background: "#e5eeff", borderRadius: "999px", overflow: "hidden" }}>
-                                            <div style={{ width: pillar.stat.width, height: "100%", background: "var(--color-accent)", borderRadius: "999px" }} />
-                                        </div>
-                                    </div>
-                                )}
 
-                                {/* Quote */}
-                                {"quote" in pillar && pillar.quote && (
-                                    <blockquote
-                                        className="lora-quote"
-                                        style={{
-                                            fontSize: "1.25rem",
-                                            color: "var(--color-accent)",
-                                            marginTop: "0.5rem",
-                                        }}
-                                    >
-                                        {pillar.quote}
-                                        <cite style={{ display: "block", marginTop: "0.5rem", fontStyle: "normal", fontFamily: "var(--font-display)", fontSize: "0.7rem", letterSpacing: "0.12em", textTransform: "uppercase", opacity: 0.6, color: "white" }}>
-                                            - John Salde
-                                        </cite>
-                                    </blockquote>
-                                )}
-
-                                {/* Mentorship grid */}
-                                {"gridItems" in pillar && pillar.gridItems && (
-                                    <div className="grid gap-4 md:grid-cols-2" style={{ marginTop: "0.5rem" }}>
-                                        {pillar.gridItems.map((item) => (
-                                            <div
-                                                key={item.icon}
-                                                style={{
-                                                    background: "rgba(255,255,255,0.1)",
-                                                    borderRadius: "var(--radius-sm)",
-                                                    padding: "1.25rem",
-                                                    display: "flex",
-                                                    flexDirection: "column",
-                                                    alignItems: "center",
-                                                    textAlign: "center",
-                                                    gap: "0.5rem",
-                                                }}
-                                            >
-                                                <span className="material-symbols-outlined" style={{ color: "var(--color-accent)", fontSize: "2rem" }}>{item.icon}</span>
-                                                <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.75rem", letterSpacing: "0.06em", textTransform: "uppercase", color: "white" }}>
-                                                    {item.label}
-                                                </span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
                             </div>
                         </div>
                     </div>
                 </section>
             ))}
 
+            {/* ── Synergy Section ── */}
+            <section className="section" style={{ backgroundColor: "#ffffff", padding: "6rem 0", position: 'relative', overflow: 'hidden' }}>
+                <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+                    <div className="bg-layer bg-dot-grid" style={{ opacity: 0.2 }} />
+                    <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '60%', height: '60%', background: 'radial-gradient(circle, rgba(198,224,61,0.08), transparent 70%)', filter: 'blur(80px)' }} />
+                </div>
+
+                <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+                    <div style={{ maxWidth: "720px", margin: "0 auto", textAlign: "center" }}>
+                        <span className="material-symbols-outlined" style={{ fontSize: "3.5rem", color: "var(--color-primary)", marginBottom: "1.5rem", display: "block" }}>all_inclusive</span>
+                        <h2 className="text-h2" style={{ color: "var(--color-primary)", marginBottom: "1.25rem" }}>
+                            The Full-Stack Methodology
+                        </h2>
+                        <div className="accent-bar" style={{ margin: "0 auto 1.5rem" }} />
+                        <p className="text-body-lg" style={{ color: "#334155", fontWeight: 500, marginBottom: "1.5rem" }}>
+                            Running a seamless, highly profitable café demands all three pillars operating in perfect synchrony.
+                        </p>
+                        <p className="text-body-md" style={{ color: "var(--color-text-muted)" }}>
+                            <strong>Digital Marketing</strong> engineers the traffic and brand position. <strong>Operations</strong> translates that momentum into an impeccable physical experience. Finally, robust <strong>Systems</strong> encode that success into a repeatable, scalable backbone. Together, they form an architectural framework designed to scale gracefully and run a smooth, successful business indefinitely.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
             {/* ── CTA ── */}
-            <section className="section" style={{ backgroundColor: "#f8f9ff" }}>
+            <section style={{ padding: "0 0 5rem" }}>
                 <div className="container">
                     <div
                         style={{
-                            background: "linear-gradient(135deg, #e5eeff 0%, #f4f8ff 100%)",
+                            background: "linear-gradient(135deg, #0e1d4e 0%, #1D3B91 40%, #1e50c3 100%)",
                             borderRadius: "var(--radius-lg)",
-                            padding: "5rem 3rem",
+                            padding: "4rem",
                             textAlign: "center",
                             position: "relative",
                             overflow: "hidden",
-                            boxShadow: "0 20px 40px rgba(29,59,145,0.05)",
+                            boxShadow: "0 20px 40px rgba(29,59,145,0.15)",
                         }}
                     >
                         {/* ── CTA Background ── */}
                         <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
-                            <div className="bg-layer bg-line-grid" style={{ opacity: 0.5 }} />
-                            <div
-                                style={{
-                                    position: "absolute",
-                                    top: "-4rem",
-                                    right: "-4rem",
-                                    width: "20rem",
-                                    height: "20rem",
-                                    background: "radial-gradient(circle, rgba(198,224,61,0.15), transparent 70%)",
-                                    filter: "blur(60px)",
-                                }}
-                            />
-                            <div style={{ position: 'absolute', bottom: '-20%', left: '-10%', width: '50%', height: '70%', background: 'radial-gradient(circle, rgba(37,99,235,0.08), transparent 70%)', filter: 'blur(80px)' }} />
+                            <div className="bg-layer bg-noise-dark" />
+                            <div className="bg-layer bg-ripple-rings" style={{ opacity: 0.6 }} />
+                            <div style={{ position: 'absolute', bottom: '-20%', left: '-10%', width: '50%', height: '80%', background: 'radial-gradient(circle, rgba(198,224,61,0.15), transparent 70%)', filter: 'blur(60px)' }} />
+                            <div style={{ position: 'absolute', top: '-20%', right: '-10%', width: '60%', height: '80%', background: 'radial-gradient(circle, rgba(37,99,235,0.4), transparent 70%)', filter: 'blur(80px)' }} />
                         </div>
 
                         <div style={{ position: 'relative', zIndex: 2 }}>
-                            <h2 className="text-h2" style={{ color: "var(--color-primary)", marginBottom: "1.25rem" }}>
+                            <h2 className="text-h2" style={{ color: "white", marginBottom: "1.25rem" }}>
                                 Ready to build your foundation?
                             </h2>
-                            <p className="text-body-lg" style={{ maxWidth: "520px", margin: "0 auto 2.5rem" }}>
+                            <p className="text-body-lg" style={{ color: "rgba(255,255,255,0.7)", maxWidth: "520px", margin: "0 auto 2.5rem" }}>
                                 Every consultation starts with a deep dive into your current metrics and a vision for your structural potential.
                             </p>
                             <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-                                <AnimatedButton href="/consultation" text1="Book a Discovery Call" text2="Booking..." />
-                                <Link href="/portfolio" className="btn btn-secondary">View Case Studies</Link>
+                                <AnimatedButton href="/consultation" text1="Book a Discovery Call" />
+                                <Link href="/portfolio" className="btn btn-secondary" style={{ borderColor: 'rgba(255,255,255,0.3)', color: 'white' }}>View Case Studies</Link>
                             </div>
                         </div>
                     </div>

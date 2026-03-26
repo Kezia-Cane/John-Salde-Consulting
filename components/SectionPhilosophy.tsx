@@ -1,4 +1,5 @@
 import SectionReveal from "./SectionReveal";
+import Link from "next/link";
 
 export default function SectionPhilosophy() {
     return (
@@ -75,6 +76,30 @@ export default function SectionPhilosophy() {
                                 In an industry filled with trend-chasers, the most sustainable brands are built on operational excellence, clear standard operating procedures, and rigorous financial logic. I focus purely on profitability, workflow optimization, and scalable brand authority.
                             </p>
                         </SectionReveal>
+                        <SectionReveal delay={700}>
+                            <Link href="/philosophy" className="section-cta-btn" style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                                marginTop: '0.5rem',
+                                padding: '0.85rem 2rem',
+                                background: 'var(--color-accent)',
+                                color: 'var(--color-primary)',
+                                borderRadius: '999px',
+                                fontFamily: 'var(--font-display)',
+                                fontWeight: 700,
+                                fontSize: '0.85rem',
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.08em',
+                                textDecoration: 'none',
+                                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                                boxShadow: '0 8px 24px rgba(198,224,61,0.35)',
+                            }}
+                            >
+                                Explore My Philosophy
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                            </Link>
+                        </SectionReveal>
                     </div>
 
                     {/* Right: Image */}
@@ -122,6 +147,9 @@ export default function SectionPhilosophy() {
                         max-width: 320px;
                         margin: 0 auto;
                     }
+                }
+                .section-cta-btn:hover {
+                    transform: scale(1.04);
                 }
                 `
             }} />

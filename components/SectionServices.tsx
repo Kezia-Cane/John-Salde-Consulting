@@ -1,5 +1,6 @@
 import SectionReveal from "./SectionReveal";
 import ServiceCard from "./ServiceCard";
+import Link from "next/link";
 
 const SERVICES = [
     {
@@ -75,9 +76,8 @@ export default function SectionServices() {
                     </div>
                 </SectionReveal>
 
-                <div style={{
+                <div className="services-grid" style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(3, 1fr)',
                     gap: '2rem',
                     alignItems: 'stretch',
                 }}>
@@ -93,15 +93,58 @@ export default function SectionServices() {
                         </div>
                     ))}
                 </div>
+
+                <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+                    <Link href="/pillars" className="section-cta-btn" style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        padding: '0.85rem 2rem',
+                        background: 'var(--color-primary)',
+                        color: 'white',
+                        borderRadius: '999px',
+                        fontFamily: 'var(--font-display)',
+                        fontWeight: 700,
+                        fontSize: '0.85rem',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.08em',
+                        textDecoration: 'none',
+                        boxShadow: '0 8px 24px rgba(29,59,145,0.2)',
+                        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                    }}
+                    >
+                        View Core Pillars
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    </Link>
+                </div>
             </div>
 
             {/* Responsive: stack on mobile */}
             <style dangerouslySetInnerHTML={{
                 __html: `
-                @media (max-width: 768px) {
-                    #services .container > div:last-child {
-                        grid-template-columns: 1fr !important;
+                .services-grid {
+                    grid-template-columns: 1fr;
+                }
+                @media (min-width: 640px) {
+                    .services-grid {
+                        grid-template-columns: repeat(2, 1fr);
                     }
+                }
+                @media (min-width: 1024px) {
+                    .services-grid {
+                        grid-template-columns: repeat(3, 1fr);
+                    }
+                }
+                @media (max-width: 639px) {
+                    #services {
+                        padding: 4rem 0;
+                    }
+                    .service-card {
+                        padding: 1.75rem !important;
+                    }
+                }
+                .section-cta-btn:hover {
+                    transform: scale(1.04);
                 }
                 `
             }} />

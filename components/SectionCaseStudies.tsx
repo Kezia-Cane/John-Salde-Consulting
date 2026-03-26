@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SectionReveal from "./SectionReveal";
+import Link from "next/link";
 
 export default function SectionCaseStudies() {
     return (
@@ -138,6 +139,29 @@ export default function SectionCaseStudies() {
                         </SectionReveal>
                     </div>
                 </div>
+            </div>
+
+            <div style={{ textAlign: 'center', marginTop: '4rem', position: 'relative', zIndex: 2 }}>
+                <Link href="/portfolio" style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.85rem 2rem',
+                    background: 'var(--color-accent)',
+                    color: 'var(--color-primary)',
+                    borderRadius: '999px',
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: 700,
+                    fontSize: '0.85rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    textDecoration: 'none',
+                    boxShadow: '0 8px 24px rgba(198,224,61,0.3)',
+                    transition: 'transform 0.2s ease',
+                }}>
+                    View Full Portfolio
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                </Link>
             </div>
         </section>
     );

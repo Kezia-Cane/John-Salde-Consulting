@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import TypingText from './ui/TypingText';
 import AnimatedButton from "./AnimatedButton";
 
 
@@ -85,24 +84,12 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.8 }}
         >
           <h1 className="hero-h1 text-gradient-accent" style={{ marginBottom: '1.25rem' }}>
-            <TypingText
-              as="span"
-              text={["Business", "Coffee"]}
-              typingSpeed={55}
-              deletingSpeed={30}
-              pauseDuration={2000}
-              loop={true}
-              showCursor={true}
-              cursorCharacter="|"
-              cursorClassName="text-accent"
-              style={{ color: 'inherit', fontFamily: 'inherit', fontSize: 'inherit', fontWeight: 'inherit', letterSpacing: 'inherit', lineHeight: 'inherit' }}
-            /><br />
+            Coffee<br />
             Consultant<span style={{ color: 'var(--color-accent)' }}>.</span>
           </h1>
           <p className="hero-desc">
             Bridging cafe passion and explosive profitability through reality-tested systems.
           </p>
-          <AnimatedButton href="#services" text1="Discover Framework" text2="Discovering..." />
         </motion.div>
       </div>
 
@@ -143,8 +130,45 @@ export default function Hero() {
 
         /* ── Mobile: stack vertically, center everything ── */
         .hero-left  { order: 1; align-items: center; text-align: center; }
-        .hero-center { order: 2; align-items: center; justify-content: center; position: relative; height: 380px; }
+        .hero-center { order: 2; align-items: center; justify-content: center; position: relative; height: 300px; }
         .hero-right  { order: 3; align-items: center; text-align: center; }
+
+        /* ── Mobile: prevent overflow & ensure proper spacing ── */
+        @media (max-width: 767px) {
+          .hero-section {
+            height: auto;
+            min-height: 100svh;
+            padding: 100px 1.5rem 3rem;
+            align-items: flex-start;
+          }
+          .hero-grid {
+            gap: 1rem;
+            padding-bottom: 1rem;
+          }
+          .hero-center {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+          }
+          .hero-image {
+            position: absolute !important;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 220px !important;
+            width: auto !important;
+            max-width: 100%;
+            object-fit: contain;
+            object-position: center bottom;
+          }
+          .hero-circle {
+            width: 180px;
+            height: 220px;
+          }
+          .hero-desc {
+            max-width: 100%;
+          }
+        }
 
         /* ── Coffee Bean Shape ── */
         .hero-circle {

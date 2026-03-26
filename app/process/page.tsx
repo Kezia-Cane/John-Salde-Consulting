@@ -13,44 +13,44 @@ export const metadata: Metadata = {
 const PHASES = [
     {
         number: "01",
-        label: "AUDIT",
-        title: "Phase 01: The Structural Audit",
+        label: "CHECK-UP",
+        title: "Phase 01: Business Check-up",
         description:
-            "A comprehensive extraction of current financial health, operational flow, and brand equity. I identify the hairline fractures in your business model before they become structural failures.",
-        tags: ["P&L Analysis", "Staff Efficiency", "Brand Equity Mapping"],
+            "I take a deep look at your cafe's money, workflow, and brand. I find small problems in your business and fix them before they become big, expensive mistakes.",
+        tags: ["Money Health", "Staff Speed", "Brand Strength"],
         circleStyle: { background: "var(--color-primary)", color: "var(--color-accent)" },
         tagStyle: { background: "#dfe9fa", color: "var(--color-primary)" },
         right: false,
     },
     {
         number: "02",
-        label: "VISION",
-        title: "Phase 02: Blueprints & Modeling",
+        label: "PLANNING",
+        title: "Phase 02: Planning for Growth",
         description:
-            "I map the ideal future state. Using predictive modeling, I forecast growth trajectories based on optimized supply chains and refined menu architecture.",
-        tags: ["Growth Forecasts", "Unit Economics", "Menu Architecture"],
+            "I create a clear plan for your cafe's future. I show you how much you can grow by fixing your supply chain and making your menu more profitable.",
+        tags: ["Growth Plans", "Cost per Cup", "Better Menus"],
         circleStyle: { background: "var(--color-accent)", color: "var(--color-primary)" },
         tagStyle: { background: "#c6d2ff", color: "#1D3B91" },
         right: true,
     },
     {
         number: "03",
-        label: "REFINEMENT",
-        title: "Phase 03: Operational Refinement",
+        label: "TRAINING",
+        title: "Phase 03: Training & Better Service",
         description:
-            "Implementation of the 'Architectural Mentor' philosophy. I train your leadership to execute high-level decisions with precision, focusing on the marginal gains that drive massive shifts.",
-        tags: ["Leadership Mentoring", "Standard Operating Procedures"],
+            "I work closely with you and your managers. I teach your team how to run the cafe better every day, focusing on small changes that lead to big improvements.",
+        tags: ["Manager Training", "Simple Step-by-Step Guides"],
         circleStyle: { background: "var(--color-primary)", color: "var(--color-accent)" },
         tagStyle: { background: "#dfe9fa", color: "var(--color-primary)" },
         right: false,
     },
     {
         number: "04",
-        label: "SCALE",
-        title: "Phase 04: Market Scaling",
+        label: "EXPAND",
+        title: "Phase 04: Growing Your Brand",
         description:
-            "Deploying the refined model across multiple locations or deeper into your primary market. I ensure the DNA of the business remains intact as it expands.",
-        tags: ["Market Penetration", "Franchise Ready", "Multi-Unit Ops"],
+            "I help you open more locations or grow bigger in your city. I make sure your cafe stays high-quality and successful as you expand to more spots.",
+        tags: ["New Locations", "Ready to Franchise", "Managing Many Cafes"],
         circleStyle: { background: "var(--color-accent)", color: "var(--color-primary)" },
         tagStyle: { background: "#c6d2ff", color: "#1D3B91" },
         right: true,
@@ -84,7 +84,7 @@ export default function ProcessPage() {
                             </span>
                         </h1>
                         <p className="text-body-lg" style={{ color: "rgba(255,255,255,0.85)", maxWidth: "480px" }}>
-                            I don&apos;t believe in generic templates. My process is a rigorous, analytical journey designed to dismantle operational inefficiencies and rebuild your coffee enterprise for sustainable profitability.
+                            I don&apos;t use the same plan for everyone. I look closely at how your cafe works, find what&apos;s slowing you down, and help you rebuild for long-term success and better profits.
                         </p>
                     </div>
 
@@ -110,6 +110,7 @@ export default function ProcessPage() {
                             />
                         </div>
                         <div
+                            className="process-quote-card"
                             style={{
                                 position: "absolute",
                                 bottom: "-1.5rem",
@@ -122,7 +123,7 @@ export default function ProcessPage() {
                             }}
                         >
                             <p className="lora-quote" style={{ fontSize: "1rem", color: "rgba(255,255,255,0.9)", marginBottom: "0.75rem" }}>
-                                &ldquo;Profitability is the byproduct of structural integrity. I build the skeleton; you brew the soul.&rdquo;
+                                &ldquo;Good profit comes from a strong business structure. I build the foundation; you focus on your coffee and customers.&rdquo;
                             </p>
                             <cite style={{ fontStyle: "normal", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.65rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--color-accent)" }}>
                                 - John Salde
@@ -152,7 +153,7 @@ export default function ProcessPage() {
                     >
                         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", flexWrap: "wrap", gap: "1rem" }}>
                             <h2 className="text-h2" style={{ color: "var(--color-primary)", maxWidth: "440px" }}>
-                                The Four Phases of Structural Consulting
+                                How I Help Your Business Grow
                             </h2>
                             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--color-primary)" }}>
                                 <span className="material-symbols-outlined" style={{ fontSize: "1.2rem" }}>analytics</span>
@@ -228,7 +229,7 @@ export default function ProcessPage() {
                 <div className="container grid gap-8 md:grid-cols-3" style={{ position: "relative", zIndex: 2 }}>
                     {/* CTA card (2/3) */}
                     <div
-                        className="bento-card"
+                        className="bento-card md:col-span-2"
                         style={{
                             background: "var(--color-primary)",
                             borderRadius: "var(--radius)",
@@ -237,19 +238,18 @@ export default function ProcessPage() {
                             display: "flex",
                             flexDirection: "column",
                             justifyContent: "space-between",
-                            gridColumn: "span 2",
                         }}
                     >
                         <div>
                             <h2 className="text-h2" style={{ color: "white", marginBottom: "1rem" }}>
-                                Ready to audit your structure?
+                                Ready to improve your cafe?
                             </h2>
                             <p className="text-body-lg" style={{ color: "rgba(255,255,255,0.75)", maxWidth: "440px", marginBottom: "2rem" }}>
-                                I take on a limited number of consulting partners each quarter to ensure the depth and rigor required for true transformation.
+                                I only work with a few cafes at a time so I can give your business all the focus and help it needs to succeed.
                             </p>
                         </div>
                         <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-                            <AnimatedButton href="/consultation" text1="Request Your Audit" text2="Booking..." />
+                            <AnimatedButton href="/consultation" text1="Request Your Audit" />
                             <Link href="/portfolio" className="btn btn-white">View Case Studies</Link>
                         </div>
                     </div>
@@ -301,6 +301,23 @@ export default function ProcessPage() {
             </section>
 
             <Footer />
+            <style dangerouslySetInnerHTML={{
+                __html: `
+                @media (max-width: 767px) {
+                    .process-quote-card {
+                        left: 1rem !important;
+                        bottom: -3rem !important;
+                        right: 1rem !important;
+                        width: calc(100% - 2rem) !important;
+                        max-width: none !important;
+                    }
+                    /* Ensure bottom padding of section fits quote card */
+                    #hero .container {
+                        padding-bottom: 2rem;
+                    }
+                }
+                `
+            }} />
         </main>
     );
 }
