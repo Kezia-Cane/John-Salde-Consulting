@@ -4,6 +4,7 @@ import { useState, FormEvent } from "react";
 import Navigation from "@/components/Navigation";
 import CoffeeLoader from "@/components/CoffeeLoader";
 import Footer from "@/components/Footer";
+import DateTimePicker from "@/components/DateTimePicker";
 
 const BUSINESS_TYPES = [
     "Boutique Coffee Shop",
@@ -358,16 +359,12 @@ export default function ConsultationPage() {
 
                                 {/* Preferred Date/Time */}
                                 <div>
-                                    <label htmlFor="cf-datetime" className="uiverse-label">Preferred Date & Time for Call</label>
-                                    <input
+                                    <label htmlFor="cf-datetime" className="uiverse-label">Preferred Date &amp; Time for Call</label>
+                                    <DateTimePicker
                                         id="cf-datetime"
-                                        type="datetime-local"
-                                        className="uiverse-input"
                                         value={form.datetime}
-                                        onChange={(e) => handleChange("datetime", e.target.value)}
-                                        aria-required="true"
-                                        aria-invalid={!!errors.datetime}
-                                        aria-describedby={errors.datetime ? "cf-dt-err" : undefined}
+                                        onChange={(val) => handleChange("datetime", val)}
+                                        error={errors.datetime}
                                     />
                                     {errors.datetime && <span id="cf-dt-err" style={{ color: "#ba1a1a", fontSize: "0.75rem", marginTop: "0.25rem", display: "block" }}>{errors.datetime}</span>}
                                 </div>
