@@ -45,6 +45,8 @@ export async function POST(req: NextRequest) {
     .header { background: linear-gradient(135deg, #1D3B91 0%, #0F2560 100%); padding: 36px 40px; }
     .header h1 { color: white; margin: 0; font-size: 22px; font-weight: 700; letter-spacing: 0.02em; }
     .header p { color: rgba(255,255,255,0.7); margin: 6px 0 0; font-size: 13px; }
+    .header p a { color: #C6E03D; text-decoration: none; font-weight: 600; }
+    .header p a:hover { text-decoration: underline; }
     .badge { display: inline-block; background: #C6E03D; color: #1D3B91; padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 12px; }
     .body { padding: 36px 40px; }
     .field { margin-bottom: 24px; }
@@ -59,7 +61,7 @@ export async function POST(req: NextRequest) {
   <div class="wrapper">
     <div class="header">
       <h1>New Consultation Request</h1>
-      <p>Received via johnsaldeconsulting.com</p>
+      <p>Received via <a href="https://john-salde.com">john-salde.com</a></p>
       <span class="badge">Potential Client Submission</span>
     </div>
     <div class="body">
@@ -99,7 +101,7 @@ export async function POST(req: NextRequest) {
 
     const result = await resend.emails.send({
       from: "John Salde Consulting <notifications@john-salde.com>",
-      to: ["thejohnsalde@gmail.com", "keziacane.dev@gmail.com", "melmaquilingva@gmail.com"],
+      to: ["thejohnsalde@gmail.com", "keziacane.dev@gmail.com", "melmaquilingva@gmail.com", "kisshatrangia@gmail.com"],
       subject: "Potential Client Submission",
       replyTo: email,
       html: htmlBody,
