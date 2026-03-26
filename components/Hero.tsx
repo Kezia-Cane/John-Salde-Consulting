@@ -65,6 +65,9 @@ export default function Hero() {
             src="/images/Untitled design (11).png"
             alt="John Salde Strategic Consultant"
             className="hero-image"
+            width={400}
+            height={600}
+            fetchPriority="high"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
