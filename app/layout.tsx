@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Poppins, Lora } from "next/font/google";
 import "./globals.css";
+import SplashScreen from "@/components/SplashScreen";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -51,6 +52,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${montserrat.variable} ${poppins.variable} ${lora.variable}`} suppressHydrationWarning>
+        <SplashScreen />
         {children}
       </body>
     </html>

@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import Navigation from "@/components/Navigation";
+import CoffeeLoader from "@/components/CoffeeLoader";
 import Footer from "@/components/Footer";
 
 const BUSINESS_TYPES = [
@@ -385,12 +386,21 @@ export default function ConsultationPage() {
                                 )}
 
                                 {/* Submit */}
-                                <button type="submit" className="uiverse-button" disabled={loading} style={{ opacity: loading ? 0.75 : 1 }}>
+                                <button
+                                    type="submit"
+                                    className="uiverse-button"
+                                    disabled={loading}
+                                    style={{
+                                        opacity: loading ? 0.9 : 1,
+                                        height: "64px",
+                                        position: "relative",
+                                        overflow: "hidden"
+                                    }}
+                                >
                                     {loading ? (
-                                        <>
-                                            <span style={{ width: 18, height: 18, border: "2.5px solid rgba(29,59,145,0.3)", borderTopColor: "#1D3B91", borderRadius: "50%", display: "inline-block", animation: "spin 0.7s linear infinite" }} />
-                                            Sending...
-                                        </>
+                                        <div style={{ transform: "scale(0.5)" }}>
+                                            <CoffeeLoader size={100} />
+                                        </div>
                                     ) : (
                                         <>
                                             Send Request
@@ -398,7 +408,7 @@ export default function ConsultationPage() {
                                         </>
                                     )}
                                 </button>
-                                <style dangerouslySetInnerHTML={{ __html: `@keyframes spin { to { transform: rotate(360deg); } }` }} />
+                                {/* Removed the CSS spinner's @keyframes style as it's no longer needed */}
                             </form>
                         )}
                     </div>

@@ -1,6 +1,5 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
+import LoadableImage from "./LoadableImage";
 
 interface ClientProject {
     id: string;
@@ -212,7 +211,7 @@ export default function ClientGrid() {
                                 overflow: "hidden"
                             }}
                         >
-                            <img
+                            <LoadableImage
                                 src={client.photo}
                                 alt={client.name}
                                 style={{
@@ -241,7 +240,7 @@ export default function ClientGrid() {
                                     overflow: "hidden"
                                 }}
                             >
-                                <img
+                                <LoadableImage
                                     src={client.logo}
                                     alt="Logo"
                                     style={{
@@ -339,7 +338,7 @@ export default function ClientGrid() {
                         <div className="modal-inner-grid" style={{ display: "grid", gridTemplateColumns: "1fr", height: "100%", overflowY: "auto" }}>
                             {/* Left Column: Full Image */}
                             <div className="modal-image-col" style={{ position: "relative", background: "#f8fafc", minHeight: "300px" }}>
-                                <img
+                                <LoadableImage
                                     src={selectedClient.photo}
                                     alt={selectedClient.name}
                                     style={{
@@ -357,7 +356,7 @@ export default function ClientGrid() {
                             <div style={{ padding: "3rem 2.5rem", display: "flex", flexDirection: "column" }}>
                                 <div style={{ display: "flex", gap: "1.5rem", alignItems: "center", marginBottom: "2rem" }}>
                                     <div style={{ width: "80px", height: "80px", borderRadius: "50%", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, overflow: "hidden", border: "2px solid #f1f5f9", boxShadow: "0 8px 16px rgba(0,0,0,0.06)" }}>
-                                        <img src={selectedClient.logo} alt="Logo" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                        <LoadableImage src={selectedClient.logo} alt="Logo" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                                     </div>
                                     <div>
                                         <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--color-accent)", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", display: "block", marginBottom: "0.25rem" }}>Partner Case Study</span>

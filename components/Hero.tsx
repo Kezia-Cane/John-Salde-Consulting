@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import AnimatedButton from "./AnimatedButton";
+import LoadableImage from "./LoadableImage";
 
 
 export default function Hero() {
@@ -61,22 +62,26 @@ export default function Hero() {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
           />
-          <motion.img
-            src="/images/Untitled design (11).png"
-            alt="John Salde Strategic Consultant"
-            className="hero-image"
-            width={400}
-            height={600}
-            fetchPriority="high"
+          <motion.div
+            className="hero-image-container"
+            style={{ width: "100%", height: "100%", zIndex: 10, position: "relative" }}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.onerror = null;
-              target.src = "https://placehold.co/400x600/1D3B91/ffffff?text=John+Salde";
-            }}
-          />
+          >
+            <LoadableImage
+              src="/images/Untitled design (11).png"
+              alt="John Salde Strategic Consultant"
+              className="hero-image"
+              loaderSize={150}
+              style={{
+                width: "auto",
+                height: "100%",
+                objectFit: "contain",
+                objectPosition: "bottom",
+              }}
+            />
+          </motion.div>
         </div>
 
         {/* RIGHT: "[Typing] Consultant." + tagline + CTA */}
