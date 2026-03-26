@@ -255,9 +255,14 @@ export default function ConsultationPage() {
                 <div style={{ maxWidth: "800px", margin: "0 auto" }}>
                     <div className="uiverse-container">
                         {submitted ? (
-                            <div style={{ textAlign: "center", padding: "3rem 0" }}>
-                                <span className="material-symbols-outlined" style={{ fontSize: "4rem", color: "var(--color-accent)", marginBottom: "1.5rem", display: "block" }}>check_circle</span>
-                                <h2 className="text-h2" style={{ color: "var(--color-primary)", marginBottom: "1rem" }}>Request Received</h2>
+                            <div style={{ textAlign: "center", padding: "3.5rem 0" }}>
+                                <span className="material-symbols-outlined" style={{ fontSize: "6rem", color: "#C6E03D", marginBottom: "1.5rem", display: "block", userSelect: "none" }}>
+                                    check_circle
+                                </span>
+                                <h2 style={{ color: "#1D3B91", fontSize: "2.5rem", fontWeight: 700, marginBottom: "1rem" }}>Request Received</h2>
+                                <p style={{ color: "#4A5568", fontSize: "1.1rem" }}>
+                                    Thank you, {form.name}! I will review your message and reach out within 24 hours.
+                                </p>
                                 <p className="text-body-lg" style={{ maxWidth: "420px", margin: "0 auto 2rem" }}>
                                     Thank you, {form.name}! I will review your message and contact you within 24 hours to schedule our call.
                                 </p>

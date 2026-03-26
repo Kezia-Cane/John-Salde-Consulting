@@ -44,20 +44,11 @@ export default function RootLayout({
         {/* Preconnect to speed up icon font resolution */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Material Symbols loaded non-blocking with display=optional to avoid render blocking */}
+        {/* Material Symbols loaded reliably */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=optional"
-          media="print"
-          // @ts-expect-error onload trick for async stylesheet loading
-          onLoad="this.media='all'"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         />
-        <noscript>
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-          />
-        </noscript>
       </head>
       <body className={`${montserrat.variable} ${poppins.variable} ${lora.variable}`} suppressHydrationWarning>
         {children}
