@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import CoffeeLoader from "./CoffeeLoader";
 
 interface LoadableImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
@@ -9,6 +9,15 @@ interface LoadableImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 
 export default function LoadableImage({ src, alt, className, style, loaderSize = 80, ...props }: LoadableImageProps) {
     const [isLoaded, setIsLoaded] = useState(false);
+    const imgRef = useRef<HTMLImageElement>(null);
+
+    // If the image is already cached by the browser, onLoad might not fire again.
+    // This checks if it's already complete when the component mounts.
+    useEffect(() => {
+        if (imgRef.current?.complete) {
+            setIsLoaded(true);
+        }
+    }, [src]);
 
     return (
         <div style={{ position: "relative", width: "100%", height: "100%" }}>
@@ -28,15 +37,19 @@ export default function LoadableImage({ src, alt, className, style, loaderSize =
                 </div>
             )}
             <img
+                ref={imgRef}
                 src={src}
                 alt={alt}
                 className={className}
                 style={{
                     ...style,
                     opacity: isLoaded ? 1 : 0,
-                    transition: "opacity 0.4s ease-in-out"
+                    transition: "opacity 0.4s ease-in-out",
+                    position: "relative",
+                    zIndex: 2
                 }}
                 onLoad={() => setIsLoaded(true)}
+                onError={() => setIsLoaded(true)} // Stop loading if error occurs
                 {...props}
             />
         </div>
