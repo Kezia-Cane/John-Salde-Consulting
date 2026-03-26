@@ -11,10 +11,12 @@ interface SectionRevealProps {
 
 export default function SectionReveal({ children, delay = 0, className = "", id }: SectionRevealProps) {
     const [isVisible, setIsVisible] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
     const domRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        // Only apply animations after initial mount
+        setIsMounted(true);
+
         const currentRef = domRef.current;
 
         // Check if user prefers reduced motion
@@ -43,13 +45,20 @@ export default function SectionReveal({ children, delay = 0, className = "", id 
         };
     }, [delay]);
 
+    // Build class list:
+    // - Before JS hydration (isMounted=false): just "reveal" → visible by CSS default
+    // - After hydration: add "reveal-js" to enable hidden start state, then "active" to animate in
+    const classes = [
+        "reveal",
+        isMounted ? "reveal-js" : "",
+        isVisible ? "active" : "",
+        className,
+    ].filter(Boolean).join(" ");
+
     return (
-        <div
-            id={id}
-            ref={domRef}
-            className={`reveal ${isVisible ? "active " : ""}${className}`}
-        >
+        <div id={id} ref={domRef} className={classes}>
             {children}
         </div>
     );
 }
+
