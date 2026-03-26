@@ -150,218 +150,232 @@ export default function DateTimePicker({ value, onChange, error, id }: DateTimeP
                 </span>
             </button>
 
-            {/* Picker Dropdown */}
+            {/* Picker — fixed overlay on mobile, absolute on desktop */}
             {open && (
-                <div style={{
-                    position: "absolute",
-                    top: "calc(100% + 8px)",
-                    left: 0,
-                    right: 0,
-                    background: "white",
-                    borderRadius: "20px",
-                    boxShadow: "0 20px 60px rgba(29,59,145,0.18)",
-                    zIndex: 1000,
-                    overflow: "hidden",
-                    border: "1px solid rgba(29,59,145,0.08)",
-                }}>
-                    {/* Tab bar */}
-                    <div style={{ display: "flex", borderBottom: "1px solid #f1f5f9" }}>
-                        {(["calendar", "time"] as const).map(v => (
-                            <button
-                                key={v}
-                                type="button"
-                                onClick={() => setView(v)}
-                                style={{
-                                    flex: 1,
-                                    padding: "12px",
-                                    background: view === v ? "var(--color-primary)" : "white",
-                                    color: view === v ? "white" : "#94a3b8",
-                                    border: "none",
-                                    fontFamily: "var(--font-display)",
-                                    fontWeight: 700,
-                                    fontSize: "0.75rem",
-                                    letterSpacing: "0.08em",
-                                    textTransform: "uppercase",
-                                    cursor: "pointer",
-                                    transition: "all 0.2s",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    gap: "0.4rem",
-                                }}
-                            >
-                                <span className="material-symbols-outlined" style={{ fontSize: "1rem" }}>
-                                    {v === "calendar" ? "calendar_month" : "schedule"}
-                                </span>
-                                {v === "calendar" ? "Date" : "Time"}
-                            </button>
-                        ))}
-                    </div>
-
-                    {/* Calendar View */}
-                    {view === "calendar" && (
-                        <div style={{ padding: "1.25rem" }}>
-                            {/* Month navigation */}
-                            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
-                                <button type="button" onClick={prevMonth} style={{ background: "none", border: "none", cursor: "pointer", padding: "4px", borderRadius: "8px", color: "var(--color-primary)" }}>
-                                    <span className="material-symbols-outlined" style={{ fontSize: "1.2rem" }}>chevron_left</span>
+                <>
+                    {/* Dark backdrop (only visible on small screens) */}
+                    <div
+                        onClick={() => setOpen(false)}
+                        style={{
+                            position: "fixed",
+                            inset: 0,
+                            background: "rgba(10, 20, 60, 0.45)",
+                            zIndex: 99998,
+                            backdropFilter: "blur(2px)",
+                        }}
+                    />
+                    <div style={{
+                        position: "fixed",
+                        left: "50%",
+                        top: "50%",
+                        transform: "translate(-50%, -50%)",
+                        width: "min(440px, calc(100vw - 32px))",
+                        background: "#f4f6fb",
+                        borderRadius: "24px",
+                        boxShadow: "0 32px 80px rgba(29,59,145,0.25), 0 4px 16px rgba(0,0,0,0.12)",
+                        zIndex: 99999,
+                        overflow: "hidden",
+                        border: "1px solid rgba(29,59,145,0.10)",
+                    }}>
+                        {/* Tab bar */}
+                        <div style={{ display: "flex", borderBottom: "1px solid #f1f5f9" }}>
+                            {(["calendar", "time"] as const).map(v => (
+                                <button
+                                    key={v}
+                                    type="button"
+                                    onClick={() => setView(v)}
+                                    style={{
+                                        flex: 1,
+                                        padding: "12px",
+                                        background: view === v ? "var(--color-primary)" : "white",
+                                        color: view === v ? "white" : "#94a3b8",
+                                        border: "none",
+                                        fontFamily: "var(--font-display)",
+                                        fontWeight: 700,
+                                        fontSize: "0.75rem",
+                                        letterSpacing: "0.08em",
+                                        textTransform: "uppercase",
+                                        cursor: "pointer",
+                                        transition: "all 0.2s",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        gap: "0.4rem",
+                                    }}
+                                >
+                                    <span className="material-symbols-outlined" style={{ fontSize: "1rem" }}>
+                                        {v === "calendar" ? "calendar_month" : "schedule"}
+                                    </span>
+                                    {v === "calendar" ? "Date" : "Time"}
                                 </button>
-                                <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--color-primary)", fontSize: "0.95rem" }}>
-                                    {MONTHS[calMonth]} {calYear}
-                                </span>
-                                <button type="button" onClick={nextMonth} style={{ background: "none", border: "none", cursor: "pointer", padding: "4px", borderRadius: "8px", color: "var(--color-primary)" }}>
-                                    <span className="material-symbols-outlined" style={{ fontSize: "1.2rem" }}>chevron_right</span>
-                                </button>
-                            </div>
-
-                            {/* Day headers */}
-                            <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "2px", marginBottom: "4px" }}>
-                                {DAYS.map(d => (
-                                    <div key={d} style={{ textAlign: "center", fontSize: "0.7rem", fontWeight: 700, color: "#94a3b8", fontFamily: "var(--font-display)", padding: "4px 0", letterSpacing: "0.05em" }}>
-                                        {d}
-                                    </div>
-                                ))}
-                            </div>
-
-                            {/* Day grid */}
-                            <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "2px" }}>
-                                {/* Empty cells for first day offset */}
-                                {Array.from({ length: firstDay }).map((_, i) => <div key={`empty-${i}`} />)}
-                                {Array.from({ length: daysInMonth }, (_, i) => i + 1).map(day => {
-                                    const past = isPast(day);
-                                    const sel = isSelected(day);
-                                    const tod = isToday(day);
-                                    return (
-                                        <button
-                                            key={day}
-                                            type="button"
-                                            disabled={past}
-                                            onClick={() => handleDayClick(day)}
-                                            style={{
-                                                width: "100%",
-                                                aspectRatio: "1",
-                                                borderRadius: "10px",
-                                                border: tod && !sel ? "2px solid var(--color-accent)" : "2px solid transparent",
-                                                background: sel ? "var(--color-primary)" : "transparent",
-                                                color: sel ? "white" : past ? "#cbd5e1" : "var(--color-primary)",
-                                                fontFamily: "var(--font-display)",
-                                                fontWeight: sel ? 700 : 500,
-                                                fontSize: "0.85rem",
-                                                cursor: past ? "not-allowed" : "pointer",
-                                                transition: "all 0.15s",
-                                                opacity: past ? 0.35 : 1,
-                                            }}
-                                            onMouseEnter={e => { if (!past && !sel) (e.currentTarget as HTMLButtonElement).style.background = "#eef2ff"; }}
-                                            onMouseLeave={e => { if (!sel) (e.currentTarget as HTMLButtonElement).style.background = "transparent"; }}
-                                        >
-                                            {day}
-                                        </button>
-                                    );
-                                })}
-                            </div>
+                            ))}
                         </div>
-                    )}
 
-                    {/* Time View */}
-                    {view === "time" && (
-                        <div style={{ padding: "1.25rem" }}>
-                            <p style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--color-primary)", fontSize: "0.85rem", marginBottom: "1rem", textAlign: "center" }}>
-                                {selectedDate ? `${MONTHS[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}` : "Pick a date first"}
-                            </p>
+                        {/* Calendar View */}
+                        {view === "calendar" && (
+                            <div style={{ padding: "1.25rem", background: "#f4f6fb" }}>
+                                {/* Month navigation */}
+                                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
+                                    <button type="button" onClick={prevMonth} style={{ background: "none", border: "none", cursor: "pointer", padding: "4px", borderRadius: "8px", color: "var(--color-primary)" }}>
+                                        <span className="material-symbols-outlined" style={{ fontSize: "1.2rem" }}>chevron_left</span>
+                                    </button>
+                                    <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--color-primary)", fontSize: "0.95rem" }}>
+                                        {MONTHS[calMonth]} {calYear}
+                                    </span>
+                                    <button type="button" onClick={nextMonth} style={{ background: "none", border: "none", cursor: "pointer", padding: "4px", borderRadius: "8px", color: "var(--color-primary)" }}>
+                                        <span className="material-symbols-outlined" style={{ fontSize: "1.2rem" }}>chevron_right</span>
+                                    </button>
+                                </div>
 
-                            {/* Hour */}
-                            <div style={{ marginBottom: "1rem" }}>
-                                <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#94a3b8", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem", fontFamily: "var(--font-display)" }}>Hour</div>
-                                <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-                                    {HOURS.map(h => {
-                                        const hNum = parseInt(h);
-                                        const sel = selectedHour === hNum;
+                                {/* Day headers */}
+                                <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "2px", marginBottom: "4px" }}>
+                                    {DAYS.map(d => (
+                                        <div key={d} style={{ textAlign: "center", fontSize: "0.7rem", fontWeight: 700, color: "#94a3b8", fontFamily: "var(--font-display)", padding: "4px 0", letterSpacing: "0.05em" }}>
+                                            {d}
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Day grid */}
+                                <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: "2px" }}>
+                                    {/* Empty cells for first day offset */}
+                                    {Array.from({ length: firstDay }).map((_, i) => <div key={`empty-${i}`} />)}
+                                    {Array.from({ length: daysInMonth }, (_, i) => i + 1).map(day => {
+                                        const past = isPast(day);
+                                        const sel = isSelected(day);
+                                        const tod = isToday(day);
                                         return (
-                                            <button key={h} type="button"
-                                                onClick={() => { setSelectedHour(hNum); if (selectedDate) commitSelection(selectedDate, hNum, selectedMinute, ampm); }}
+                                            <button
+                                                key={day}
+                                                type="button"
+                                                disabled={past}
+                                                onClick={() => handleDayClick(day)}
                                                 style={{
-                                                    width: "40px", height: "36px", borderRadius: "10px",
-                                                    border: "none",
-                                                    background: sel ? "var(--color-primary)" : "#f1f5f9",
-                                                    color: sel ? "white" : "var(--color-primary)",
-                                                    fontWeight: 700, fontSize: "0.85rem",
-                                                    cursor: "pointer", transition: "all 0.15s",
+                                                    width: "100%",
+                                                    aspectRatio: "1",
+                                                    borderRadius: "10px",
+                                                    border: tod && !sel ? "2px solid var(--color-accent)" : "2px solid transparent",
+                                                    background: sel ? "var(--color-primary)" : "transparent",
+                                                    color: sel ? "white" : past ? "#cbd5e1" : "var(--color-primary)",
                                                     fontFamily: "var(--font-display)",
+                                                    fontWeight: sel ? 700 : 500,
+                                                    fontSize: "0.85rem",
+                                                    cursor: past ? "not-allowed" : "pointer",
+                                                    transition: "all 0.15s",
+                                                    opacity: past ? 0.35 : 1,
                                                 }}
-                                            >{h}</button>
+                                                onMouseEnter={e => { if (!past && !sel) (e.currentTarget as HTMLButtonElement).style.background = "#eef2ff"; }}
+                                                onMouseLeave={e => { if (!sel) (e.currentTarget as HTMLButtonElement).style.background = "transparent"; }}
+                                            >
+                                                {day}
+                                            </button>
                                         );
                                     })}
                                 </div>
                             </div>
+                        )}
 
-                            {/* Minute */}
-                            <div style={{ marginBottom: "1rem" }}>
-                                <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#94a3b8", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem", fontFamily: "var(--font-display)" }}>Minute</div>
-                                <div style={{ display: "flex", gap: "6px" }}>
-                                    {MINUTES.map(m => {
-                                        const mNum = parseInt(m);
-                                        const sel = selectedMinute === mNum;
-                                        return (
-                                            <button key={m} type="button"
-                                                onClick={() => { setSelectedMinute(mNum); if (selectedDate) commitSelection(selectedDate, selectedHour, mNum, ampm); }}
+                        {/* Time View */}
+                        {view === "time" && (
+                            <div style={{ padding: "1.25rem", background: "#f4f6fb" }}>
+                                <p style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--color-primary)", fontSize: "0.85rem", marginBottom: "1rem", textAlign: "center" }}>
+                                    {selectedDate ? `${MONTHS[selectedDate.getMonth()]} ${selectedDate.getDate()}, ${selectedDate.getFullYear()}` : "Pick a date first"}
+                                </p>
+
+                                {/* Hour */}
+                                <div style={{ marginBottom: "1rem" }}>
+                                    <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#94a3b8", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem", fontFamily: "var(--font-display)" }}>Hour</div>
+                                    <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+                                        {HOURS.map(h => {
+                                            const hNum = parseInt(h);
+                                            const sel = selectedHour === hNum;
+                                            return (
+                                                <button key={h} type="button"
+                                                    onClick={() => { setSelectedHour(hNum); if (selectedDate) commitSelection(selectedDate, hNum, selectedMinute, ampm); }}
+                                                    style={{
+                                                        width: "40px", height: "36px", borderRadius: "10px",
+                                                        border: "none",
+                                                        background: sel ? "var(--color-primary)" : "#f1f5f9",
+                                                        color: sel ? "white" : "var(--color-primary)",
+                                                        fontWeight: 700, fontSize: "0.85rem",
+                                                        cursor: "pointer", transition: "all 0.15s",
+                                                        fontFamily: "var(--font-display)",
+                                                    }}
+                                                >{h}</button>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+
+                                {/* Minute */}
+                                <div style={{ marginBottom: "1rem" }}>
+                                    <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#94a3b8", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem", fontFamily: "var(--font-display)" }}>Minute</div>
+                                    <div style={{ display: "flex", gap: "6px" }}>
+                                        {MINUTES.map(m => {
+                                            const mNum = parseInt(m);
+                                            const sel = selectedMinute === mNum;
+                                            return (
+                                                <button key={m} type="button"
+                                                    onClick={() => { setSelectedMinute(mNum); if (selectedDate) commitSelection(selectedDate, selectedHour, mNum, ampm); }}
+                                                    style={{
+                                                        flex: 1, height: "36px", borderRadius: "10px",
+                                                        border: "none",
+                                                        background: sel ? "var(--color-primary)" : "#f1f5f9",
+                                                        color: sel ? "white" : "var(--color-primary)",
+                                                        fontWeight: 700, fontSize: "0.85rem",
+                                                        cursor: "pointer", transition: "all 0.15s",
+                                                        fontFamily: "var(--font-display)",
+                                                    }}
+                                                >{m}</button>
+                                            );
+                                        })}
+                                    </div>
+                                </div>
+
+                                {/* AM/PM */}
+                                <div style={{ marginBottom: "1.25rem" }}>
+                                    <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#94a3b8", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem", fontFamily: "var(--font-display)" }}>AM / PM</div>
+                                    <div style={{ display: "flex", gap: "6px" }}>
+                                        {(["AM", "PM"] as const).map(ap => (
+                                            <button key={ap} type="button"
+                                                onClick={() => { setAmpm(ap); if (selectedDate) commitSelection(selectedDate, selectedHour, selectedMinute, ap); }}
                                                 style={{
                                                     flex: 1, height: "36px", borderRadius: "10px",
                                                     border: "none",
-                                                    background: sel ? "var(--color-primary)" : "#f1f5f9",
-                                                    color: sel ? "white" : "var(--color-primary)",
+                                                    background: ampm === ap ? "var(--color-accent)" : "#f1f5f9",
+                                                    color: ampm === ap ? "var(--color-primary)" : "#64748b",
                                                     fontWeight: 700, fontSize: "0.85rem",
                                                     cursor: "pointer", transition: "all 0.15s",
                                                     fontFamily: "var(--font-display)",
                                                 }}
-                                            >{m}</button>
-                                        );
-                                    })}
+                                            >{ap}</button>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
 
-                            {/* AM/PM */}
-                            <div style={{ marginBottom: "1.25rem" }}>
-                                <div style={{ fontSize: "0.7rem", fontWeight: 700, color: "#94a3b8", letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: "0.5rem", fontFamily: "var(--font-display)" }}>AM / PM</div>
-                                <div style={{ display: "flex", gap: "6px" }}>
-                                    {(["AM", "PM"] as const).map(ap => (
-                                        <button key={ap} type="button"
-                                            onClick={() => { setAmpm(ap); if (selectedDate) commitSelection(selectedDate, selectedHour, selectedMinute, ap); }}
-                                            style={{
-                                                flex: 1, height: "36px", borderRadius: "10px",
-                                                border: "none",
-                                                background: ampm === ap ? "var(--color-accent)" : "#f1f5f9",
-                                                color: ampm === ap ? "var(--color-primary)" : "#64748b",
-                                                fontWeight: 700, fontSize: "0.85rem",
-                                                cursor: "pointer", transition: "all 0.15s",
-                                                fontFamily: "var(--font-display)",
-                                            }}
-                                        >{ap}</button>
-                                    ))}
-                                </div>
+                                {/* Confirm */}
+                                <button
+                                    type="button"
+                                    onClick={handleTimeConfirm}
+                                    disabled={!selectedDate}
+                                    style={{
+                                        width: "100%", padding: "12px",
+                                        background: "linear-gradient(45deg, var(--color-accent) 0%, #d4ec4f 100%)",
+                                        border: "none", borderRadius: "14px",
+                                        fontFamily: "var(--font-display)", fontWeight: 700,
+                                        color: "var(--color-primary)", fontSize: "0.9rem",
+                                        cursor: selectedDate ? "pointer" : "not-allowed",
+                                        opacity: selectedDate ? 1 : 0.5,
+                                        display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
+                                    }}
+                                >
+                                    <span className="material-symbols-outlined" style={{ fontSize: "1rem" }}>check_circle</span>
+                                    Confirm Selection
+                                </button>
                             </div>
-
-                            {/* Confirm */}
-                            <button
-                                type="button"
-                                onClick={handleTimeConfirm}
-                                disabled={!selectedDate}
-                                style={{
-                                    width: "100%", padding: "12px",
-                                    background: "linear-gradient(45deg, var(--color-accent) 0%, #d4ec4f 100%)",
-                                    border: "none", borderRadius: "14px",
-                                    fontFamily: "var(--font-display)", fontWeight: 700,
-                                    color: "var(--color-primary)", fontSize: "0.9rem",
-                                    cursor: selectedDate ? "pointer" : "not-allowed",
-                                    opacity: selectedDate ? 1 : 0.5,
-                                    display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem",
-                                }}
-                            >
-                                <span className="material-symbols-outlined" style={{ fontSize: "1rem" }}>check_circle</span>
-                                Confirm Selection
-                            </button>
-                        </div>
-                    )}
-                </div>
+                        )}
+                    </div>
+                </>
             )}
         </div>
     );
