@@ -37,6 +37,7 @@ export default function LoadableImage({ src, alt, className, style, loaderSize =
                 </div>
             )}
             <img
+                {...props}
                 ref={imgRef}
                 src={src}
                 alt={alt}
@@ -48,9 +49,14 @@ export default function LoadableImage({ src, alt, className, style, loaderSize =
                     position: "relative",
                     zIndex: 2
                 }}
-                onLoad={() => setIsLoaded(true)}
-                onError={() => setIsLoaded(true)} // Stop loading if error occurs
-                {...props}
+                onLoad={(e) => {
+                    setIsLoaded(true);
+                    if (props.onLoad) props.onLoad(e);
+                }}
+                onError={(e) => {
+                    setIsLoaded(true);
+                    if (props.onError) props.onError(e);
+                }}
             />
         </div>
     );
