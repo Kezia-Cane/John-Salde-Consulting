@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Poppins, Lora } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -52,6 +53,7 @@ export default function RootLayout({
       </head>
       <body className={`${montserrat.variable} ${poppins.variable} ${lora.variable}`} suppressHydrationWarning>
         {children}
+        <Analytics />
       </body>
     </html>
   );
