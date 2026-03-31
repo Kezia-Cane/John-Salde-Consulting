@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import CoffeeLoader from "@/components/CoffeeLoader";
 import Footer from "@/components/Footer";
@@ -132,18 +133,18 @@ export default function ConsultationPage() {
 
                     {/* Left: Header Text */}
                     <div style={{ maxWidth: "600px" }}>
-                        <span className="page-label" style={{ color: "var(--color-secondary)" }}>Let's Work Together</span>
+                        <span className="page-label" style={{ color: "var(--color-secondary)" }}>Let&apos;s Work Together</span>
                         <h1
                             className="text-display-md"
                             style={{ color: "var(--color-primary)", lineHeight: 1.1, marginBottom: "1.5rem" }}
                         >
-                            Let's build a stronger, more profitable {" "}
+                            Let&apos;s build a stronger, more profitable{" "}
                             <span className="lora-quote" style={{ color: "var(--color-secondary)", fontWeight: 400, fontSize: "inherit" }}>
                                 cafe business.
                             </span>
                         </h1>
                         <p className="text-body-lg" style={{ maxWidth: "580px", color: "var(--color-text-muted)" }}>
-                            My consultation process is simple and easy to follow. I don't just give general advice, I look closely at your numbers and daily operations to help you grow your profits.
+                            My consultation process is simple and easy to follow. I don&apos;t just give general advice, I look closely at your numbers and daily operations to help you grow your profits.
                         </p>
                     </div>
 
@@ -197,6 +198,32 @@ export default function ConsultationPage() {
                         padding: 3rem;
                         border: 5px solid #ffffff;
                         box-shadow: rgba(198, 224, 61, 0.25) 0px 30px 40px -15px;
+                    }
+                    .consultation-shell {
+                        display: grid;
+                        grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+                        gap: 2.5rem;
+                        align-items: start;
+                    }
+                    .consultation-aside {
+                        background: linear-gradient(180deg, rgba(29, 59, 145, 0.96) 0%, rgba(14, 26, 66, 0.98) 100%);
+                        border-radius: 32px;
+                        padding: 1.5rem;
+                        color: white;
+                        overflow: hidden;
+                        min-height: 100%;
+                    }
+                    .consultation-portrait {
+                        position: relative;
+                        aspect-ratio: 4 / 5;
+                        width: 100%;
+                        border-radius: 24px;
+                        overflow: hidden;
+                        background: linear-gradient(180deg, rgba(83, 121, 226, 0.45), rgba(5, 11, 32, 0.2));
+                        margin-bottom: 1.5rem;
+                    }
+                    .consultation-content {
+                        min-width: 0;
                     }
                     .uiverse-input {
                         width: 100%;
@@ -254,172 +281,209 @@ export default function ConsultationPage() {
                         margin-bottom: 0.5rem;
                         margin-left: 0.5rem;
                     }
+                    @media (max-width: 900px) {
+                        .uiverse-container {
+                            padding: 1.5rem;
+                            border-radius: 28px;
+                        }
+                        .consultation-shell {
+                            grid-template-columns: 1fr;
+                            gap: 1.5rem;
+                        }
+                    }
+                    @media (max-width: 640px) {
+                        .uiverse-container {
+                            padding: 1.25rem;
+                            border-radius: 24px;
+                        }
+                        .consultation-aside {
+                            padding: 1.25rem;
+                            border-radius: 24px;
+                        }
+                    }
                 `}} />
-                <div style={{ maxWidth: "800px", margin: "0 auto" }}>
+                <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
                     <div className="uiverse-container">
-                        {submitted ? (
-                            <div style={{ textAlign: "center", padding: "3.5rem 0" }}>
-                                <span className="material-symbols-outlined" style={{ fontSize: "6rem", color: "#C6E03D", marginBottom: "1.5rem", display: "block", userSelect: "none" }}>
-                                    check_circle
+                        <div className="consultation-shell">
+                            <aside className="consultation-aside">
+                                <div className="consultation-portrait">
+                                    <Image
+                                        src="/images/new hero/7.png"
+                                        alt="John Salde portrait"
+                                        fill
+                                        sizes="(max-width: 900px) 100vw, 360px"
+                                        style={{ objectFit: "cover", objectPosition: "center top" }}
+                                        priority
+                                    />
+                                </div>
+                                <span className="page-label" style={{ color: "#C6E03D", marginBottom: "0.75rem", display: "block" }}>
+                                    Direct With John
                                 </span>
-                                <h2 style={{ color: "#1D3B91", fontSize: "2.5rem", fontWeight: 700, marginBottom: "1rem" }}>Request Received</h2>
-
-                                <p className="text-body-lg" style={{ maxWidth: "420px", margin: "0 auto 2rem" }}>
-                                    Thank you, {form.name}! I will review your message and contact you within 24 hours to schedule our call.
+                                <h2 style={{ color: "white", fontSize: "1.9rem", lineHeight: 1.1, marginBottom: "0.85rem" }}>
+                                    Book a focused consultation for your cafe.
+                                </h2>
+                                <p className="text-body-md" style={{ color: "rgba(255,255,255,0.78)", marginBottom: "1.5rem" }}>
+                                    Share your business details, preferred schedule, and current challenge. I&apos;ll review it personally before we speak.
                                 </p>
-                                <button
-                                    className="uiverse-button"
-                                    onClick={() => { setSubmitted(false); setForm({ name: "", businessType: BUSINESS_TYPES[0], email: "", phone: "", datetime: "", message: "", _honeypot: "" }); }}
-                                >
-                                    Submit Another
-                                </button>
-                            </div>
-                        ) : (
-                            <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-                                {/* HONEYPOT - Visually hidden to humans, but bots will fill it */}
-                                <div style={{ display: "none" }} aria-hidden="true">
-                                    <label htmlFor="_honeypot">If you are a human, leave this blank</label>
-                                    <input
-                                        type="text"
-                                        id="_honeypot"
-                                        name="_honeypot"
-                                        value={form._honeypot}
-                                        onChange={(e) => handleChange("_honeypot", e.target.value)}
-                                        tabIndex={-1}
-                                        autoComplete="off"
-                                    />
-                                </div>
-                                <div className="grid gap-8 md:grid-cols-2">
-                                    {/* Name */}
-                                    <div>
-                                        <label htmlFor="cf-name" className="uiverse-label">Full Name</label>
-                                        <input
-                                            id="cf-name"
-                                            type="text"
-                                            className="uiverse-input"
-                                            placeholder="Maria Santos"
-                                            value={form.name}
-                                            onChange={(e) => handleChange("name", e.target.value)}
-                                            aria-required="true"
-                                            aria-invalid={!!errors.name}
-                                            aria-describedby={errors.name ? "cf-name-err" : undefined}
-                                        />
-                                        {errors.name && <span id="cf-name-err" style={{ color: "#ba1a1a", fontSize: "0.75rem", marginTop: "0.25rem", display: "block" }}>{errors.name}</span>}
-                                    </div>
+                            </aside>
 
-                                    {/* Business Type */}
-                                    <div>
-                                        <label htmlFor="cf-btype" className="uiverse-label">Business Type</label>
-                                        <select
-                                            id="cf-btype"
-                                            className="uiverse-input"
-                                            value={form.businessType}
-                                            onChange={(e) => handleChange("businessType", e.target.value)}
+                            <div className="consultation-content">
+                                {submitted ? (
+                                    <div style={{ textAlign: "center", padding: "3.5rem 0" }}>
+                                        <span className="material-symbols-outlined" style={{ fontSize: "6rem", color: "#C6E03D", marginBottom: "1.5rem", display: "block", userSelect: "none" }}>
+                                            check_circle
+                                        </span>
+                                        <h2 style={{ color: "#1D3B91", fontSize: "2.5rem", fontWeight: 700, marginBottom: "1rem" }}>Request Received</h2>
+
+                                        <p className="text-body-lg" style={{ maxWidth: "420px", margin: "0 auto 2rem" }}>
+                                            Thank you, {form.name}! I will review your message and contact you within 24 hours to schedule our call.
+                                        </p>
+                                        <button
+                                            className="uiverse-button"
+                                            onClick={() => { setSubmitted(false); setForm({ name: "", businessType: BUSINESS_TYPES[0], email: "", phone: "", datetime: "", message: "", _honeypot: "" }); }}
                                         >
-                                            {BUSINESS_TYPES.map((t) => <option key={t}>{t}</option>)}
-                                        </select>
+                                            Submit Another
+                                        </button>
                                     </div>
-                                </div>
-
-                                <div className="grid gap-8 md:grid-cols-2">
-                                    {/* Email */}
-                                    <div>
-                                        <label htmlFor="cf-email" className="uiverse-label">Email Address</label>
-                                        <input
-                                            id="cf-email"
-                                            type="email"
-                                            className="uiverse-input"
-                                            placeholder="you@business.com"
-                                            value={form.email}
-                                            onChange={(e) => handleChange("email", e.target.value)}
-                                            aria-required="true"
-                                            aria-invalid={!!errors.email}
-                                            aria-describedby={errors.email ? "cf-email-err" : undefined}
-                                        />
-                                        {errors.email && <span id="cf-email-err" style={{ color: "#ba1a1a", fontSize: "0.75rem", marginTop: "0.25rem", display: "block" }}>{errors.email}</span>}
-                                    </div>
-
-                                    {/* Phone */}
-                                    <div>
-                                        <label htmlFor="cf-phone" className="uiverse-label">Phone Number</label>
-                                        <input
-                                            id="cf-phone"
-                                            type="tel"
-                                            className="uiverse-input"
-                                            placeholder="+63 912 345 6789"
-                                            value={form.phone}
-                                            onChange={(e) => handleChange("phone", e.target.value)}
-                                            aria-required="true"
-                                            aria-invalid={!!errors.phone}
-                                            aria-describedby={errors.phone ? "cf-phone-err" : undefined}
-                                        />
-                                        {errors.phone && <span id="cf-phone-err" style={{ color: "#ba1a1a", fontSize: "0.75rem", marginTop: "0.25rem", display: "block" }}>{errors.phone}</span>}
-                                    </div>
-                                </div>
-
-                                {/* Preferred Date/Time */}
-                                <div>
-                                    <label htmlFor="cf-datetime" className="uiverse-label">Preferred Date &amp; Time for Call</label>
-                                    <DateTimePicker
-                                        id="cf-datetime"
-                                        value={form.datetime}
-                                        onChange={(val) => handleChange("datetime", val)}
-                                        error={errors.datetime}
-                                    />
-                                    {errors.datetime && <span id="cf-dt-err" style={{ color: "#ba1a1a", fontSize: "0.75rem", marginTop: "0.25rem", display: "block" }}>{errors.datetime}</span>}
-                                </div>
-
-                                {/* Message */}
-                                <div>
-                                    <label htmlFor="cf-msg" className="uiverse-label">What do you need help with?</label>
-                                    <textarea
-                                        id="cf-msg"
-                                        className="uiverse-input"
-                                        rows={4}
-                                        placeholder="Tell me about your current challenges or goals..."
-                                        value={form.message}
-                                        onChange={(e) => handleChange("message", e.target.value)}
-                                        aria-required="true"
-                                        aria-invalid={!!errors.message}
-                                        aria-describedby={errors.message ? "cf-msg-err" : undefined}
-                                        style={{ resize: "vertical" }}
-                                    />
-                                    {errors.message && <span id="cf-msg-err" style={{ color: "#ba1a1a", fontSize: "0.75rem", marginTop: "0.25rem", display: "block" }}>{errors.message}</span>}
-                                </div>
-
-                                {serverError && (
-                                    <div style={{ background: "#fff0f0", border: "1px solid #ba1a1a", borderRadius: "12px", padding: "1rem 1.25rem", color: "#ba1a1a", fontSize: "0.9rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                                        <span className="material-symbols-outlined" style={{ fontSize: "1.1rem" }}>error</span>
-                                        {serverError}
-                                    </div>
-                                )}
-
-                                {/* Submit */}
-                                <button
-                                    type="submit"
-                                    className="uiverse-button"
-                                    disabled={loading}
-                                    style={{
-                                        opacity: loading ? 0.9 : 1,
-                                        height: "64px",
-                                        position: "relative",
-                                        overflow: "hidden"
-                                    }}
-                                >
-                                    {loading ? (
-                                        <div style={{ transform: "scale(0.5)" }}>
-                                            <CoffeeLoader size={100} />
+                                ) : (
+                                    <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+                                        <div style={{ display: "none" }} aria-hidden="true">
+                                            <label htmlFor="_honeypot">If you are a human, leave this blank</label>
+                                            <input
+                                                type="text"
+                                                id="_honeypot"
+                                                name="_honeypot"
+                                                value={form._honeypot}
+                                                onChange={(e) => handleChange("_honeypot", e.target.value)}
+                                                tabIndex={-1}
+                                                autoComplete="off"
+                                            />
                                         </div>
-                                    ) : (
-                                        <>
-                                            Send Request
-                                            <span className="material-symbols-outlined" style={{ fontSize: "1.1rem" }}>arrow_forward</span>
-                                        </>
-                                    )}
-                                </button>
-                                {/* Removed the CSS spinner's @keyframes style as it's no longer needed */}
-                            </form>
-                        )}
+                                        <div className="grid gap-8 md:grid-cols-2">
+                                            <div>
+                                                <label htmlFor="cf-name" className="uiverse-label">Full Name</label>
+                                                <input
+                                                    id="cf-name"
+                                                    type="text"
+                                                    className="uiverse-input"
+                                                    placeholder="Maria Santos"
+                                                    value={form.name}
+                                                    onChange={(e) => handleChange("name", e.target.value)}
+                                                    aria-required="true"
+                                                    aria-invalid={!!errors.name}
+                                                    aria-describedby={errors.name ? "cf-name-err" : undefined}
+                                                />
+                                                {errors.name && <span id="cf-name-err" style={{ color: "#ba1a1a", fontSize: "0.75rem", marginTop: "0.25rem", display: "block" }}>{errors.name}</span>}
+                                            </div>
+
+                                            <div>
+                                                <label htmlFor="cf-btype" className="uiverse-label">Business Type</label>
+                                                <select
+                                                    id="cf-btype"
+                                                    className="uiverse-input"
+                                                    value={form.businessType}
+                                                    onChange={(e) => handleChange("businessType", e.target.value)}
+                                                >
+                                                    {BUSINESS_TYPES.map((t) => <option key={t}>{t}</option>)}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div className="grid gap-8 md:grid-cols-2">
+                                            <div>
+                                                <label htmlFor="cf-email" className="uiverse-label">Email Address</label>
+                                                <input
+                                                    id="cf-email"
+                                                    type="email"
+                                                    className="uiverse-input"
+                                                    placeholder="you@business.com"
+                                                    value={form.email}
+                                                    onChange={(e) => handleChange("email", e.target.value)}
+                                                    aria-required="true"
+                                                    aria-invalid={!!errors.email}
+                                                    aria-describedby={errors.email ? "cf-email-err" : undefined}
+                                                />
+                                                {errors.email && <span id="cf-email-err" style={{ color: "#ba1a1a", fontSize: "0.75rem", marginTop: "0.25rem", display: "block" }}>{errors.email}</span>}
+                                            </div>
+
+                                            <div>
+                                                <label htmlFor="cf-phone" className="uiverse-label">Phone Number</label>
+                                                <input
+                                                    id="cf-phone"
+                                                    type="tel"
+                                                    className="uiverse-input"
+                                                    placeholder="+63 912 345 6789"
+                                                    value={form.phone}
+                                                    onChange={(e) => handleChange("phone", e.target.value)}
+                                                    aria-required="true"
+                                                    aria-invalid={!!errors.phone}
+                                                    aria-describedby={errors.phone ? "cf-phone-err" : undefined}
+                                                />
+                                                {errors.phone && <span id="cf-phone-err" style={{ color: "#ba1a1a", fontSize: "0.75rem", marginTop: "0.25rem", display: "block" }}>{errors.phone}</span>}
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label htmlFor="cf-datetime" className="uiverse-label">Preferred Date &amp; Time for Call</label>
+                                            <DateTimePicker
+                                                id="cf-datetime"
+                                                value={form.datetime}
+                                                onChange={(val) => handleChange("datetime", val)}
+                                                error={errors.datetime}
+                                            />
+                                            {errors.datetime && <span id="cf-dt-err" style={{ color: "#ba1a1a", fontSize: "0.75rem", marginTop: "0.25rem", display: "block" }}>{errors.datetime}</span>}
+                                        </div>
+
+                                        <div>
+                                            <label htmlFor="cf-msg" className="uiverse-label">What do you need help with?</label>
+                                            <textarea
+                                                id="cf-msg"
+                                                className="uiverse-input"
+                                                rows={4}
+                                                placeholder="Tell me about your current challenges or goals..."
+                                                value={form.message}
+                                                onChange={(e) => handleChange("message", e.target.value)}
+                                                aria-required="true"
+                                                aria-invalid={!!errors.message}
+                                                aria-describedby={errors.message ? "cf-msg-err" : undefined}
+                                                style={{ resize: "vertical" }}
+                                            />
+                                            {errors.message && <span id="cf-msg-err" style={{ color: "#ba1a1a", fontSize: "0.75rem", marginTop: "0.25rem", display: "block" }}>{errors.message}</span>}
+                                        </div>
+
+                                        {serverError && (
+                                            <div style={{ background: "#fff0f0", border: "1px solid #ba1a1a", borderRadius: "12px", padding: "1rem 1.25rem", color: "#ba1a1a", fontSize: "0.9rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                                                <span className="material-symbols-outlined" style={{ fontSize: "1.1rem" }}>error</span>
+                                                {serverError}
+                                            </div>
+                                        )}
+
+                                        <button
+                                            type="submit"
+                                            className="uiverse-button"
+                                            disabled={loading}
+                                            style={{
+                                                opacity: loading ? 0.9 : 1,
+                                                height: "64px",
+                                                position: "relative",
+                                                overflow: "hidden"
+                                            }}
+                                        >
+                                            {loading ? (
+                                                <div style={{ transform: "scale(0.5)" }}>
+                                                    <CoffeeLoader size={100} />
+                                                </div>
+                                            ) : (
+                                                <>
+                                                    Send Request
+                                                    <span className="material-symbols-outlined" style={{ fontSize: "1.1rem" }}>arrow_forward</span>
+                                                </>
+                                            )}
+                                        </button>
+                                    </form>
+                                )}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
