@@ -3,7 +3,8 @@
 import { useState } from "react";
 import CoffeeLoader from "./CoffeeLoader";
 
-interface LoadableImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface LoadableImageProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, "src"> {
+    src?: string;
     loaderSize?: number;
     loaderBg?: string;
 }
