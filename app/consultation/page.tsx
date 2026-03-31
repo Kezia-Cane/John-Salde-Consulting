@@ -317,7 +317,7 @@ export default function ConsultationPage() {
                                     />
                                 </div>
                                 <span className="page-label" style={{ color: "#C6E03D", marginBottom: "0.75rem", display: "block" }}>
-                                    Direct With John
+                                    Direct With Me
                                 </span>
                                 <h2 style={{ color: "white", fontSize: "1.9rem", lineHeight: 1.1, marginBottom: "0.85rem" }}>
                                     Book a focused consultation for your cafe.
