@@ -5,11 +5,11 @@ import { Menu, X } from "lucide-react";
 import AnimatedButton from "./AnimatedButton";
 
 const NAV_LINKS = [
-    { label: "Philosophy", href: "/philosophy" },
-    { label: "Pillars", href: "/pillars" },
-    { label: "Expertise", href: "/expertise" },
-    { label: "Portfolio", href: "/portfolio" },
-    { label: "Process", href: "/process" },
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Experience", href: "/experience" },
+    { label: "Work", href: "/work" },
+    { label: "How It Works", href: "/how-it-works" },
 ];
 
 // scrolled = compact white-glass logo-only pill

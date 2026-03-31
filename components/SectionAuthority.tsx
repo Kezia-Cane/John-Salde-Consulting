@@ -4,8 +4,8 @@ import { ArrowRight, Lightbulb, Settings, Target, BarChart2 } from "lucide-react
 
 const bentoFeatures = [
   {
-    name: "Strategic Vision",
-    description: "Architecting high-impact, scalable growth blueprints designed exclusively for driven F&B founders and strategic partnerships.",
+    name: "Strategy",
+    description: "Clear plans built for café and food business growth.",
     Icon: Lightbulb,
     rowSpan: "md:row-span-2",
     colSpan: "md:col-span-2",
@@ -13,16 +13,16 @@ const bentoFeatures = [
     titleColor: "var(--color-accent)"
   },
   {
-    name: "Operational Systems",
-    description: "Tactical implementation of standard operating procedures.",
+    name: "Operations",
+    description: "Simple, repeatable daily systems.",
     Icon: Settings,
     rowSpan: "md:row-span-1",
     colSpan: "md:col-span-1",
     theme: "light"
   },
   {
-    name: "Data-Driven Growth",
-    description: "Advanced analytics and KPI tracking to constantly optimize profitability and minimize waste.",
+    name: "Growth Data",
+    description: "Track key numbers to improve profit and reduce waste.",
     Icon: BarChart2,
     rowSpan: "md:row-span-1",
     colSpan: "md:col-span-1",
@@ -63,14 +63,14 @@ export default function SectionAuthority() {
         <SectionReveal>
           <div style={{ maxWidth: '800px', marginBottom: '4rem' }}>
             <p className="text-accent" style={{ color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>
-              The Foundation
+              Results
             </p>
             <h2 className="text-h2" style={{ fontFamily: 'var(--font-display)', color: 'var(--color-primary)' }}>
-              Structuring Passion into <br />
-              <span style={{ color: 'var(--color-accent)' }}>Profitable Reality.</span>
+              Turning Passion into <br />
+              <span style={{ color: 'var(--color-accent)' }}>Profit.</span>
             </h2>
             <p className="text-body-md" style={{ lineHeight: 1.8, marginTop: '1.5rem', maxWidth: '600px' }}>
-              As the Founder and Lead Consultant of John Salde Consulting, I bring deep operational knowledge to the table. I don't just offer advice; I engineer systems that bridge the gap between passion and profitability.
+              I help café owners turn day-to-day effort into steady, reliable profit with simple systems that work.
             </p>
           </div>
         </SectionReveal>

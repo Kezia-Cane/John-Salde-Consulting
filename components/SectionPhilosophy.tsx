@@ -77,7 +77,7 @@ export default function SectionPhilosophy() {
                             </p>
                         </SectionReveal>
                         <SectionReveal delay={700}>
-                            <Link href="/philosophy" className="section-cta-btn" style={{
+                            <Link href="/about" className="section-cta-btn" style={{
                                 display: 'inline-flex',
                                 alignItems: 'center',
                                 gap: '0.5rem',
@@ -113,8 +113,8 @@ export default function SectionPhilosophy() {
                             maxHeight: '520px',
                         }}>
                             <img
-                                src="/images/js-nb.png"
-                                alt="John Salde - Business Consultant"
+                                src="/images/new%20hero/Testimonial.png"
+                                alt="Client Testimonial"
                                 style={{
                                     width: '100%',
                                     height: '100%',

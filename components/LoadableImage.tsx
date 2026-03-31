@@ -1,23 +1,16 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import CoffeeLoader from "./CoffeeLoader";
 
 interface LoadableImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     loaderSize?: number;
+    loaderBg?: string;
 }
 
-export default function LoadableImage({ src, alt, className, style, loaderSize = 80, ...props }: LoadableImageProps) {
-    const [isLoaded, setIsLoaded] = useState(false);
-    const imgRef = useRef<HTMLImageElement>(null);
-
-    // If the image is already cached by the browser, onLoad might not fire again.
-    // This checks if it's already complete when the component mounts.
-    useEffect(() => {
-        if (imgRef.current?.complete) {
-            setIsLoaded(true);
-        }
-    }, [src]);
+export default function LoadableImage({ src, alt, className, style, loaderSize = 80, loaderBg = "#f8fafc", ...props }: LoadableImageProps) {
+    const [loadedSrc, setLoadedSrc] = useState<string | null>(null);
+    const isLoaded = loadedSrc === src;
 
     return (
         <div style={{ position: "relative", width: "100%", height: "100%" }}>
@@ -28,7 +21,7 @@ export default function LoadableImage({ src, alt, className, style, loaderSize =
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    backgroundColor: "#f8fafc",
+                    backgroundColor: loaderBg,
                     zIndex: 1
                 }}>
                     <div style={{ transform: "scale(0.6)" }}>
@@ -38,7 +31,6 @@ export default function LoadableImage({ src, alt, className, style, loaderSize =
             )}
             <img
                 {...props}
-                ref={imgRef}
                 src={src}
                 alt={alt}
                 className={className}
@@ -49,12 +41,13 @@ export default function LoadableImage({ src, alt, className, style, loaderSize =
                     position: "relative",
                     zIndex: 2
                 }}
+                loading={props.loading ?? "eager"}
                 onLoad={(e) => {
-                    setIsLoaded(true);
+                    setLoadedSrc(src ?? null);
                     if (props.onLoad) props.onLoad(e);
                 }}
                 onError={(e) => {
-                    setIsLoaded(true);
+                    setLoadedSrc(src ?? null);
                     if (props.onError) props.onError(e);
                 }}
             />

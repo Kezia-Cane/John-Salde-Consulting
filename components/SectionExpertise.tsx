@@ -17,9 +17,9 @@ interface ExpertiseCategory {
 const EXPERTISE_CATEGORIES: ExpertiseCategory[] = [
   {
     id: 1,
-    title: "Deep Operational Expertise",
-    subtitle: "Operations & Management",
-    description: "Building efficient systems behind exceptional coffee. From inventory control to process optimization, I streamline every aspect of your operations for maximum profitability.",
+    title: "Operations",
+    subtitle: "Operations",
+    description: "Practical systems that keep your café running smoothly and profitably.",
     items: [
       "Coffee Business Development",
       "Barista Training & Standardization",
@@ -32,9 +32,9 @@ const EXPERTISE_CATEGORIES: ExpertiseCategory[] = [
   },
   {
     id: 2,
-    title: "Digital Marketing",
+    title: "Marketing",
     subtitle: "Brand & Growth",
-    description: "Elevating your brand presence across all digital platforms. I craft compelling narratives that connect with your audience and drive measurable business growth.",
+    description: "Clear marketing that brings customers in and keeps them coming back.",
     items: [
       "Brand Development",
       "Social Media Strategy",
@@ -48,9 +48,9 @@ const EXPERTISE_CATEGORIES: ExpertiseCategory[] = [
   },
   {
     id: 3,
-    title: "Custom Systems Development",
-    subtitle: "Technology & Innovation",
-    description: "Tailored software solutions designed specifically for your business needs. From POS systems to advanced analytics, I build tools that power your growth.",
+    title: "Systems",
+    subtitle: "Tools & Tech",
+    description: "Simple tools and workflows that make daily work faster and more consistent.",
     items: [
       "Point of Sale (POS) Systems",
       "Staff Attendance Tracking",
@@ -103,7 +103,7 @@ export default function SectionExpertise() {
 
   return (
     <section
-      id="expertise"
+      id="experience"
       className="section expertise-section"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -131,9 +131,9 @@ export default function SectionExpertise() {
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <SectionReveal>
           <div className="expertise-header">
-            <p className="text-accent" style={{ color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>Areas of Specialization</p>
+            <p className="text-accent" style={{ color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600, fontSize: '0.875rem', marginBottom: '1rem' }}>Areas of Experience</p>
             <h2 className="text-h2 expertise-title">
-              Comprehensive Business Solutions
+              How I Help
             </h2>
           </div>
         </SectionReveal>
@@ -212,7 +212,7 @@ export default function SectionExpertise() {
 
         <SectionReveal delay={400}>
           <div className="expertise-cta">
-            <AnimatedButton href="/expertise" text1="Explore My Expertise" />
+            <AnimatedButton href="/experience" text1="See My Experience" />
           </div>
         </SectionReveal>
       </div>

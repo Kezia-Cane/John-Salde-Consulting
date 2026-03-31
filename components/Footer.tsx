@@ -44,11 +44,11 @@ export default function Footer() {
                         <h4 style={{ color: 'var(--color-accent)', margin: 0, fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Explore</h4>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                             {[
-                                { label: "Philosophy", href: "/philosophy" },
-                                { label: "Pillars", href: "/pillars" },
-                                { label: "Expertise", href: "/expertise" },
-                                { label: "Portfolio", href: "/portfolio" },
-                                { label: "Process", href: "/process" },
+                                { label: "About", href: "/about" },
+                                { label: "Services", href: "/services" },
+                                { label: "Experience", href: "/experience" },
+                                { label: "Work", href: "/work" },
+                                { label: "How It Works", href: "/how-it-works" },
                                 { label: "Consultation Form", href: "/consultation" },
                             ].map((link) => (
                                 <Link

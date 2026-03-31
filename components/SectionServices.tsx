@@ -95,7 +95,7 @@ export default function SectionServices() {
                 </div>
 
                 <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-                    <Link href="/pillars" className="section-cta-btn" style={{
+                    <Link href="/services" className="section-cta-btn" style={{
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '0.5rem',

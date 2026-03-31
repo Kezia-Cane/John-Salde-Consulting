@@ -1,17 +1,40 @@
 "use client"
 
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
     motion,
     useScroll,
     useTransform,
     useMotionTemplate,
+    type MotionValue,
 } from 'framer-motion'
-import { TrendingUp, Laptop, Settings } from 'lucide-react'
 import SectionReveal from './SectionReveal'
 import FluidExpandingGrid from './ui/fluid-expanding-grid'
+import styles from './SectionStory.module.css'
 
-const SECTION_HEIGHT = 4500 // Extended scroll track for smoother pacing and full image travel
+const DESKTOP_SECTION_HEIGHT = 5200
+const MOBILE_SECTION_HEIGHT = 7800 // Give the final mobile image more dwell time before the next section takes over
+
+type ScrollProgressProps = {
+    scrollYProgress: MotionValue<number>
+}
+
+type NarrativeOverlayProps = ScrollProgressProps & {
+    isMobile: boolean
+}
+
+type ParallaxImageConfig = {
+    src: string
+    alt: string
+    className: string
+    zIndex: number
+    startProgress: number
+    endProgress: number
+    yStart: string
+    yEnd: string
+}
+
+type ParallaxImageProps = ScrollProgressProps & ParallaxImageConfig
 
 export default function SectionStory() {
     return (
@@ -23,23 +46,36 @@ export default function SectionStory() {
 }
 
 const StoryHero = () => {
+    const [isMobile, setIsMobile] = useState(false)
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(max-width: 768px)')
+        const updateViewport = () => setIsMobile(mediaQuery.matches)
+
+        updateViewport()
+        mediaQuery.addEventListener('change', updateViewport)
+
+        return () => mediaQuery.removeEventListener('change', updateViewport)
+    }, [])
+
     // The main container provides the track length (height) for the sticky element inside.
     const containerRef = useRef<HTMLDivElement>(null)
     const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start start", "end start"] })
+    const sectionHeight = isMobile ? MOBILE_SECTION_HEIGHT : DESKTOP_SECTION_HEIGHT
 
     return (
         <div
             ref={containerRef}
             style={{
-                height: `${SECTION_HEIGHT}px`,
+                height: `${sectionHeight}px`,
                 position: 'relative',
                 width: '100%'
             }}
         >
-            <div style={{ position: 'sticky', top: 0, height: '100vh', width: '100%', overflow: 'hidden' }}>
+            <div style={{ position: 'sticky', top: 0, height: '100vh', width: '100%', overflow: 'hidden', zIndex: 40 }}>
                 <CenterImage scrollYProgress={scrollYProgress} />
-                <NarrativeOverlay scrollYProgress={scrollYProgress} />
-                <ParallaxImages scrollYProgress={scrollYProgress} />
+                <NarrativeOverlay scrollYProgress={scrollYProgress} isMobile={isMobile} />
+                <ParallaxImages scrollYProgress={scrollYProgress} isMobile={isMobile} />
 
                 {/* Dark overlay for text contrast - active during Phase 2 */}
                 <motion.div
@@ -47,7 +83,7 @@ const StoryHero = () => {
                         position: 'absolute',
                         inset: 0,
                         background: 'linear-gradient(to right, rgba(0,0,0,0.7) 0%, transparent 60%)',
-                        zIndex: 5,
+                        zIndex: 18,
                         opacity: useTransform(scrollYProgress, [0.25, 0.4, 0.75, 0.85], [0, 1, 1, 0])
                     }}
                 />
@@ -62,7 +98,7 @@ const StoryHero = () => {
                         height: '24rem',
                         background: 'linear-gradient(to bottom, transparent, var(--color-primary))',
                         pointerEvents: 'none',
-                        zIndex: 20
+                        zIndex: 22
                     }}
                 />
             </div>
@@ -70,7 +106,7 @@ const StoryHero = () => {
     )
 }
 
-const CenterImage = ({ scrollYProgress }: { scrollYProgress: any }) => {
+const CenterImage = ({ scrollYProgress }: ScrollProgressProps) => {
     // Phase 1: Expansion (0.0 -> 0.25)
     const clip1 = useTransform(scrollYProgress, [0, 0.25], [25, 0])
     const clip2 = useTransform(scrollYProgress, [0, 0.25], [75, 100])
@@ -99,7 +135,7 @@ const CenterImage = ({ scrollYProgress }: { scrollYProgress: any }) => {
                 clipPath,
                 backgroundSize,
                 opacity,
-                backgroundImage: 'url("/images/storymain.png")',
+                backgroundImage: 'url("/images/new%20hero/js8.png")',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
                 zIndex: 0
@@ -108,7 +144,7 @@ const CenterImage = ({ scrollYProgress }: { scrollYProgress: any }) => {
     )
 }
 
-const NarrativeOverlay = ({ scrollYProgress }: { scrollYProgress: any }) => {
+const NarrativeOverlay = ({ scrollYProgress, isMobile }: NarrativeOverlayProps) => {
     // Phase 2: Narrative Text Fade-In (0.25 -> 0.45)
     const opacity = useTransform(scrollYProgress, [0.25, 0.4, 0.7, 0.8], [0, 1, 1, 0])
     const x = useTransform(scrollYProgress, [0.25, 0.4], [-80, 0])
@@ -122,13 +158,13 @@ const NarrativeOverlay = ({ scrollYProgress }: { scrollYProgress: any }) => {
             display: 'flex',
             alignItems: 'center'
         }}>
-            <div style={{ width: '100%', maxWidth: '1280px', margin: '0 auto', padding: '0 1.5rem' }}>
-                <motion.div style={{ opacity, x, maxWidth: '420px' }}>
+            <div className={styles.narrativeShell}>
+                <motion.div className={styles.narrativeContent} style={{ opacity, x }}>
                     <h3 style={{
                         fontFamily: 'var(--font-display)',
                         color: 'var(--color-accent)',
-                        fontSize: 'clamp(3rem, 5vw, 4.5rem)',
-                        marginBottom: '1.5rem',
+                        fontSize: isMobile ? 'clamp(3.5rem, 14vw, 5rem)' : 'clamp(3rem, 5vw, 4.5rem)',
+                        marginBottom: isMobile ? '1rem' : '1.5rem',
                         lineHeight: 1.1,
                         fontWeight: 700,
                         textShadow: '0 10px 30px rgba(0,0,0,0.8)'
@@ -137,7 +173,7 @@ const NarrativeOverlay = ({ scrollYProgress }: { scrollYProgress: any }) => {
                     </h3>
                     <p style={{
                         color: 'white',
-                        fontSize: 'clamp(1.25rem, 2vw, 1.75rem)',
+                        fontSize: isMobile ? 'clamp(1.35rem, 5vw, 1.75rem)' : 'clamp(1.25rem, 2vw, 1.75rem)',
                         lineHeight: 1.5,
                         fontFamily: 'var(--font-body)',
                         fontWeight: 500,
@@ -153,46 +189,78 @@ const NarrativeOverlay = ({ scrollYProgress }: { scrollYProgress: any }) => {
     )
 }
 
-const parallaxData = [
+const desktopParallaxData = [
     {
-        src: "/images/Gemini_Generated_Image_80mlo80mlo80mlo8.png",
+        src: "/images/new%20hero/js3.png",
         alt: "Coffee Business Expertise",
-        left: "38%",
-        top: "10%",
-        width: '22%',
-        startProgress: 0.42,
-        endProgress: 0.75,
+        className: styles.parallaxOne,
+        zIndex: 30,
+        startProgress: 0.38,
+        endProgress: 0.54,
         yStart: "80vh",
         yEnd: "-20vh"
     },
     {
-        src: "/images/Gemini_Generated_Image_ee7cvee7cvee7cve.png",
+        src: "/images/new%20hero/js4.png",
         alt: "John Salde Business Consultant",
-        left: "50%",
-        top: "15%",
-        width: '24%',
-        startProgress: 0.55,
-        endProgress: 0.88,
+        className: styles.parallaxTwo,
+        zIndex: 31,
+        startProgress: 0.56,
+        endProgress: 0.72,
         yStart: "85vh",
         yEnd: "-15vh"
     },
     {
-        src: "/images/Gemini_Generated_Image_benlmbbenlmbbenl.png",
+        src: "/images/new%20hero/js6.png",
         alt: "Digital Marketing Strategy",
-        right: "1%",
-        top: "-5%",
-        width: '22%',
-        startProgress: 0.42,
-        endProgress: 0.75,
+        className: styles.parallaxThree,
+        zIndex: 32,
+        startProgress: 0.74,
+        endProgress: 0.9,
         yStart: "80vh",
         yEnd: "-20vh"
     }
 ]
 
-const ParallaxImages = ({ scrollYProgress }: { scrollYProgress: any }) => {
+const mobileParallaxData = [
+    {
+        src: "/images/new%20hero/js3.png",
+        alt: "Coffee Business Expertise",
+        className: styles.parallaxOne,
+        zIndex: 80,
+        startProgress: 0.42,
+        endProgress: 0.62,
+        yStart: "100vh",
+        yEnd: "-18vh"
+    },
+    {
+        src: "/images/new%20hero/js4.png",
+        alt: "John Salde Business Consultant",
+        className: styles.parallaxTwo,
+        zIndex: 81,
+        startProgress: 0.62,
+        endProgress: 0.82,
+        yStart: "100vh",
+        yEnd: "-18vh"
+    },
+    {
+        src: "/images/new%20hero/js6.png",
+        alt: "Digital Marketing Strategy",
+        className: styles.parallaxThree,
+        zIndex: 82,
+        startProgress: 0.78,
+        endProgress: 0.998,
+        yStart: "100vh",
+        yEnd: "18vh"
+    }
+]
+
+const ParallaxImages = ({ scrollYProgress, isMobile }: NarrativeOverlayProps) => {
+    const parallaxData = isMobile ? mobileParallaxData : desktopParallaxData
+
     return (
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 10, pointerEvents: 'none' }}>
-            <div style={{ maxWidth: '1280px', margin: '0 auto', position: 'relative', height: '100%' }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 25, pointerEvents: 'none' }}>
+            <div className={styles.parallaxStage}>
                 {parallaxData.map((item, i) => (
                     <ParallaxImg key={i} scrollYProgress={scrollYProgress} {...item} />
                 ))}
@@ -204,43 +272,37 @@ const ParallaxImages = ({ scrollYProgress }: { scrollYProgress: any }) => {
 const ParallaxImg = ({
     alt,
     src,
-    left,
-    right,
-    top,
-    width,
+    className,
+    zIndex,
     startProgress,
     endProgress,
     yStart,
     yEnd,
     scrollYProgress
-}: any) => {
+}: ParallaxImageProps) => {
     const y = useTransform(scrollYProgress, [startProgress, endProgress], [yStart, yEnd])
     // Combined fade and slide for better flow
     const opacity = useTransform(
         scrollYProgress,
-        [startProgress, startProgress + 0.1, endProgress - 0.1, endProgress],
+        [startProgress, startProgress + 0.06, endProgress - 0.04, endProgress],
         [0, 1, 1, 0]
     )
-    const scale = useTransform(scrollYProgress, [startProgress, endProgress], [1.05, 0.95])
+    const scale = useTransform(scrollYProgress, [startProgress, endProgress], [1.12, 0.96])
+    const mobileOpacity = className === styles.parallaxThree
+        ? useTransform(scrollYProgress, [startProgress, startProgress + 0.05, endProgress - 0.015, endProgress], [0, 1, 1, 0])
+        : opacity
 
     return (
-        <motion.img
-            src={src}
-            alt={alt}
+        <motion.div
+            className={`${styles.parallaxBase} ${className}`}
             style={{
-                position: 'absolute',
-                left,
-                right,
-                top,
-                width,
                 transform: useMotionTemplate`translateY(${y}) scale(${scale})`,
-                opacity,
-                display: 'block',
-                borderRadius: '1.5rem',
-                boxShadow: '0 30px 60px -15px rgba(0,0,0,0.8)',
-                objectFit: 'cover'
+                opacity: mobileOpacity,
+                zIndex
             }}
-        />
+        >
+            <img src={src} alt={alt} className={styles.parallaxImage} />
+        </motion.div>
     )
 }
 
@@ -270,7 +332,7 @@ const StoryContent = () => {
                         fontSize: "0.75rem",
                     }}
                 >
-                    The Evolution
+                    Growth
                 </p>
                 <h2
                     style={{
@@ -284,10 +346,9 @@ const StoryContent = () => {
                     }}
                 >
                     From Cafe{" "}
-                    <span style={{ color: "var(--color-accent)" }}>Dominance</span> to{" "}
-                    Full-Scale{" "}
+                    <span style={{ color: "var(--color-accent)" }}>Success</span> to{" "}
                     <span style={{ color: "var(--color-accent)" }}>
-                        Business Mastery
+                        Business Growth
                     </span>
                 </h2>
                 <p
@@ -301,7 +362,7 @@ const StoryContent = () => {
                         fontSize: "0.95rem",
                     }}
                 >
-                    It all started with 6 years of mastery in café operations. Today, as Mindanao’s leading coffee business consultant, I have expanded into comprehensive service pillars to drive total revenue success for over 20+ clients.
+                    It started with 6 years in café operations. Today, I help 20+ clients grow with clear systems, stronger teams, and better profits.
                 </p>
             </SectionReveal>
 

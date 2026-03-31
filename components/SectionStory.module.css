@@ -1,0 +1,94 @@
+.narrativeShell {
+  width: 100%;
+  padding: 0 clamp(1rem, 5vw, 4.5rem);
+}
+
+.narrativeContent {
+  max-width: 420px;
+}
+
+.parallaxStage {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+}
+
+.parallaxBase {
+  position: absolute;
+  display: block;
+  border-radius: 1.5rem;
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  background: rgba(10, 24, 75, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.parallaxImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.parallaxOne {
+  left: 38%;
+  top: 10%;
+  width: 22%;
+}
+
+.parallaxTwo {
+  left: 50%;
+  top: 15%;
+  width: 24%;
+}
+
+.parallaxThree {
+  right: 1%;
+  top: -5%;
+  width: 22%;
+}
+
+@media (max-width: 768px) {
+  .narrativeShell {
+    padding: 0 1rem;
+  }
+
+  .narrativeContent {
+    max-width: 320px;
+  }
+
+  .parallaxStage {
+    max-width: none;
+  }
+
+  .parallaxBase {
+    left: 50% !important;
+    right: auto !important;
+    width: min(84vw, 25rem) !important;
+    height: min(52vh, 22rem);
+    border-radius: 1.75rem;
+    box-shadow: 0 36px 70px -22px rgba(0, 0, 0, 0.82);
+    transform-origin: center center;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .parallaxOne {
+    top: 28% !important;
+  }
+
+  .parallaxTwo {
+    top: 28% !important;
+  }
+
+  .parallaxThree {
+    top: 28% !important;
+  }
+
+  .parallaxOne,
+  .parallaxTwo,
+  .parallaxThree {
+    margin-left: calc(min(84vw, 25rem) / -2);
+  }
+}

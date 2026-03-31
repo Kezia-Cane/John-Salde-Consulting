@@ -142,7 +142,7 @@ export default function SectionCaseStudies() {
             </div>
 
             <div style={{ textAlign: 'center', marginTop: '4rem', position: 'relative', zIndex: 2 }}>
-                <Link href="/portfolio" style={{
+                <Link href="/work" style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.5rem',
