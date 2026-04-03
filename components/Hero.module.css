@@ -1,3 +1,37 @@
+.heroBackdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.heroBackdropBase {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #111f5c 0%, #1d3b91 45%, #1e4fba 100%);
+}
+
+.heroBackdropGlowPrimary {
+  position: absolute;
+  top: -15%;
+  right: -5%;
+  width: 70%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.45), transparent 60%);
+  filter: blur(100px);
+}
+
+.heroBackdropGlowAccent {
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 50%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(198, 224, 61, 0.08), transparent 65%);
+  filter: blur(80px);
+}
+
 .heroSection {
   position: relative;
   height: 100vh;
@@ -168,6 +202,10 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.heroRightTitle {
+  margin-bottom: 1.25rem;
 }
 
 .heroDesc {

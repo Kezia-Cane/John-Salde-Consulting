@@ -1,5 +1,4 @@
-"use client";
-
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -28,9 +27,11 @@ export default function Footer() {
                     {/* Column 1: logo + tagline */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'flex-start' }}>
                         <Link href="/">
-                            <img
+                            <Image
                                 src="/images/logo/logo%20footer.png"
                                 alt="John Salde Consulting"
+                                width={320}
+                                height={96}
                                 style={{ width: 'auto', maxWidth: '320px', height: 'auto', display: 'block', borderRadius: '4px' }}
                             />
                         </Link>
@@ -60,8 +61,6 @@ export default function Footer() {
                                         fontSize: '0.9rem',
                                         transition: 'color 0.2s ease'
                                     }}
-                                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-accent)')}
-                                    onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.7)')}
                                 >
                                     {link.label}
                                 </Link>

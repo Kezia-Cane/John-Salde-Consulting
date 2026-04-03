@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import AnimatedButton from "./AnimatedButton";
@@ -12,6 +13,8 @@ const NAV_LINKS = [
     { label: "How It Works", href: "/how-it-works" },
 ];
 
+const MOBILE_NAV_QUERY = "(max-width: 767px)";
+
 // scrolled = compact white-glass logo-only pill
 // default  = full dark pill with all links
 type ScrollState = "default" | "scrolled";
@@ -19,6 +22,7 @@ type ScrollState = "default" | "scrolled";
 export default function Navigation() {
     const [scrollState, setScrollState] = useState<ScrollState>("default");
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isMobileViewport, setIsMobileViewport] = useState(false);
     const lastScrollY = useRef(0);
     const ticking = useRef(false);
 
@@ -49,6 +53,24 @@ export default function Navigation() {
 
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia(MOBILE_NAV_QUERY);
+
+        const syncViewportState = (event?: MediaQueryListEvent) => {
+            const matches = event?.matches ?? mediaQuery.matches;
+            setIsMobileViewport(matches);
+
+            if (!matches) {
+                setMobileMenuOpen(false);
+            }
+        };
+
+        syncViewportState();
+
+        mediaQuery.addEventListener("change", syncViewportState);
+        return () => mediaQuery.removeEventListener("change", syncViewportState);
     }, []);
 
     const isScrolled = scrollState === "scrolled";
@@ -91,7 +113,7 @@ export default function Navigation() {
                     }}
                 >
                     {/* - Circle Logo - visible only in default state - */}
-                    <a
+                    <Link
                         href="/"
                         aria-label="Home"
                         style={{
@@ -125,9 +147,9 @@ export default function Navigation() {
                                 flexShrink: 0,
                             }}
                         />
-                    </a>
+                    </Link>
 
-                    <a
+                    <Link
                         href="/consultation"
                         aria-label="Available for Consultation"
                         className="consultation-pulse-pill"
@@ -169,7 +191,7 @@ export default function Navigation() {
                         }}>
                             Available for Consultation
                         </span>
-                    </a>
+                    </Link>
 
                     {/* ── Desktop Nav Links - collapse when scrolled ── */}
                     <nav
@@ -187,14 +209,14 @@ export default function Navigation() {
                         }}
                     >
                         {NAV_LINKS.map((link) => (
-                            <a
+                            <Link
                                 key={link.label}
                                 href={link.href}
                                 className="pill-link"
                                 data-text={link.label}
                             >
                                 <span>{link.label}</span>
-                            </a>
+                            </Link>
                         ))}
                     </nav>
 
@@ -242,83 +264,85 @@ export default function Navigation() {
             </div>
 
             {/* ── Mobile Full-Screen Drawer ── */}
-            <div
-                style={{
-                    position: "fixed",
-                    top: 0, left: 0, right: 0, bottom: 0,
-                    backgroundColor: "var(--color-primary)",
-                    zIndex: 100,
-                    transform: mobileMenuOpen ? "translateY(0)" : "translateY(-100%)",
-                    transition: "transform 0.38s cubic-bezier(0.85, 0, 0.15, 1)",
-                    display: "flex",
-                    flexDirection: "column",
-                    padding: "1.75rem 2rem",
-                }
-                }
-            >
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                    <div style={{ height: "36px", width: "36px", borderRadius: "50%", background: "white", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <img
-                            src="/images/logo/logo%20navbar%20circle3.png"
-                            alt="John Salde Consulting"
-                            style={{
-                                height: "100%",
-                                width: "100%",
-                                objectFit: "cover",
-                                display: "block",
-                            }}
-                        />
-                    </div>
-                    <button
-                        onClick={() => setMobileMenuOpen(false)}
-                        style={{
-                            padding: "0.5rem",
-                            color: "white",
-                            cursor: "pointer",
-                            borderRadius: "999px",
-                            minWidth: "48px",
-                            minHeight: "48px",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            background: "rgba(255,255,255,0.1)",
-                        }}
-                        aria-label="Close menu"
-                    >
-                        <X size={24} />
-                    </button>
-                </div>
-
-                <nav style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "2rem",
-                    marginTop: "4rem",
-                    alignItems: "center",
-                }}>
-                    {NAV_LINKS.map((link) => (
-                        <a
-                            key={link.label}
-                            href={link.href}
-                            className="text-h2"
-                            style={{
-                                color: "white",
-                                opacity: 0.9,
-                                fontFamily: "var(--font-display)",
-                                fontWeight: 600,
-                                letterSpacing: "0.02em",
-                                cursor: "pointer",
-                            }}
+            {isMobileViewport && mobileMenuOpen ? (
+                <div
+                    style={{
+                        position: "fixed",
+                        inset: 0,
+                        backgroundColor: "var(--color-primary)",
+                        zIndex: 100,
+                        transform: "translateY(0)",
+                        transition: "transform 0.38s cubic-bezier(0.85, 0, 0.15, 1)",
+                        display: "flex",
+                        flexDirection: "column",
+                        padding: "1.75rem 2rem",
+                        overflowY: "auto",
+                    }}
+                >
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <div style={{ height: "36px", width: "36px", borderRadius: "50%", background: "white", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <img
+                                src="/images/logo/logo%20navbar%20circle3.png"
+                                alt="John Salde Consulting"
+                                style={{
+                                    height: "100%",
+                                    width: "100%",
+                                    objectFit: "cover",
+                                    display: "block",
+                                }}
+                            />
+                        </div>
+                        <button
                             onClick={() => setMobileMenuOpen(false)}
+                            style={{
+                                padding: "0.5rem",
+                                color: "white",
+                                cursor: "pointer",
+                                borderRadius: "999px",
+                                minWidth: "48px",
+                                minHeight: "48px",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                background: "rgba(255,255,255,0.1)",
+                            }}
+                            aria-label="Close menu"
                         >
-                            {link.label}
-                        </a>
-                    ))}
-                    <div onClick={() => setMobileMenuOpen(false)} style={{ marginTop: "1rem" }}>
-                        <AnimatedButton href="/consultation" text1="Consultation" />
+                            <X size={24} />
+                        </button>
                     </div>
-                </nav>
-            </div>
+
+                    <nav style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "2rem",
+                        marginTop: "4rem",
+                        alignItems: "center",
+                    }}>
+                        {NAV_LINKS.map((link) => (
+                            <Link
+                                key={link.label}
+                                href={link.href}
+                                className="text-h2"
+                                style={{
+                                    color: "white",
+                                    opacity: 0.9,
+                                    fontFamily: "var(--font-display)",
+                                    fontWeight: 600,
+                                    letterSpacing: "0.02em",
+                                    cursor: "pointer",
+                                }}
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                        <div onClick={() => setMobileMenuOpen(false)} style={{ marginTop: "1rem" }}>
+                            <AnimatedButton href="/consultation" text1="Consultation" />
+                        </div>
+                    </nav>
+                </div>
+            ) : null}
 
             {/* ── Scoped Styles ── */}
             <style suppressHydrationWarning dangerouslySetInnerHTML={{

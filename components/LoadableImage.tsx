@@ -1,15 +1,29 @@
 "use client";
 
+import Image, { type ImageProps } from "next/image";
 import { useState } from "react";
 import CoffeeLoader from "./CoffeeLoader";
 
-interface LoadableImageProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, "src"> {
+interface LoadableImageProps extends Omit<ImageProps, "src" | "alt" | "fill"> {
     src?: string;
+    alt: string;
     loaderSize?: number;
     loaderBg?: string;
 }
 
-export default function LoadableImage({ src, alt, className, style, loaderSize = 80, loaderBg = "#f8fafc", ...props }: LoadableImageProps) {
+export default function LoadableImage({
+    src,
+    alt,
+    className,
+    style,
+    loaderSize = 80,
+    loaderBg = "#f8fafc",
+    sizes,
+    priority,
+    onLoad,
+    onError,
+    ...props
+}: LoadableImageProps) {
     const [loadedSrc, setLoadedSrc] = useState<string | null>(null);
     const isLoaded = loadedSrc === src;
 
@@ -30,26 +44,27 @@ export default function LoadableImage({ src, alt, className, style, loaderSize =
                     </div>
                 </div>
             )}
-            <img
+            <Image
                 {...props}
-                src={src}
+                src={src || ""}
                 alt={alt}
+                fill
+                sizes={sizes ?? "100vw"}
+                priority={priority}
                 className={className}
                 style={{
                     ...style,
                     opacity: isLoaded ? 1 : 0,
                     transition: "opacity 0.4s ease-in-out",
-                    position: "relative",
                     zIndex: 2
                 }}
-                loading={props.loading ?? "eager"}
                 onLoad={(e) => {
                     setLoadedSrc(src ?? null);
-                    if (props.onLoad) props.onLoad(e);
+                    onLoad?.(e);
                 }}
                 onError={(e) => {
                     setLoadedSrc(src ?? null);
-                    if (props.onError) props.onError(e);
+                    onError?.(e);
                 }}
             />
         </div>

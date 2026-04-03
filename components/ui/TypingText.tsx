@@ -4,7 +4,6 @@ import { gsap } from "gsap"
 import {
     createElement,
     type ElementType,
-    useCallback,
     useEffect,
     useMemo,
     useRef,
@@ -63,13 +62,18 @@ const TypingText = ({
 
     const textArray = useMemo(() => (Array.isArray(text) ? text : [text]), [text])
 
-    const getRandomSpeed = useCallback(() => {
+    const getTypingDelay = (charIndex: number, textIndex: number) => {
         if (!variableSpeed) {
             return typingSpeed
         }
         const { min, max } = variableSpeed
-        return Math.random() * (max - min) + min
-    }, [variableSpeed, typingSpeed])
+        const range = max - min
+        if (range <= 0) {
+            return min
+        }
+        const seed = ((textIndex + 1) * 31 + (charIndex + 1) * 17) % 100
+        return min + (range * seed) / 100
+    }
 
     const getCurrentTextColor = () => {
         if (textColors.length === 0) {
@@ -149,7 +153,7 @@ const TypingText = ({
                         setDisplayedText(prev => prev + processedText[currentCharIndex])
                         setCurrentCharIndex(prev => prev + 1)
                     },
-                    variableSpeed ? getRandomSpeed() : typingSpeed,
+                    getTypingDelay(currentCharIndex, currentTextIndex),
                 )
             } else if (textArray.length > 1) {
                 timeout = setTimeout(() => {
@@ -180,7 +184,6 @@ const TypingText = ({
         reverseMode,
         variableSpeed,
         onSentenceComplete,
-        getRandomSpeed,
     ])
 
     const shouldHideCursor =

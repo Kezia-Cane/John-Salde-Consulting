@@ -1,8 +1,14 @@
 import type { NextConfig } from "next";
+import bundleAnalyzer from "@next/bundle-analyzer";
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
   compress: true,
+  optimizePackageImports: ["lucide-react", "@radix-ui/react-icons"],
   turbopack: {
     root: process.cwd(),
   },
@@ -15,7 +21,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/images/(.*)",
+        source: "/images/:path*",
         headers: [
           {
             key: "Cache-Control",
@@ -24,7 +30,16 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/_next/static/(.*)",
+        source: "/:path*\\.(ico|svg|png|jpg|jpeg|webp|avif|gif|woff|woff2)$",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/_next/static/:path*",
         headers: [
           {
             key: "Cache-Control",
@@ -36,4 +51,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);
