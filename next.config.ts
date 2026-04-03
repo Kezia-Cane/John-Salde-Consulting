@@ -8,7 +8,9 @@ const withBundleAnalyzer = bundleAnalyzer({
 const nextConfig: NextConfig = {
   reactCompiler: true,
   compress: true,
-  optimizePackageImports: ["lucide-react", "@radix-ui/react-icons"],
+  experimental: {
+    optimizePackageImports: ["@radix-ui/react-icons"],
+  },
   turbopack: {
     root: process.cwd(),
   },
