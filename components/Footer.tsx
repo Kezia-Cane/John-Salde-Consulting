@@ -76,7 +76,7 @@ export default function Footer() {
                                 thejohnsalde@gmail.com
                             </a>
                             <p className="text-body-md" style={{ color: 'rgba(255,255,255,0.7)', margin: 0, fontSize: '0.9rem' }}>
-                                Mindanao, Philippines
+                                Carmen, Davao del Norte
                             </p>
                         </div>
                     </div>

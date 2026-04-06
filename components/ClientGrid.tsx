@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import LoadableImage from "./LoadableImage";
 
 interface ClientProject {
@@ -165,6 +166,11 @@ const clients: ClientProject[] = [
 
 export default function ClientGrid() {
     const [selectedClient, setSelectedClient] = useState<ClientProject | null>(null);
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     // Lock body scroll when modal is open
     useEffect(() => {
@@ -272,129 +278,132 @@ export default function ClientGrid() {
             </div>
 
             {/* Modal Overlay */}
-            {selectedClient && (
-                <div
-                    style={{
-                        position: "fixed",
-                        inset: 0,
-                        zIndex: 9999,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        padding: "1.5rem",
-                    }}
-                >
-                    {/* Backdrop */}
+            {isMounted && selectedClient
+                ? createPortal(
                     <div
-                        onClick={() => setSelectedClient(null)}
                         style={{
-                            position: "absolute",
+                            position: "fixed",
                             inset: 0,
-                            background: "rgba(14, 29, 78, 0.6)",
-                            backdropFilter: "blur(8px)",
-                            cursor: "pointer",
-                        }}
-                    />
-
-                    {/* Modal Content */}
-                    <div
-                        style={{
-                            position: "relative",
-                            background: "#ffffff",
-                            borderRadius: "var(--radius-lg)",
-                            width: "100%",
-                            maxWidth: "1000px",
-                            maxHeight: "90vh",
-                            overflow: "hidden",
-                            boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-                            animation: "scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
+                            zIndex: 9999,
                             display: "flex",
-                            flexDirection: "column"
+                            alignItems: "center",
+                            justifyContent: "center",
+                            padding: "1.5rem",
                         }}
                     >
-                        {/* Close button (Absolute for better layout flexibility) */}
-                        <button
+                        {/* Backdrop */}
+                        <div
                             onClick={() => setSelectedClient(null)}
                             style={{
                                 position: "absolute",
-                                top: "1.5rem",
-                                right: "1.5rem",
-                                background: "rgba(255, 255, 255, 0.9)",
-                                backdropFilter: "blur(4px)",
-                                border: "none",
-                                borderRadius: "50%",
-                                width: "40px",
-                                height: "40px",
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
+                                inset: 0,
+                                background: "rgba(14, 29, 78, 0.6)",
+                                backdropFilter: "blur(8px)",
                                 cursor: "pointer",
-                                color: "var(--color-primary)",
-                                zIndex: 10,
-                                boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
+                            }}
+                        />
+
+                        {/* Modal Content */}
+                        <div
+                            style={{
+                                position: "relative",
+                                background: "#ffffff",
+                                borderRadius: "var(--radius-lg)",
+                                width: "100%",
+                                maxWidth: "1000px",
+                                maxHeight: "90vh",
+                                overflow: "hidden",
+                                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+                                animation: "scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
+                                display: "flex",
+                                flexDirection: "column"
                             }}
                         >
-                            <span className="material-symbols-outlined" style={{ fontSize: "1.5rem" }}>close</span>
-                        </button>
+                            {/* Close button (Absolute for better layout flexibility) */}
+                            <button
+                                onClick={() => setSelectedClient(null)}
+                                style={{
+                                    position: "absolute",
+                                    top: "1.5rem",
+                                    right: "1.5rem",
+                                    background: "rgba(255, 255, 255, 0.9)",
+                                    backdropFilter: "blur(4px)",
+                                    border: "none",
+                                    borderRadius: "50%",
+                                    width: "40px",
+                                    height: "40px",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    cursor: "pointer",
+                                    color: "var(--color-primary)",
+                                    zIndex: 10,
+                                    boxShadow: "0 4px 12px rgba(0,0,0,0.1)"
+                                }}
+                            >
+                                <span className="material-symbols-outlined" style={{ fontSize: "1.5rem" }}>close</span>
+                            </button>
 
-                        <div className="modal-inner-grid" style={{ display: "grid", gridTemplateColumns: "1fr", height: "100%", overflowY: "auto" }}>
-                            {/* Left Column: Full Image */}
-                            <div className="modal-image-col" style={{ position: "relative", background: "#f8fafc", minHeight: "300px" }}>
-                                <LoadableImage
-                                    src={selectedClient.photo}
-                                    alt={selectedClient.name}
-                                    style={{
-                                        width: "100%",
-                                        height: "100%",
-                                        objectFit: "cover",
-                                        display: "block"
-                                    }}
-                                />
-                                {/* Bottom overlay for branding on mobile if needed, or just cleaner look */}
-                                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 40%)", pointerEvents: "none" }} />
-                            </div>
+                            <div className="modal-inner-grid" style={{ display: "grid", gridTemplateColumns: "1fr", height: "100%", overflowY: "auto" }}>
+                                {/* Left Column: Full Image */}
+                                <div className="modal-image-col" style={{ position: "relative", background: "#f8fafc", minHeight: "300px" }}>
+                                    <LoadableImage
+                                        src={selectedClient.photo}
+                                        alt={selectedClient.name}
+                                        style={{
+                                            width: "100%",
+                                            height: "100%",
+                                            objectFit: "cover",
+                                            display: "block"
+                                        }}
+                                    />
+                                    {/* Bottom overlay for branding on mobile if needed, or just cleaner look */}
+                                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 40%)", pointerEvents: "none" }} />
+                                </div>
 
-                            {/* Right Column: Content */}
-                            <div style={{ padding: "3rem 2.5rem", display: "flex", flexDirection: "column" }}>
-                                <div style={{ display: "flex", gap: "1.5rem", alignItems: "center", marginBottom: "2rem" }}>
-                                    <div style={{ width: "80px", height: "80px", borderRadius: "50%", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, overflow: "hidden", border: "2px solid #f1f5f9", boxShadow: "0 8px 16px rgba(0,0,0,0.06)" }}>
-                                        <LoadableImage src={selectedClient.logo} alt="Logo" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                {/* Right Column: Content */}
+                                <div style={{ padding: "3rem 2.5rem", display: "flex", flexDirection: "column" }}>
+                                    <div style={{ display: "flex", gap: "1.5rem", alignItems: "center", marginBottom: "2rem" }}>
+                                        <div style={{ width: "80px", height: "80px", borderRadius: "50%", background: "#ffffff", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, overflow: "hidden", border: "2px solid #f1f5f9", boxShadow: "0 8px 16px rgba(0,0,0,0.06)" }}>
+                                            <LoadableImage src={selectedClient.logo} alt="Logo" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                        </div>
+                                        <div>
+                                            <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--color-accent)", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", display: "block", marginBottom: "0.25rem" }}>Partner Case Study</span>
+                                            <h2 className="text-h2" style={{ color: "var(--color-primary)", fontSize: "1.75rem", lineHeight: 1.1 }}>
+                                                {selectedClient.name}
+                                            </h2>
+                                        </div>
                                     </div>
+
+                                    <div style={{ marginBottom: "2.5rem" }}>
+                                        <h4 style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#94a3b8", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.75rem", borderBottom: "1px solid #f1f5f9", paddingBottom: "0.5rem" }}>Project Overview</h4>
+                                        <p className="text-body-lg" style={{ color: "#334155", lineHeight: 1.6 }}>
+                                            {selectedClient.description}
+                                        </p>
+                                    </div>
+
                                     <div>
-                                        <span style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "var(--color-accent)", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", display: "block", marginBottom: "0.25rem" }}>Partner Case Study</span>
-                                        <h2 className="text-h2" style={{ color: "var(--color-primary)", fontSize: "1.75rem", lineHeight: 1.1 }}>
-                                            {selectedClient.name}
-                                        </h2>
+                                        <h4 style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#94a3b8", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "1rem" }}>Key Deliverables</h4>
+                                        <ul style={{ display: "grid", gridTemplateColumns: "1fr", gap: "0.85rem", marginLeft: 0, paddingLeft: 0, listStyle: "none" }}>
+                                            {selectedClient.operationalFocus.map((focus, i) => (
+                                                <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "1rem", background: "#f8fafc", padding: "1rem", borderRadius: "12px", border: "1px solid #f1f5f9" }}>
+                                                    <div style={{ background: "var(--color-primary)", borderRadius: "50%", width: "22px", height: "22px", display: "flex", alignItems: "center", justifyContent: "center", marginTop: "2px", flexShrink: 0 }}>
+                                                        <span className="material-symbols-outlined" style={{ fontSize: "14px", color: "white" }}>check</span>
+                                                    </div>
+                                                    <span style={{ color: "#1e293b", fontWeight: 500, fontSize: "0.95rem" }}>
+                                                        {focus}
+                                                    </span>
+                                                </li>
+                                            ))}
+                                        </ul>
                                     </div>
-                                </div>
-
-                                <div style={{ marginBottom: "2.5rem" }}>
-                                    <h4 style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#94a3b8", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "0.75rem", borderBottom: "1px solid #f1f5f9", paddingBottom: "0.5rem" }}>Project Overview</h4>
-                                    <p className="text-body-lg" style={{ color: "#334155", lineHeight: 1.6 }}>
-                                        {selectedClient.description}
-                                    </p>
-                                </div>
-
-                                <div>
-                                    <h4 style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#94a3b8", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: "1rem" }}>Key Deliverables</h4>
-                                    <ul style={{ display: "grid", gridTemplateColumns: "1fr", gap: "0.85rem", marginLeft: 0, paddingLeft: 0, listStyle: "none" }}>
-                                        {selectedClient.operationalFocus.map((focus, i) => (
-                                            <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "1rem", background: "#f8fafc", padding: "1rem", borderRadius: "12px", border: "1px solid #f1f5f9" }}>
-                                                <div style={{ background: "var(--color-primary)", borderRadius: "50%", width: "22px", height: "22px", display: "flex", alignItems: "center", justifyContent: "center", marginTop: "2px", flexShrink: 0 }}>
-                                                    <span className="material-symbols-outlined" style={{ fontSize: "14px", color: "white" }}>check</span>
-                                                </div>
-                                                <span style={{ color: "#1e293b", fontWeight: 500, fontSize: "0.95rem" }}>
-                                                    {focus}
-                                                </span>
-                                            </li>
-                                        ))}
-                                    </ul>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            )}
+                    </div>,
+                    document.body
+                )
+                : null}
 
             {/* Modal Styles */}
             <style dangerouslySetInnerHTML={{

@@ -3,8 +3,10 @@
 import { useState, FormEvent } from "react";
 import Navigation from "@/components/Navigation";
 import CoffeeLoader from "@/components/CoffeeLoader";
+import DeterminateProgress from "@/components/DeterminateProgress";
 import Footer from "@/components/Footer";
 import DateTimePicker from "@/components/DateTimePicker";
+import { useLatencyAwareLoading } from "@/lib/useLatencyAwareLoading";
 
 const BUSINESS_TYPES = [
     "Boutique Coffee Shop",
@@ -37,67 +39,73 @@ const INTAKE_STEPS = [
 ];
 
 export default function ConsultationPage() {
-    const [submitted, setSubmitted] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [serverError, setServerError] = useState("");
-    const [form, setForm] = useState({
-        name: "",
-        businessType: BUSINESS_TYPES[0],
-        email: "",
-        phone: "",
-        datetime: "",
-        message: "",
-        _honeypot: "",
-    });
-    const [errors, setErrors] = useState<Partial<typeof form>>({});
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState("");
+  const [form, setForm] = useState({
+    name: "",
+    businessType: BUSINESS_TYPES[0],
+    email: "",
+    phone: "",
+    datetime: "",
+    message: "",
+    _honeypot: "",
+  });
+  const [errors, setErrors] = useState<Partial<typeof form>>({});
+  const submitLoading = useLatencyAwareLoading(loading);
 
-    function validate() {
-        const e: Partial<typeof form> = {};
-        if (!form.name.trim()) e.name = "Full name is required.";
-        if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-            e.email = "A valid email is required.";
-        if (!form.phone.trim()) e.phone = "Phone number is required.";
-        if (!form.datetime) e.datetime = "Please select a preferred date & time.";
-        if (!form.message.trim()) e.message = "Please tell me what you need help with.";
-        return e;
+  function validate() {
+    const e: Partial<typeof form> = {};
+    if (!form.name.trim()) e.name = "Full name is required.";
+    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+      e.email = "A valid email is required.";
+    if (!form.phone.trim()) e.phone = "Phone number is required.";
+    if (!form.datetime) e.datetime = "Please select a preferred date & time.";
+    if (!form.message.trim()) e.message = "Please tell me what you need help with.";
+    return e;
+  }
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length) {
+      setErrors(errs);
+      return;
     }
-
-    async function handleSubmit(e: FormEvent) {
-        e.preventDefault();
-        const errs = validate();
-        if (Object.keys(errs).length) {
-            setErrors(errs);
-            return;
-        }
-        setErrors({});
-        setServerError("");
-        setLoading(true);
-        try {
-            const res = await fetch("/api/contact", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(form),
-            });
-            const data = await res.json();
-            if (!res.ok || data.error) {
-                setServerError(data.error || "Something went wrong. Please try again.");
-            } else {
-                setSubmitted(true);
-            }
-        } catch {
-            setServerError("Network error. Please check your connection and try again.");
-        } finally {
-            setLoading(false);
-        }
+    setErrors({});
+    setServerError("");
+    setLoading(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok || data.error) {
+        setServerError(data.error || "Something went wrong. Please try again.");
+      } else {
+        setSubmitted(true);
+      }
+    } catch {
+      setServerError("Network error. Please check your connection and try again.");
+    } finally {
+      setLoading(false);
     }
+  }
 
-    function handleChange(field: keyof typeof form, value: string) {
-        setForm((prev) => ({ ...prev, [field]: value }));
-        if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
-    }
+  function handleChange(field: keyof typeof form, value: string) {
+    setForm((prev) => ({ ...prev, [field]: value }));
+    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
+  }
 
-    return (
-        <main className="page-container-glass" style={{ position: "relative", overflow: "hidden" }}>
+  const showDefaultButtonState = !loading || submitLoading.stage === "instant";
+  const showQuietSubmitState = loading && submitLoading.stage === "quiet";
+  const showAnimatedSubmitState = loading && submitLoading.stage === "animated";
+  const showDeterminateSubmitState = loading && submitLoading.stage === "determinate";
+
+  return (
+    <main className="page-container-glass" style={{ position: "relative", overflow: "hidden" }}>
             <Navigation />
 
             {/* ── Premium Architectural Grid Background ── */}
@@ -403,23 +411,40 @@ export default function ConsultationPage() {
                                     type="submit"
                                     className="uiverse-button"
                                     disabled={loading}
+                                    aria-busy={loading}
                                     style={{
-                                        opacity: loading ? 0.9 : 1,
+                                        opacity: loading ? 0.96 : 1,
                                         height: "64px",
                                         position: "relative",
-                                        overflow: "hidden"
+                                        overflow: "hidden",
                                     }}
                                 >
-                                    {loading ? (
-                                        <div style={{ transform: "scale(0.5)" }}>
-                                            <CoffeeLoader size={100} />
-                                        </div>
-                                    ) : (
+                                    {showDefaultButtonState ? (
                                         <>
                                             Send Request
                                             <span className="material-symbols-outlined" style={{ fontSize: "1.1rem" }}>arrow_forward</span>
                                         </>
-                                    )}
+                                    ) : null}
+
+                                    {showQuietSubmitState ? (
+                                        <>
+                                            Sending Request
+                                            <span className="material-symbols-outlined" style={{ fontSize: "1.1rem" }}>drafts</span>
+                                        </>
+                                    ) : null}
+
+                                    {showAnimatedSubmitState ? (
+                                        <div style={{ display: "inline-flex", alignItems: "center", gap: "0.75rem" }}>
+                                            <CoffeeLoader ariaLabel="Sending request" size={42} variant="button" />
+                                            <span style={{ whiteSpace: "nowrap" }}>Preparing Your Call</span>
+                                        </div>
+                                    ) : null}
+
+                                    {showDeterminateSubmitState ? (
+                                        <div style={{ width: "100%", maxWidth: "18rem" }}>
+                                            <DeterminateProgress compact label="Finalizing request" progress={submitLoading.progress} />
+                                        </div>
+                                    ) : null}
                                 </button>
                             </form>
                         )}
