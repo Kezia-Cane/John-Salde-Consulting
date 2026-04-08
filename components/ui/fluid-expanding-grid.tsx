@@ -15,7 +15,7 @@ const ITEMS: GalleryItem[] = [
         id: "operations",
         title: "Operations",
         subtitle: "Streamlined cafe workflow & daily processes",
-        image: "/images/evolution/operations.jpeg",
+        image: "/images/evolution/operations-growth.jpg",
     },
     {
         id: "marketing",

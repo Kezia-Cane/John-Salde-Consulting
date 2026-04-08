@@ -130,7 +130,6 @@ export default function WorkPage() {
                         <div className="grid gap-12 md:grid-cols-2" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(140px,1fr))" }}>
                             {[
                                 { val: "20+", label: "Clients Served" },
-                                { val: "₱120M+", label: "Revenue Managed" },
                                 { val: "15%", label: "Avg. Profit Lift" },
                                 { val: "6yrs", label: "Industry Experience" },
                             ].map((stat) => (
